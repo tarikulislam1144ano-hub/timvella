@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#1456c3">
+<meta name="theme-color" content="#1558c7">
 
 <title>Timvella — Premium Watches</title>
 
@@ -12,15 +12,15 @@
 
 :root{
   --blue:#1558c7;
-  --blue2:#0d3f99;
-  --light:#f5f9ff;
+  --blue-dark:#0d3f99;
+  --blue-light:#eef5ff;
   --text:#101b35;
   --muted:#68738a;
-  --border:#e4eaf4;
+  --border:#e3e9f2;
   --white:#fff;
-  --green:#14965a;
-  --red:#d52b2b;
-  --shadow:0 12px 35px rgba(21,55,110,.10);
+  --green:#15965b;
+  --red:#d52d2d;
+  --shadow:0 12px 35px rgba(20,55,110,.10);
 }
 
 html{
@@ -32,7 +32,6 @@ body{
   background:#fff;
   color:var(--text);
   font-family:Arial,Helvetica,sans-serif;
-  line-height:1.6;
 }
 
 a{
@@ -44,15 +43,16 @@ button,input,select,textarea{
   font:inherit;
 }
 
-/* TOP BAR */
+/* ================= TOP BAR ================= */
+
 .topbar{
   height:34px;
-  background:linear-gradient(90deg,#12449f,#1d5dcc);
+  padding:0 5%;
+  background:linear-gradient(90deg,#10449f,#1d5dcc);
   color:#fff;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:0 5%;
   font-size:12px;
 }
 
@@ -67,15 +67,16 @@ button,input,select,textarea{
   gap:6px;
 }
 
-/* HEADER */
+/* ================= HEADER ================= */
+
 header{
   height:88px;
+  padding:0 5%;
   background:#fff;
   border-bottom:1px solid #edf0f5;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:0 5%;
   position:sticky;
   top:0;
   z-index:100;
@@ -101,22 +102,21 @@ header{
 .brand-watch:after{
   content:"";
   position:absolute;
-  background:var(--blue);
   left:50%;
   top:50%;
+  height:3px;
+  background:var(--blue);
+  border-radius:4px;
   transform-origin:left center;
-  border-radius:5px;
 }
 
 .brand-watch:before{
-  width:14px;
-  height:3px;
+  width:15px;
   transform:rotate(220deg);
 }
 
 .brand-watch:after{
-  width:11px;
-  height:3px;
+  width:12px;
   transform:rotate(315deg);
 }
 
@@ -140,9 +140,10 @@ header{
 
 .brand-text span{
   display:block;
+  margin-top:1px;
+  color:#68738a;
   font-size:8px;
   letter-spacing:2px;
-  color:#68738a;
   font-weight:700;
 }
 
@@ -153,77 +154,85 @@ nav{
 }
 
 nav a{
+  position:relative;
+  color:#182238;
   font-size:14px;
   font-weight:700;
-  color:#182238;
-  position:relative;
 }
 
-nav a.active,
-nav a:hover{
+nav a:hover,
+nav a.active{
   color:var(--blue);
 }
 
 nav a.active:after{
   content:"";
   position:absolute;
+  height:3px;
   left:0;
   right:0;
   bottom:-31px;
-  height:3px;
-  background:var(--blue);
   border-radius:5px;
+  background:var(--blue);
 }
 
 .header-icons{
-  display:flex;
-  align-items:center;
-  gap:20px;
   min-width:190px;
+  display:flex;
   justify-content:flex-end;
+  align-items:center;
+  gap:18px;
 }
 
 .icon-btn{
+  position:relative;
   border:0;
-  background:none;
+  background:transparent;
   color:#17243c;
   font-size:23px;
   cursor:pointer;
-  position:relative;
 }
 
 .cart-count{
   position:absolute;
-  right:-8px;
-  top:-9px;
-  min-width:18px;
-  height:18px;
+  right:-9px;
+  top:-10px;
+  min-width:19px;
+  height:19px;
   padding:0 5px;
   border-radius:20px;
   background:var(--blue);
   color:#fff;
   font-size:10px;
   display:flex;
-  justify-content:center;
   align-items:center;
-  font-weight:bold;
+  justify-content:center;
+  font-weight:800;
 }
 
-/* HERO */
+/* ================= HERO ================= */
+
 .hero{
-  min-height:500px;
-  background:
-    radial-gradient(circle at 78% 45%,rgba(60,126,230,.15),transparent 28%),
-    linear-gradient(120deg,#f5f9ff,#e9f2ff);
   position:relative;
   overflow:hidden;
+  background:
+    radial-gradient(
+      circle at 78% 50%,
+      rgba(62,128,232,.18),
+      transparent 31%
+    ),
+    linear-gradient(
+      120deg,
+      #f7faff,
+      #eaf3ff
+    );
 }
 
 .hero-inner{
   max-width:1400px;
-  margin:auto;
   min-height:500px;
-  padding:60px 7%;
+  margin:auto;
+  padding:55px 7%;
   display:grid;
   grid-template-columns:1fr 1fr;
   align-items:center;
@@ -231,7 +240,7 @@ nav a.active:after{
 
 .hero-copy{
   position:relative;
-  z-index:3;
+  z-index:2;
 }
 
 .hero-label{
@@ -243,56 +252,61 @@ nav a.active:after{
 
 .hero h1{
   margin:12px 0 0;
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:clamp(46px,5.5vw,78px);
-  line-height:1.03;
-  letter-spacing:-3px;
   color:#142143;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(46px,5.5vw,76px);
+  line-height:1.02;
+  letter-spacing:-3px;
 }
 
 .hero-script{
+  margin:5px 0 18px;
   color:var(--blue);
   font-family:cursive;
-  font-size:clamp(32px,4vw,55px);
-  margin:3px 0 18px;
+  font-size:clamp(32px,4vw,54px);
+  line-height:1.05;
 }
 
 .hero p{
   max-width:500px;
+  margin:0;
   color:#657086;
   font-size:15px;
+  line-height:1.7;
 }
 
 .hero-buttons{
   display:flex;
+  flex-wrap:wrap;
   gap:14px;
   margin-top:28px;
-  flex-wrap:wrap;
 }
 
 .primary-btn,
 .secondary-btn{
-  padding:14px 25px;
+  min-height:48px;
+  padding:13px 24px;
   border-radius:9px;
-  font-weight:800;
-  cursor:pointer;
   display:inline-flex;
   align-items:center;
-  gap:9px;
+  justify-content:center;
+  gap:8px;
+  font-weight:800;
+  cursor:pointer;
   transition:.25s;
 }
 
 .primary-btn{
   color:#fff;
-  background:linear-gradient(135deg,#1558c7,#0d43a0);
   border:1px solid var(--blue);
-  box-shadow:0 10px 25px rgba(21,88,199,.2);
+  background:linear-gradient(135deg,#1558c7,#0d43a0);
+  box-shadow:0 10px 25px rgba(21,88,199,.20);
 }
 
 .secondary-btn{
-  background:#fff;
   color:var(--blue);
   border:1px solid var(--blue);
+  background:#fff;
 }
 
 .primary-btn:hover,
@@ -300,65 +314,247 @@ nav a.active:after{
   transform:translateY(-2px);
 }
 
+/* ================= CSS WATCH ================= */
+
 .hero-watch{
-  height:410px;
-  position:relative;
+  height:400px;
   display:flex;
   justify-content:center;
   align-items:center;
+  position:relative;
 }
 
-.hero-watch img{
-  width:min(590px,100%);
-  max-height:410px;
-  object-fit:contain;
-  filter:drop-shadow(0 30px 25px rgba(20,45,90,.18));
+.watch-stage{
+  width:min(570px,100%);
+  height:360px;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   transform:rotate(-5deg);
 }
 
-.hero-dots{
+.watch-shadow{
   position:absolute;
-  bottom:20px;
-  left:50%;
-  transform:translateX(-50%);
-  display:flex;
-  gap:9px;
-}
-
-.hero-dots span{
-  width:10px;
-  height:10px;
+  width:390px;
+  height:65px;
+  bottom:38px;
   border-radius:50%;
-  background:#ccd7e9;
+  background:rgba(33,66,115,.15);
+  filter:blur(18px);
 }
 
-.hero-dots span:first-child{
-  background:var(--blue);
+.watch-strap{
+  position:absolute;
+  width:105px;
+  height:315px;
+  border-radius:28px;
+  background:
+    linear-gradient(
+      90deg,
+      #111827,
+      #303a4c,
+      #101725
+    );
+  box-shadow:
+    inset 8px 0 12px rgba(255,255,255,.08),
+    inset -8px 0 12px rgba(0,0,0,.25);
 }
 
-/* BENEFITS */
+.watch-strap:before,
+.watch-strap:after{
+  content:"";
+  position:absolute;
+  left:18px;
+  right:18px;
+  height:4px;
+  border-radius:3px;
+  background:#566174;
+  box-shadow:
+    0 18px #566174,
+    0 36px #566174,
+    0 54px #566174,
+    0 72px #566174,
+    0 90px #566174,
+    0 108px #566174,
+    0 126px #566174,
+    0 144px #566174,
+    0 162px #566174,
+    0 180px #566174,
+    0 198px #566174,
+    0 216px #566174,
+    0 234px #566174;
+}
+
+.watch-strap:before{
+  top:18px;
+}
+
+.watch-strap:after{
+  bottom:18px;
+}
+
+.watch-case{
+  width:270px;
+  height:270px;
+  border-radius:50%;
+  padding:12px;
+  position:relative;
+  z-index:2;
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #a9b5c5,
+      #f7f9fc,
+      #8d9bad
+    );
+  box-shadow:
+    0 24px 35px rgba(20,45,90,.25),
+    inset 0 0 8px rgba(255,255,255,.9);
+}
+
+.watch-face{
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  position:relative;
+  background:
+    radial-gradient(
+      circle at 40% 35%,
+      #174d83,
+      #0b284b 55%,
+      #06182f
+    );
+  border:5px solid #dce4ee;
+  box-shadow:inset 0 0 20px rgba(0,0,0,.55);
+}
+
+.watch-face:before{
+  content:"TIMVELLA";
+  position:absolute;
+  left:0;
+  right:0;
+  top:67px;
+  text-align:center;
+  color:#fff;
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:1px;
+}
+
+.watch-face:after{
+  content:"TIME THAT DEFINES YOU";
+  position:absolute;
+  left:0;
+  right:0;
+  top:88px;
+  text-align:center;
+  color:#bcd5f4;
+  font-size:6px;
+  letter-spacing:1px;
+}
+
+.marker{
+  position:absolute;
+  width:3px;
+  height:16px;
+  background:#fff;
+  left:50%;
+  top:8px;
+  transform-origin:50% 127px;
+  border-radius:3px;
+}
+
+.marker.m1{transform:rotate(0deg)}
+.marker.m2{transform:rotate(30deg)}
+.marker.m3{transform:rotate(60deg)}
+.marker.m4{transform:rotate(90deg)}
+.marker.m5{transform:rotate(120deg)}
+.marker.m6{transform:rotate(150deg)}
+.marker.m7{transform:rotate(180deg)}
+.marker.m8{transform:rotate(210deg)}
+.marker.m9{transform:rotate(240deg)}
+.marker.m10{transform:rotate(270deg)}
+.marker.m11{transform:rotate(300deg)}
+.marker.m12{transform:rotate(330deg)}
+
+.watch-hand{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:72px;
+  height:4px;
+  background:#fff;
+  border-radius:4px;
+  transform-origin:left center;
+}
+
+.hand1{
+  transform:rotate(315deg);
+}
+
+.hand2{
+  width:52px;
+  height:5px;
+  transform:rotate(80deg);
+  background:#75a9f3;
+}
+
+.hand3{
+  width:88px;
+  height:2px;
+  transform:rotate(180deg);
+  background:#d9e8ff;
+}
+
+.watch-dot{
+  position:absolute;
+  width:11px;
+  height:11px;
+  left:50%;
+  top:50%;
+  border-radius:50%;
+  background:#fff;
+  transform:translate(-50%,-50%);
+  z-index:5;
+}
+
+.watch-crown{
+  position:absolute;
+  right:-17px;
+  top:50%;
+  width:18px;
+  height:42px;
+  transform:translateY(-50%);
+  border-radius:5px;
+  background:linear-gradient(90deg,#8d99a9,#f8fbff,#8c98a8);
+}
+
+/* ================= BENEFITS ================= */
+
 .benefits-wrap{
   max-width:1300px;
   margin:-30px auto 0;
+  padding:0 25px;
   position:relative;
   z-index:5;
-  padding:0 25px;
 }
 
 .benefits{
-  background:#fff;
+  padding:22px;
   border-radius:18px;
+  background:#fff;
   box-shadow:0 12px 35px rgba(20,50,100,.12);
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  padding:22px;
 }
 
 .benefit{
+  padding:8px 25px;
   display:flex;
   align-items:center;
   gap:14px;
-  padding:8px 25px;
   border-right:1px solid #e8edf5;
 }
 
@@ -373,8 +569,8 @@ nav a.active:after{
   background:#edf4ff;
   color:var(--blue);
   display:flex;
-  justify-content:center;
   align-items:center;
+  justify-content:center;
   font-size:21px;
   flex:none;
 }
@@ -386,12 +582,13 @@ nav a.active:after{
 
 .benefit span{
   display:block;
+  margin-top:2px;
   color:#7a8497;
   font-size:11px;
-  margin-top:2px;
 }
 
-/* SECTIONS */
+/* ================= SECTIONS ================= */
+
 section{
   max-width:1350px;
   margin:auto;
@@ -414,36 +611,37 @@ section{
 
 .section-head h2{
   margin:5px 0 0;
+  color:#142143;
   font-family:Georgia,"Times New Roman",serif;
   font-size:36px;
-  color:#142143;
 }
 
 .view-all{
-  color:var(--blue);
+  padding:10px 17px;
   border:1px solid #8ba9d8;
   border-radius:8px;
-  padding:10px 17px;
+  color:var(--blue);
   font-size:12px;
   font-weight:800;
 }
 
-/* TOOLBAR */
+/* ================= SEARCH ================= */
+
 .toolbar{
   display:flex;
-  gap:12px;
   justify-content:center;
-  margin-bottom:30px;
   flex-wrap:wrap;
+  gap:12px;
+  margin-bottom:30px;
 }
 
 .toolbar input,
 .toolbar select{
-  border:1px solid #dce4f0;
-  background:#fff;
   padding:12px 15px;
+  border:1px solid #dce4f0;
   border-radius:9px;
   outline:none;
+  background:#fff;
   color:#26334b;
 }
 
@@ -456,7 +654,8 @@ section{
   border-color:var(--blue);
 }
 
-/* PRODUCTS */
+/* ================= PRODUCTS ================= */
+
 .grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
@@ -464,13 +663,13 @@ section{
 }
 
 .card{
-  background:#fff;
+  position:relative;
+  overflow:hidden;
   border:1px solid #e7ebf2;
   border-radius:14px;
-  overflow:hidden;
+  background:#fff;
   box-shadow:0 5px 18px rgba(20,50,100,.06);
   transition:.3s;
-  position:relative;
 }
 
 .card:hover{
@@ -480,40 +679,43 @@ section{
 
 .photo{
   height:280px;
-  background:#fafcff;
+  position:relative;
+  overflow:hidden;
   display:flex;
   align-items:center;
   justify-content:center;
-  position:relative;
-  overflow:hidden;
+  background:#fafcff;
 }
 
 .photo img{
   width:90%;
   height:90%;
   object-fit:contain;
-  transition:.4s;
-}
-
-.card:hover .photo img{
-  transform:scale(1.06);
 }
 
 .badge{
   position:absolute;
   left:14px;
   top:14px;
+  z-index:3;
   padding:5px 10px;
   border-radius:20px;
   color:#fff;
   font-size:10px;
   font-weight:800;
-  z-index:2;
 }
 
-.badge.new{background:#14965a}
-.badge.sale{background:#d52b2b}
-.badge.best{background:#1558c7}
+.badge.new{
+  background:var(--green);
+}
+
+.badge.best{
+  background:var(--blue);
+}
+
+.badge.sale{
+  background:var(--red);
+}
 
 .info{
   padding:16px;
@@ -521,21 +723,21 @@ section{
 
 .info small{
   color:#8a94a6;
-  text-transform:uppercase;
   font-size:9px;
+  text-transform:uppercase;
   letter-spacing:1px;
 }
 
 .info h3{
-  font-size:15px;
   margin:5px 0 10px;
   color:#172239;
+  font-size:15px;
 }
 
 .price{
+  color:#111b31;
   font-size:16px;
   font-weight:900;
-  color:#111b31;
 }
 
 .old{
@@ -546,24 +748,24 @@ section{
 }
 
 .rating{
+  margin-top:6px;
   color:#f4b51d;
   font-size:12px;
-  margin-top:6px;
 }
 
 .rating span{
-  color:#858e9f;
   margin-left:5px;
+  color:#858e9f;
 }
 
 .add-btn{
   width:100%;
   margin-top:12px;
   padding:11px;
-  border-radius:8px;
   border:1px solid #9db6dd;
-  color:var(--blue);
+  border-radius:8px;
   background:#fff;
+  color:var(--blue);
   font-weight:800;
   cursor:pointer;
 }
@@ -573,13 +775,14 @@ section{
   color:#fff;
 }
 
-/* STATS */
+/* ================= STATS ================= */
+
 .stats{
-  background:#f3f7fd;
+  padding:25px;
   border-radius:18px;
+  background:#f3f7fd;
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  padding:25px;
 }
 
 .stat{
@@ -588,7 +791,7 @@ section{
 }
 
 .stat:last-child{
-  border:0;
+  border-right:0;
 }
 
 .stat strong{
@@ -602,12 +805,13 @@ section{
   font-size:12px;
 }
 
-/* ORDER */
+/* ================= PANEL ================= */
+
 .panel{
-  background:#fff;
+  padding:28px;
   border:1px solid #e2e8f1;
   border-radius:18px;
-  padding:28px;
+  background:#fff;
   box-shadow:var(--shadow);
 }
 
@@ -637,10 +841,10 @@ section{
 }
 
 .order-item{
+  padding:13px 0;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:13px 0;
   border-bottom:1px solid #edf0f5;
 }
 
@@ -649,72 +853,64 @@ section{
 }
 
 .empty{
+  padding:25px;
   text-align:center;
   color:#7b8494;
-  padding:25px;
 }
 
 .total{
+  margin:18px 0;
   text-align:right;
   font-size:19px;
   font-weight:900;
-  margin:18px 0;
 }
 
-/* ADMIN */
+/* ================= ADMIN ================= */
+
 .admin-box{
   max-width:1000px;
   margin:auto;
 }
 
-.admin-list{
-  margin-top:18px;
-}
-
 .admin-product{
+  margin-bottom:10px;
+  padding:14px;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:14px;
   border:1px solid #e5eaf2;
   border-radius:10px;
-  margin-bottom:10px;
 }
 
 .danger{
-  background:#fff1f1;
-  border:1px solid #e7aaaa;
-  color:#c52a2a;
   padding:8px 13px;
+  border:1px solid #e7aaaa;
   border-radius:7px;
+  background:#fff1f1;
+  color:#c52a2a;
   cursor:pointer;
 }
 
 .status{
   padding:6px 9px;
-  border-radius:6px;
   border:1px solid #dce4ee;
+  border-radius:6px;
 }
 
-/* FOOTER */
+/* ================= FOOTER ================= */
+
 footer{
+  margin-top:30px;
+  padding:35px 20px;
   background:#10244b;
   color:#fff;
   text-align:center;
-  padding:35px 20px;
-  margin-top:30px;
 }
 
-footer strong{
-  color:#fff;
-}
-
-/* MOBILE */
-.mobile-menu{
-  display:none;
-}
+/* ================= TABLET ================= */
 
 @media(max-width:1000px){
+
   nav{
     gap:18px;
   }
@@ -731,22 +927,26 @@ footer strong{
     border-right:0;
   }
 
-  .benefit{
-    margin:5px 0;
-  }
-
   .hero-inner{
     grid-template-columns:1fr 1fr;
   }
 }
 
+/* ================= MOBILE ================= */
+
 @media(max-width:750px){
+
   .topbar{
+    height:34px;
+    padding:0 12px;
+    font-size:10px;
     justify-content:center;
+    white-space:nowrap;
+    overflow:hidden;
   }
 
   .top-left{
-    gap:10px;
+    gap:9px;
   }
 
   .top-left .top-item:nth-child(2){
@@ -754,26 +954,28 @@ footer strong{
   }
 
   header{
-    height:70px;
-    padding:0 4%;
+    height:76px;
+    padding:0 17px;
   }
 
   .brand{
     min-width:auto;
+    gap:9px;
   }
 
   .brand-watch{
-    width:40px;
-    height:40px;
+    width:42px;
+    height:42px;
     border-width:3px;
   }
 
   .brand-text strong{
-    font-size:20px;
+    font-size:21px;
   }
 
   .brand-text span{
     font-size:6px;
+    letter-spacing:1.8px;
   }
 
   nav{
@@ -782,52 +984,120 @@ footer strong{
 
   .header-icons{
     min-width:auto;
-    gap:12px;
+    gap:13px;
   }
 
-  .mobile-menu{
-    display:block;
+  .icon-btn{
+    font-size:20px;
   }
+
+  /* HERO MOBILE */
 
   .hero-inner{
-    grid-template-columns:1fr;
-    padding:45px 7% 60px;
+    min-height:auto;
+    padding:45px 18px 25px;
+    display:flex;
+    flex-direction:column;
     text-align:center;
   }
 
   .hero-copy{
+    width:100%;
     display:flex;
     flex-direction:column;
     align-items:center;
   }
 
+  .hero-label{
+    font-size:11px;
+  }
+
+  .hero h1{
+    margin:11px 0 0;
+    font-size:43px;
+    line-height:.98;
+    letter-spacing:-2px;
+  }
+
+  .hero-script{
+    margin:9px 0 15px;
+    font-size:30px;
+  }
+
   .hero p{
-    max-width:420px;
+    max-width:360px;
+    font-size:13px;
+    line-height:1.6;
+  }
+
+  .hero-buttons{
+    width:100%;
+    margin-top:22px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:11px;
+  }
+
+  .primary-btn,
+  .secondary-btn{
+    width:245px;
+    min-height:48px;
+    padding:12px 17px;
   }
 
   .hero-watch{
-    height:280px;
-    margin-top:10px;
+    width:100%;
+    height:245px;
+    margin-top:12px;
   }
 
-  .hero-watch img{
-    max-height:270px;
+  .watch-stage{
+    width:100%;
+    height:225px;
+    transform:scale(.82);
+  }
+
+  .watch-case{
+    width:235px;
+    height:235px;
+  }
+
+  .watch-strap{
+    width:90px;
+    height:275px;
+  }
+
+  .watch-shadow{
+    width:300px;
+    bottom:22px;
+  }
+
+  .watch-face:before{
+    top:58px;
+    font-size:12px;
+  }
+
+  .watch-face:after{
+    top:77px;
+    font-size:5px;
   }
 
   .benefits-wrap{
-    margin:-20px 15px 0;
+    margin:-4px 14px 0;
     padding:0;
   }
 
   .benefits{
     grid-template-columns:1fr;
-    padding:10px;
+    padding:8px;
+    border-radius:15px;
   }
 
   .benefit{
+    padding:13px 12px;
     border-right:0;
     border-bottom:1px solid #e8edf5;
-    padding:14px;
   }
 
   .benefit:last-child{
@@ -835,16 +1105,29 @@ footer strong{
   }
 
   section{
-    padding:60px 5%;
+    padding:55px 18px;
   }
 
   .section-head{
     display:block;
   }
 
+  .section-head h2{
+    font-size:30px;
+  }
+
   .view-all{
     display:inline-block;
-    margin-top:14px;
+    margin-top:12px;
+  }
+
+  .toolbar{
+    justify-content:stretch;
+  }
+
+  .toolbar input,
+  .toolbar select{
+    width:100%;
   }
 
   .grid{
@@ -853,60 +1136,16 @@ footer strong{
   }
 
   .photo{
-    height:210px;
+    height:190px;
   }
 
   .info{
-    padding:12px;
+    padding:11px;
   }
 
   .info h3{
-    font-size:13px;
-  }
-
-  .stats{
-    grid-template-columns:1fr 1fr;
-    gap:20px;
-  }
-
-  .stat{
-    border-right:0;
-  }
-
-  .row{
-    grid-template-columns:1fr;
-  }
-}
-
-@media(max-width:480px){
-  .topbar{
-    font-size:10px;
-  }
-
-  .hero h1{
-    font-size:43px;
-    letter-spacing:-2px;
-  }
-
-  .hero-script{
-    font-size:32px;
-  }
-
-  .hero-buttons{
-    justify-content:center;
-  }
-
-  .primary-btn,
-  .secondary-btn{
-    padding:12px 17px;
-  }
-
-  .grid{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .photo{
-    height:175px;
+    font-size:12px;
+    line-height:1.35;
   }
 
   .price{
@@ -918,35 +1157,141 @@ footer strong{
   }
 
   .add-btn{
-    padding:9px 5px;
-    font-size:11px;
+    padding:9px 4px;
+    font-size:10px;
+  }
+
+  .stats{
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+    padding:20px 10px;
+  }
+
+  .stat{
+    border-right:0;
+  }
+
+  .row{
+    grid-template-columns:1fr;
+  }
+
+  .panel{
+    padding:20px;
+  }
+}
+
+/* ================= SMALL PHONE ================= */
+
+@media(max-width:480px){
+
+  .topbar{
+    font-size:9px;
+  }
+
+  .hero-inner{
+    padding-top:40px;
+  }
+
+  .hero h1{
+    font-size:39px;
+  }
+
+  .hero-script{
+    font-size:27px;
+  }
+
+  .hero-watch{
+    height:225px;
+  }
+
+  .watch-stage{
+    transform:scale(.72);
+  }
+
+  .photo{
+    height:175px;
   }
 
   .section-head h2{
-    font-size:30px;
+    font-size:29px;
+  }
+
+  .price{
+    font-size:13px;
+  }
+}
+
+/* ================= EXTRA SMALL ================= */
+
+@media(max-width:380px){
+
+  .brand-text strong{
+    font-size:19px;
+  }
+
+  .header-icons{
+    gap:8px;
+  }
+
+  .hero h1{
+    font-size:36px;
+  }
+
+  .hero-script{
+    font-size:25px;
+  }
+
+  .hero-watch{
+    height:205px;
+  }
+
+  .watch-stage{
+    transform:scale(.64);
+  }
+
+  .photo{
+    height:155px;
   }
 }
 
 .hidden{
   display:none!important;
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- TOP BAR -->
+<!-- ================= TOP BAR ================= -->
+
 <div class="topbar">
+
   <div class="top-left">
-    <div class="top-item">🚚 Free Shipping on all orders</div>
-    <div class="top-item">🛡️ 1 Year Warranty</div>
-    <div class="top-item">🎧 24/7 Customer Support</div>
+
+    <div class="top-item">
+      🚚 Free Shipping on all orders
+    </div>
+
+    <div class="top-item">
+      🛡️ 1 Year Warranty
+    </div>
+
+    <div class="top-item">
+      🎧 24/7 Customer Support
+    </div>
+
   </div>
 
-  <div class="top-item">👤 Admin Login</div>
+  <div class="top-item">
+    👤 Admin Login
+  </div>
+
 </div>
 
-<!-- HEADER -->
+
+<!-- ================= HEADER ================= -->
+
 <header>
 
   <a href="#" class="brand">
@@ -956,33 +1301,76 @@ footer strong{
     </div>
 
     <div class="brand-text">
+
       <strong>Timvella</strong>
-      <span>TIME THAT DEFINES YOU</span>
+
+      <span>
+        TIME THAT DEFINES YOU
+      </span>
+
     </div>
 
   </a>
 
+
   <nav>
-    <a href="#" class="active">Home</a>
-    <a href="#shop">Shop</a>
-    <a href="#shop">Categories</a>
-    <a href="#about">About Us</a>
-    <a href="#contact">Contact</a>
+
+    <a href="#" class="active">
+      Home
+    </a>
+
+    <a href="#shop">
+      Shop
+    </a>
+
+    <a href="#shop">
+      Categories
+    </a>
+
+    <a href="#about">
+      About Us
+    </a>
+
+    <a href="#contact">
+      Contact
+    </a>
+
   </nav>
+
 
   <div class="header-icons">
 
-    <button class="icon-btn" onclick="focusSearch()" title="Search">
+    <button
+      class="icon-btn"
+      onclick="focusSearch()"
+      title="Search"
+    >
       ⌕
     </button>
 
-    <button class="icon-btn" onclick="location.hash='admin'" title="Account">
+    <button
+      class="icon-btn"
+      onclick="location.hash='admin'"
+      title="Admin"
+    >
       ♙
     </button>
 
-    <button class="icon-btn" onclick="location.hash='order'" title="Cart">
+    <button
+      class="icon-btn"
+      onclick="location.hash='order'"
+      title="Cart"
+    >
+
       🛒
-      <span class="cart-count" id="count">0</span>
+
+      <span
+        class="cart-count"
+        id="count"
+      >
+        0
+      </span>
+
     </button>
 
   </div>
@@ -990,7 +1378,8 @@ footer strong{
 </header>
 
 
-<!-- HERO -->
+<!-- ================= HERO ================= -->
+
 <div class="hero">
 
   <div class="hero-inner">
@@ -1010,17 +1399,23 @@ footer strong{
       </div>
 
       <p>
-        Discover our premium collection of watches
+        Discover our premium collection of Timvella watches
         crafted for style, precision and durability.
       </p>
 
       <div class="hero-buttons">
 
-        <a href="#shop" class="primary-btn">
+        <a
+          href="#shop"
+          class="primary-btn"
+        >
           SHOP NOW →
         </a>
 
-        <a href="#shop" class="secondary-btn">
+        <a
+          href="#shop"
+          class="secondary-btn"
+        >
           EXPLORE COLLECTION
         </a>
 
@@ -1028,61 +1423,114 @@ footer strong{
 
     </div>
 
+
+    <!-- PURE CSS TIMVELLA WATCH -->
+
     <div class="hero-watch">
 
-      <img
-        src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=900&q=85"
-        alt="Timvella Premium Watch"
-      >
+      <div class="watch-stage">
+
+        <div class="watch-shadow"></div>
+
+        <div class="watch-strap"></div>
+
+        <div class="watch-case">
+
+          <div class="watch-face">
+
+            <span class="marker m1"></span>
+            <span class="marker m2"></span>
+            <span class="marker m3"></span>
+            <span class="marker m4"></span>
+            <span class="marker m5"></span>
+            <span class="marker m6"></span>
+            <span class="marker m7"></span>
+            <span class="marker m8"></span>
+            <span class="marker m9"></span>
+            <span class="marker m10"></span>
+            <span class="marker m11"></span>
+            <span class="marker m12"></span>
+
+            <span class="watch-hand hand1"></span>
+            <span class="watch-hand hand2"></span>
+            <span class="watch-hand hand3"></span>
+
+            <span class="watch-dot"></span>
+
+          </div>
+
+          <div class="watch-crown"></div>
+
+        </div>
+
+      </div>
 
     </div>
 
   </div>
 
-  <div class="hero-dots">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-
 </div>
 
 
-<!-- BENEFITS -->
+<!-- ================= BENEFITS ================= -->
+
 <div class="benefits-wrap">
 
   <div class="benefits">
 
     <div class="benefit">
-      <div class="b-icon">🚚</div>
+
+      <div class="b-icon">
+        🚚
+      </div>
+
       <div>
         <strong>Free Shipping</strong>
         <span>On all orders over $50</span>
       </div>
+
     </div>
 
+
     <div class="benefit">
-      <div class="b-icon">🛡️</div>
+
+      <div class="b-icon">
+        🛡️
+      </div>
+
       <div>
         <strong>1 Year Warranty</strong>
-        <span>On all premium watches</span>
+        <span>On all Timvella watches</span>
       </div>
+
     </div>
 
+
     <div class="benefit">
-      <div class="b-icon">🔒</div>
+
+      <div class="b-icon">
+        🔒
+      </div>
+
       <div>
         <strong>Secure Payment</strong>
         <span>100% secure checkout</span>
       </div>
+
     </div>
 
+
     <div class="benefit">
-      <div class="b-icon">↩</div>
+
+      <div class="b-icon">
+        ↩
+      </div>
+
       <div>
         <strong>Easy Returns</strong>
         <span>30 days return policy</span>
       </div>
+
     </div>
 
   </div>
@@ -1090,22 +1538,28 @@ footer strong{
 </div>
 
 
-<!-- SHOP -->
+<!-- ================= SHOP ================= -->
+
 <section id="shop">
 
   <div class="section-head">
 
     <div>
+
       <div class="section-label">
         OUR COLLECTION
       </div>
 
       <h2>
-        Featured Watches
+        Featured Timvella Watches
       </h2>
+
     </div>
 
-    <a href="#shop" class="view-all">
+    <a
+      href="#shop"
+      class="view-all"
+    >
       VIEW ALL PRODUCTS →
     </a>
 
@@ -1116,26 +1570,35 @@ footer strong{
 
     <input
       id="search"
-      placeholder="Search watches..."
+      placeholder="Search Timvella watches..."
       oninput="render()"
     >
 
-    <select id="cat" onchange="render()">
+    <select
+      id="cat"
+      onchange="render()"
+    >
+
       <option>All</option>
       <option>Men</option>
       <option>Women</option>
       <option>Premium</option>
+
     </select>
 
   </div>
 
 
-  <div id="products" class="grid"></div>
+  <div
+    id="products"
+    class="grid"
+  ></div>
 
 </section>
 
 
-<!-- STATS -->
+<!-- ================= STATS ================= -->
+
 <section id="about">
 
   <div class="stats">
@@ -1147,7 +1610,7 @@ footer strong{
 
     <div class="stat">
       <strong>Premium</strong>
-      <span>Quality Products</span>
+      <span>Timvella Quality</span>
     </div>
 
     <div class="stat">
@@ -1165,23 +1628,36 @@ footer strong{
 </section>
 
 
-<!-- ORDER -->
+<!-- ================= CHECKOUT ================= -->
+
 <section id="order">
 
   <div class="section-head">
+
     <div>
-      <div class="section-label">YOUR ORDER</div>
-      <h2>Checkout</h2>
+
+      <div class="section-label">
+        YOUR ORDER
+      </div>
+
+      <h2>
+        Checkout
+      </h2>
+
     </div>
+
   </div>
+
 
   <div class="panel">
 
     <div id="cartList"></div>
 
     <div class="total">
-      Total: ৳<span id="total">0</span>
+      Total:
+      ৳<span id="total">0</span>
     </div>
+
 
     <div class="row">
 
@@ -1197,22 +1673,31 @@ footer strong{
 
     </div>
 
+
     <textarea
       id="address"
       rows="4"
       placeholder="Delivery address"
     ></textarea>
 
+
     <br><br>
+
 
     <div class="row">
 
       <select id="payment">
-        <option>Cash on Delivery</option>
+
+        <option>
+          Cash on Delivery
+        </option>
+
         <option disabled>
           Online Payment — connect gateway
         </option>
+
       </select>
+
 
       <button
         class="primary-btn"
@@ -1223,6 +1708,7 @@ footer strong{
 
     </div>
 
+
     <div id="msg"></div>
 
   </div>
@@ -1230,17 +1716,29 @@ footer strong{
 </section>
 
 
-<!-- ADMIN -->
+<!-- ================= ADMIN ================= -->
+
 <section id="admin">
 
   <div class="section-head">
+
     <div>
-      <div class="section-label">MANAGEMENT</div>
-      <h2>Admin Panel</h2>
+
+      <div class="section-label">
+        MANAGEMENT
+      </div>
+
+      <h2>
+        Timvella Admin
+      </h2>
+
     </div>
+
   </div>
 
+
   <div class="panel admin-box">
+
 
     <div id="loginBox">
 
@@ -1259,6 +1757,7 @@ footer strong{
 
       </div>
 
+
       <button
         class="primary-btn"
         onclick="login()"
@@ -1269,7 +1768,10 @@ footer strong{
     </div>
 
 
-    <div id="dash" class="hidden">
+    <div
+      id="dash"
+      class="hidden"
+    >
 
       <button
         class="secondary-btn"
@@ -1278,13 +1780,17 @@ footer strong{
         Logout
       </button>
 
-      <h3>Add Product</h3>
+
+      <h3>
+        Add Timvella Watch
+      </h3>
+
 
       <div class="row">
 
         <input
           id="pn"
-          placeholder="Product name"
+          placeholder="Timvella watch name"
         >
 
         <input
@@ -1307,35 +1813,44 @@ footer strong{
 
       </div>
 
+
       <div class="row">
 
         <select id="pc">
+
           <option>Men</option>
           <option>Women</option>
           <option>Premium</option>
+
         </select>
+
 
         <input
           id="pi"
-          placeholder="Product image URL"
+          placeholder="Timvella product image URL"
         >
 
       </div>
+
 
       <button
         class="primary-btn"
         onclick="addProduct()"
       >
-        + ADD PRODUCT
+        + ADD TIMVELLA WATCH
       </button>
 
 
-      <h3>Products</h3>
+      <h3>
+        Timvella Products
+      </h3>
 
       <div id="adminProducts"></div>
 
 
-      <h3>Orders</h3>
+      <h3>
+        Orders
+      </h3>
 
       <div id="orders"></div>
 
@@ -1346,10 +1861,14 @@ footer strong{
 </section>
 
 
-<!-- CONTACT -->
+<!-- ================= CONTACT ================= -->
+
 <section id="contact">
 
-  <div class="panel" style="text-align:center">
+  <div
+    class="panel"
+    style="text-align:center"
+  >
 
     <div class="section-label">
       TIMVELLA SUPPORT
@@ -1360,11 +1879,13 @@ footer strong{
     </h2>
 
     <p style="color:#68738a">
-      Our support team is available 24/7 for your questions.
+      Our Timvella support team is available
+      24/7 for your questions.
     </p>
 
     <p>
-      📞 Customer Support &nbsp; • &nbsp;
+      📞 Customer Support
+      &nbsp; • &nbsp;
       📧 support@timvella.com
     </p>
 
@@ -1373,38 +1894,89 @@ footer strong{
 </section>
 
 
+<!-- ================= FOOTER ================= -->
+
 <footer>
-  © 2026 <strong>TIMVELLA</strong> — Premium Watches
+
+  © 2026
+  <strong>TIMVELLA</strong>
+  — Premium Watches
+
 </footer>
 
 
 <script>
 
-let products = [];
-let cart = [];
+/* ======================================================
+   DATA
+====================================================== */
+
+let products=[];
+let cart=[];
 
 
-/* FALLBACK IMAGES */
-const fallbackImages = [
-  "https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=700&q=80",
-  "https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=700&q=80",
-  "https://images.unsplash.com/photo-1533139502658-0198f920d8e8?auto=format&fit=crop&w=700&q=80",
-  "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=80"
+/* ======================================================
+   FALLBACK TIMVELLA WATCH IMAGE
+   NO EXTERNAL BRAND IMAGE
+====================================================== */
+
+const fallbackImages=[
+  "data:image/svg+xml;charset=UTF-8," +
+  encodeURIComponent(`
+  <svg xmlns="http://www.w3.org/2000/svg" width="600" height="600">
+    <rect width="600" height="600" fill="#f7faff"/>
+    <circle cx="300" cy="300" r="180" fill="#122c50"/>
+    <circle cx="300" cy="300" r="165" fill="#0b2341" stroke="#dbe5f2" stroke-width="12"/>
+    <text x="300" y="280" text-anchor="middle" fill="white" font-size="28" font-family="Arial" font-weight="bold">TIMVELLA</text>
+    <text x="300" y="310" text-anchor="middle" fill="#bcd5f4" font-size="11" font-family="Arial">TIME THAT DEFINES YOU</text>
+    <line x1="300" y1="300" x2="245" y2="250" stroke="white" stroke-width="8" stroke-linecap="round"/>
+    <line x1="300" y1="300" x2="350" y2="335" stroke="#75a9f3" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="300" cy="300" r="9" fill="white"/>
+  </svg>
+  `)
 ];
 
 
-/* LOAD PRODUCTS */
+/* ======================================================
+   TIMVELLA NAME
+====================================================== */
+
+function timvellaName(name){
+
+  name=String(name||"").trim();
+
+  if(!name){
+    return "Timvella Premium Watch";
+  }
+
+  if(
+    name.toLowerCase().startsWith("timvella")
+  ){
+    return name;
+  }
+
+  return "Timvella " + name;
+
+}
+
+
+/* ======================================================
+   LOAD PRODUCTS
+====================================================== */
+
 async function loadProducts(){
 
   try{
 
-    const res = await fetch("/api/products");
+    const res=
+      await fetch("/api/products");
 
     if(!res.ok){
       throw new Error("Product loading failed");
     }
 
-    products = await res.json();
+    products=
+      await res.json();
 
     render();
 
@@ -1412,10 +1984,14 @@ async function loadProducts(){
 
     console.error(err);
 
-    document.getElementById("products").innerHTML = `
+    document.getElementById(
+      "products"
+    ).innerHTML=`
+
       <div class="empty">
-        Unable to load products.
+        Unable to load Timvella watches.
       </div>
+
     `;
 
   }
@@ -1423,43 +1999,65 @@ async function loadProducts(){
 }
 
 
-/* RENDER PRODUCTS */
+/* ======================================================
+   RENDER PRODUCTS
+====================================================== */
+
 function render(){
 
-  const box = document.getElementById("products");
+  const box=
+    document.getElementById(
+      "products"
+    );
 
-  if(!box) return;
-
-  const search =
-    (document.getElementById("search")?.value || "")
-    .toLowerCase();
-
-  const cat =
-    document.getElementById("cat")?.value || "All";
+  if(!box)return;
 
 
-  const list = products.filter(p => {
+  const search=
+    (
+      document.getElementById(
+        "search"
+      )?.value||""
+    ).toLowerCase();
 
-    const matchSearch =
-      String(p.name || "")
-      .toLowerCase()
-      .includes(search);
 
-    const matchCat =
-      cat === "All" ||
-      p.category === cat;
+  const cat=
+    document.getElementById(
+      "cat"
+    )?.value||"All";
 
-    return matchSearch && matchCat;
 
-  });
+  const list=
+    products.filter(p=>{
+
+      const displayName=
+        timvellaName(p.name);
+
+
+      const matchSearch=
+        displayName
+        .toLowerCase()
+        .includes(search);
+
+
+      const matchCat=
+        cat==="All"||
+        p.category===cat;
+
+
+      return matchSearch&&matchCat;
+
+    });
 
 
   if(!list.length){
 
-    box.innerHTML = `
+    box.innerHTML=`
+
       <div class="empty">
-        No watches found.
+        No Timvella watches found.
       </div>
+
     `;
 
     return;
@@ -1467,101 +2065,155 @@ function render(){
   }
 
 
-  box.innerHTML = list.map((p,index)=>{
+  box.innerHTML=
+    list.map((p,index)=>{
 
-    const image =
-      p.image ||
-      fallbackImages[index % fallbackImages.length];
+      const displayName=
+        timvellaName(p.name);
 
-    let badge = "NEW";
-    let badgeClass = "new";
 
-    if(index % 4 === 1){
-      badge = "BEST SELLER";
-      badgeClass = "best";
-    }
+      const image=
+        p.image||
+        fallbackImages[0];
 
-    if(index % 4 === 2){
-      badge = "SALE";
-      badgeClass = "sale";
-    }
 
-    return `
+      let badge="NEW";
+      let badgeClass="new";
 
-      <article class="card">
 
-        <div class="photo">
+      if(index%4===1){
+        badge="BEST SELLER";
+        badgeClass="best";
+      }
 
-          <div class="badge ${badgeClass}">
-            ${badge}
-          </div>
 
-          <img
-            src="${escapeHtml(image)}"
-            alt="${escapeHtml(p.name)}"
-            onerror="this.src='${fallbackImages[index % fallbackImages.length]}'"
-          >
+      if(index%4===2){
+        badge="SALE";
+        badgeClass="sale";
+      }
 
-        </div>
 
-        <div class="info">
+      return`
 
-          <small>${escapeHtml(p.category || "Premium")}</small>
+        <article class="card">
 
-          <h3>
-            ${escapeHtml(p.name)}
-          </h3>
+          <div class="photo">
 
-          <div>
+            <div
+              class="badge ${badgeClass}"
+            >
+              ${badge}
+            </div>
 
-            <span class="price">
-              ৳${Number(p.price).toLocaleString()}
-            </span>
 
-            ${
-              p.old_price
-              ?
-              `<span class="old">
-                ৳${Number(p.old_price).toLocaleString()}
-              </span>`
-              :
-              ""
-            }
+            <img
+
+              src="${escapeHtml(image)}"
+
+              alt="${escapeHtml(
+                displayName
+              )}"
+
+              onerror="
+                this.src=fallbackImages[0]
+              "
+
+            >
 
           </div>
 
-          <div class="rating">
-            ★★★★★
-            <span>(${Math.floor(60 + index * 17)})</span>
+
+          <div class="info">
+
+            <small>
+              ${escapeHtml(
+                p.category||
+                "Premium"
+              )}
+            </small>
+
+
+            <h3>
+              ${escapeHtml(
+                displayName
+              )}
+            </h3>
+
+
+            <div>
+
+              <span class="price">
+                ৳${Number(
+                  p.price
+                ).toLocaleString()}
+              </span>
+
+
+              ${
+                p.old_price
+                ?
+                `
+                <span class="old">
+                  ৳${Number(
+                    p.old_price
+                  ).toLocaleString()}
+                </span>
+                `
+                :
+                ""
+              }
+
+            </div>
+
+
+            <div class="rating">
+
+              ★★★★★
+
+              <span>
+                (${60+index*17})
+              </span>
+
+            </div>
+
+
+            <button
+              class="add-btn"
+              onclick="addToCart(${p.id})"
+            >
+              🛒 ADD TO CART
+            </button>
+
           </div>
 
-          <button
-            class="add-btn"
-            onclick="addToCart(${p.id})"
-          >
-            🛒 ADD TO CART
-          </button>
+        </article>
 
-        </div>
+      `;
 
-      </article>
-
-    `;
-
-  }).join("");
+    }).join("");
 
 }
 
 
-/* ADD TO CART */
+/* ======================================================
+   CART
+====================================================== */
+
 function addToCart(id){
 
-  const p = products.find(x => x.id == id);
+  const p=
+    products.find(
+      x=>x.id==id
+    );
 
-  if(!p) return;
+  if(!p)return;
 
-  const existing =
-    cart.find(x => x.id == id);
+
+  const existing=
+    cart.find(
+      x=>x.id==id
+    );
+
 
   if(existing){
 
@@ -1570,92 +2222,187 @@ function addToCart(id){
   }else{
 
     cart.push({
+
       id:p.id,
-      name:p.name,
+
+      name:
+        timvellaName(p.name),
+
       price:p.price,
+
       qty:1
+
     });
 
   }
 
+
   updateCart();
 
-  location.hash = "order";
+  location.hash="order";
 
 }
 
 
-/* UPDATE CART */
+function changeQty(id,amount){
+
+  const item=
+    cart.find(
+      x=>x.id==id
+    );
+
+  if(!item)return;
+
+
+  item.qty+=amount;
+
+
+  if(item.qty<=0){
+
+    cart=
+      cart.filter(
+        x=>x.id!=id
+      );
+
+  }
+
+
+  updateCart();
+
+}
+
+
 function updateCart(){
 
-  const count =
-    cart.reduce((sum,x)=>sum + x.qty,0);
+  const count=
+    cart.reduce(
+      (sum,x)=>
+        sum+x.qty,
+      0
+    );
 
-  document.getElementById("count").textContent = count;
+
+  document.getElementById(
+    "count"
+  ).textContent=count;
 
 
-  const box =
-    document.getElementById("cartList");
+  const box=
+    document.getElementById(
+      "cartList"
+    );
+
 
   if(!cart.length){
 
-    box.innerHTML = `
+    box.innerHTML=`
+
       <div class="empty">
-        Your cart is empty.<br>
-        Add a watch from the collection.
+
+        Your Timvella cart is empty.<br>
+
+        Add a Timvella watch
+        from the collection.
+
       </div>
+
     `;
 
-    document.getElementById("total").textContent = "0";
+
+    document.getElementById(
+      "total"
+    ).textContent="0";
+
 
     return;
 
   }
 
 
-  let total = 0;
+  let total=0;
 
-  box.innerHTML =
-    cart.map(item => {
 
-      const line =
-        item.price * item.qty;
+  box.innerHTML=
+    cart.map(item=>{
 
-      total += line;
+      const line=
+        item.price*
+        item.qty;
 
-      return `
+
+      total+=line;
+
+
+      return`
 
         <div class="order-item">
 
           <div>
 
             <strong>
-              ${escapeHtml(item.name)}
+              ${escapeHtml(
+                item.name
+              )}
             </strong>
 
-            <div style="color:#718097;font-size:12px">
-              ৳${Number(item.price).toLocaleString()}
+            <div
+              style="
+                color:#718097;
+                font-size:12px
+              "
+            >
+
+              ৳${Number(
+                item.price
+              ).toLocaleString()}
+
               × ${item.qty}
+
             </div>
 
           </div>
 
+
           <div>
 
             <button
-              onclick="changeQty(${item.id},-1)"
-              style="border:0;background:#eef4ff;color:#1558c7;border-radius:6px;cursor:pointer"
+              onclick="changeQty(
+                ${item.id},
+                -1
+              )"
+
+              style="
+                border:0;
+                background:#eef4ff;
+                color:#1558c7;
+                border-radius:6px;
+                cursor:pointer
+              "
             >
               −
             </button>
 
-            <span style="margin:0 8px">
+
+            <span
+              style="margin:0 8px"
+            >
               ${item.qty}
             </span>
 
+
             <button
-              onclick="changeQty(${item.id},1)"
-              style="border:0;background:#eef4ff;color:#1558c7;border-radius:6px;cursor:pointer"
+              onclick="changeQty(
+                ${item.id},
+                1
+              )"
+
+              style="
+                border:0;
+                background:#eef4ff;
+                color:#1558c7;
+                border-radius:6px;
+                cursor:pointer
+              "
             >
               +
             </button>
@@ -1669,60 +2416,61 @@ function updateCart(){
     }).join("");
 
 
-  document.getElementById("total").textContent =
+  document.getElementById(
+    "total"
+  ).textContent=
     total.toLocaleString();
 
 }
 
 
-/* CHANGE QUANTITY */
-function changeQty(id,amount){
+/* ======================================================
+   PLACE ORDER
+====================================================== */
 
-  const item =
-    cart.find(x => x.id == id);
-
-  if(!item) return;
-
-  item.qty += amount;
-
-  if(item.qty <= 0){
-
-    cart =
-      cart.filter(x => x.id != id);
-
-  }
-
-  updateCart();
-
-}
-
-
-/* PLACE ORDER */
 async function placeOrder(){
 
   if(!cart.length){
 
-    showMsg("Please add a watch to your cart.","error");
+    showMsg(
+      "Please add a Timvella watch to your cart.",
+      "error"
+    );
 
     return;
 
   }
 
 
-  const customer =
-    document.getElementById("customer").value.trim();
-
-  const phone =
-    document.getElementById("phone").value.trim();
-
-  const address =
-    document.getElementById("address").value.trim();
-
-  const payment =
-    document.getElementById("payment").value;
+  const customer=
+    document.getElementById(
+      "customer"
+    ).value.trim();
 
 
-  if(!customer || !phone || !address){
+  const phone=
+    document.getElementById(
+      "phone"
+    ).value.trim();
+
+
+  const address=
+    document.getElementById(
+      "address"
+    ).value.trim();
+
+
+  const payment=
+    document.getElementById(
+      "payment"
+    ).value;
+
+
+  if(
+    !customer||
+    !phone||
+    !address
+  ){
 
     showMsg(
       "Please complete your name, phone and address.",
@@ -1736,41 +2484,57 @@ async function placeOrder(){
 
   try{
 
-    const res = await fetch("/api/orders",{
+    const res=
+      await fetch(
+        "/api/orders",
+        {
 
-      method:"POST",
+          method:"POST",
 
-      headers:{
-        "Content-Type":"application/json"
-      },
+          headers:{
+            "Content-Type":
+              "application/json"
+          },
 
-      body:JSON.stringify({
+          body:
+            JSON.stringify({
 
-        customer_name:customer,
+              customer_name:
+                customer,
 
-        phone:phone,
+              phone:
+                phone,
 
-        address:address,
+              address:
+                address,
 
-        items:cart.map(x=>({
-          id:x.id,
-          qty:x.qty
-        })),
+              items:
+                cart.map(x=>({
 
-        payment_method:payment
+                  id:x.id,
 
-      })
+                  qty:x.qty
 
-    });
+                })),
+
+              payment_method:
+                payment
+
+            })
+
+        }
+      );
 
 
-    const data = await res.json();
+    const data=
+      await res.json();
 
 
     if(!res.ok){
 
       showMsg(
-        data.error || "Order failed.",
+        data.error||
+        "Order failed.",
         "error"
       );
 
@@ -1780,20 +2544,33 @@ async function placeOrder(){
 
 
     showMsg(
-      `Order placed successfully! Order #${data.order_id}`,
+      `Timvella order placed successfully! Order #${data.order_id}`,
       "success"
     );
 
 
-    cart = [];
+    cart=[];
 
     updateCart();
 
-    document.getElementById("customer").value = "";
-    document.getElementById("phone").value = "";
-    document.getElementById("address").value = "";
+
+    document.getElementById(
+      "customer"
+    ).value="";
+
+
+    document.getElementById(
+      "phone"
+    ).value="";
+
+
+    document.getElementById(
+      "address"
+    ).value="";
+
 
     loadProducts();
+
 
   }catch(err){
 
@@ -1807,123 +2584,186 @@ async function placeOrder(){
 }
 
 
-/* MESSAGE */
 function showMsg(text,type){
 
-  const box =
-    document.getElementById("msg");
+  const box=
+    document.getElementById(
+      "msg"
+    );
 
-  box.textContent = text;
 
-  box.style.marginTop = "15px";
-  box.style.padding = "12px";
-  box.style.borderRadius = "8px";
+  box.textContent=text;
 
-  if(type === "success"){
+  box.style.marginTop="15px";
 
-    box.style.background = "#eaf8f0";
-    box.style.color = "#12824e";
+  box.style.padding="12px";
+
+  box.style.borderRadius="8px";
+
+
+  if(type==="success"){
+
+    box.style.background=
+      "#eaf8f0";
+
+    box.style.color=
+      "#12824e";
 
   }else{
 
-    box.style.background = "#fff0f0";
-    box.style.color = "#c52b2b";
+    box.style.background=
+      "#fff0f0";
+
+    box.style.color=
+      "#c52b2b";
 
   }
 
 }
 
 
-/* ADMIN LOGIN */
+/* ======================================================
+   ADMIN LOGIN
+====================================================== */
+
 async function login(){
 
-  const username =
-    document.getElementById("au").value.trim();
+  const username=
+    document.getElementById(
+      "au"
+    ).value.trim();
 
-  const password =
-    document.getElementById("ap").value;
+
+  const password=
+    document.getElementById(
+      "ap"
+    ).value;
 
 
-  if(!username || !password){
+  if(
+    !username||
+    !password
+  ){
 
-    alert("Enter username and password.");
+    alert(
+      "Enter username and password."
+    );
 
     return;
 
   }
 
 
-  const res =
-    await fetch("/api/admin/login",{
+  const res=
+    await fetch(
+      "/api/admin/login",
+      {
 
-      method:"POST",
+        method:"POST",
 
-      headers:{
-        "Content-Type":"application/json"
-      },
+        headers:{
+          "Content-Type":
+            "application/json"
+        },
 
-      body:JSON.stringify({
-        username,
-        password
-      })
+        body:
+          JSON.stringify({
 
-    });
+            username,
+
+            password
+
+          })
+
+      }
+    );
 
 
   if(!res.ok){
 
-    alert("Invalid admin login.");
+    alert(
+      "Invalid admin login."
+    );
 
     return;
 
   }
 
 
-  document.getElementById("loginBox")
-    .classList.add("hidden");
+  document.getElementById(
+    "loginBox"
+  ).classList.add(
+    "hidden"
+  );
 
-  document.getElementById("dash")
-    .classList.remove("hidden");
+
+  document.getElementById(
+    "dash"
+  ).classList.remove(
+    "hidden"
+  );
+
 
   loadAdmin();
 
 }
 
 
-/* ADMIN LOGOUT */
 async function logout(){
 
-  await fetch("/api/admin/logout",{
-    method:"POST"
-  });
+  await fetch(
+    "/api/admin/logout",
+    {
+      method:"POST"
+    }
+  );
 
-  document.getElementById("loginBox")
-    .classList.remove("hidden");
 
-  document.getElementById("dash")
-    .classList.add("hidden");
+  document.getElementById(
+    "loginBox"
+  ).classList.remove(
+    "hidden"
+  );
+
+
+  document.getElementById(
+    "dash"
+  ).classList.add(
+    "hidden"
+  );
 
 }
 
 
-/* CHECK ADMIN */
 async function checkAdmin(){
 
   try{
 
-    const res =
-      await fetch("/api/admin/me");
+    const res=
+      await fetch(
+        "/api/admin/me"
+      );
 
-    const data =
+
+    const data=
       await res.json();
+
 
     if(data.loggedIn){
 
-      document.getElementById("loginBox")
-        .classList.add("hidden");
+      document.getElementById(
+        "loginBox"
+      ).classList.add(
+        "hidden"
+      );
 
-      document.getElementById("dash")
-        .classList.remove("hidden");
+
+      document.getElementById(
+        "dash"
+      ).classList.remove(
+        "hidden"
+      );
+
 
       loadAdmin();
 
@@ -1934,104 +2774,184 @@ async function checkAdmin(){
 }
 
 
-/* ADD PRODUCT */
+/* ======================================================
+   ADD PRODUCT
+====================================================== */
+
 async function addProduct(){
 
-  const data = {
+  let name=
+    document.getElementById(
+      "pn"
+    ).value.trim();
 
-    name:
-      document.getElementById("pn").value.trim(),
+
+  if(
+    !name
+  ){
+
+    alert(
+      "Enter a Timvella watch name."
+    );
+
+    return;
+
+  }
+
+
+  name=
+    timvellaName(name);
+
+
+  const data={
+
+    name:name,
 
     price:
-      Number(document.getElementById("pp").value),
+      Number(
+        document.getElementById(
+          "pp"
+        ).value
+      ),
 
     old_price:
-      document.getElementById("po").value
+      document.getElementById(
+        "po"
+      ).value
       ?
-      Number(document.getElementById("po").value)
+      Number(
+        document.getElementById(
+          "po"
+        ).value
+      )
       :
       null,
 
     stock:
-      Number(document.getElementById("ps").value || 0),
+      Number(
+        document.getElementById(
+          "ps"
+        ).value||0
+      ),
 
     category:
-      document.getElementById("pc").value,
+      document.getElementById(
+        "pc"
+      ).value,
 
     image:
-      document.getElementById("pi").value.trim()
+      document.getElementById(
+        "pi"
+      ).value.trim()
 
   };
 
 
-  if(!data.name || !data.price){
+  if(!data.price){
 
-    alert("Product name and price are required.");
+    alert(
+      "Product price is required."
+    );
 
     return;
 
   }
 
 
-  const res =
-    await fetch("/api/products",{
+  const res=
+    await fetch(
+      "/api/products",
+      {
 
-      method:"POST",
+        method:"POST",
 
-      headers:{
-        "Content-Type":"application/json"
-      },
+        headers:{
+          "Content-Type":
+            "application/json"
+        },
 
-      body:JSON.stringify(data)
+        body:
+          JSON.stringify(data)
 
-    });
+      }
+    );
 
 
   if(!res.ok){
 
-    alert("Could not add product.");
+    alert(
+      "Could not add Timvella product."
+    );
 
     return;
 
   }
 
 
-  document.getElementById("pn").value = "";
-  document.getElementById("pp").value = "";
-  document.getElementById("po").value = "";
-  document.getElementById("ps").value = "";
-  document.getElementById("pi").value = "";
+  document.getElementById(
+    "pn"
+  ).value="";
+
+
+  document.getElementById(
+    "pp"
+  ).value="";
+
+
+  document.getElementById(
+    "po"
+  ).value="";
+
+
+  document.getElementById(
+    "ps"
+  ).value="";
+
+
+  document.getElementById(
+    "pi"
+  ).value="";
 
 
   await loadProducts();
+
   loadAdmin();
 
 }
 
 
-/* LOAD ADMIN */
+/* ======================================================
+   ADMIN DATA
+====================================================== */
+
 async function loadAdmin(){
 
   loadAdminProducts();
+
   loadOrders();
 
 }
 
 
-/* ADMIN PRODUCTS */
 async function loadAdminProducts(){
 
-  const res =
-    await fetch("/api/products");
+  const res=
+    await fetch(
+      "/api/products"
+    );
 
-  const list =
+
+  const list=
     await res.json();
 
-  const box =
-    document.getElementById("adminProducts");
+
+  const box=
+    document.getElementById(
+      "adminProducts"
+    );
 
 
-  box.innerHTML =
+  box.innerHTML=
     list.map(p=>`
 
       <div class="admin-product">
@@ -2039,19 +2959,35 @@ async function loadAdminProducts(){
         <div>
 
           <strong>
-            ${escapeHtml(p.name)}
+            ${escapeHtml(
+              timvellaName(p.name)
+            )}
           </strong>
 
-          <div style="font-size:12px;color:#748095">
-            ৳${Number(p.price).toLocaleString()}
-            • Stock: ${p.stock}
+          <div
+            style="
+              font-size:12px;
+              color:#748095
+            "
+          >
+
+            ৳${Number(
+              p.price
+            ).toLocaleString()}
+
+            • Stock:
+            ${p.stock}
+
           </div>
 
         </div>
 
+
         <button
           class="danger"
-          onclick="deleteProduct(${p.id})"
+          onclick="deleteProduct(
+            ${p.id}
+          )"
         >
           Delete
         </button>
@@ -2063,48 +2999,68 @@ async function loadAdminProducts(){
 }
 
 
-/* DELETE PRODUCT */
 async function deleteProduct(id){
 
-  if(!confirm("Delete this product?")) return;
+  if(
+    !confirm(
+      "Delete this Timvella watch?"
+    )
+  ){
+
+    return;
+
+  }
 
 
-  const res =
-    await fetch(`/api/products/${id}`,{
-      method:"DELETE"
-    });
+  const res=
+    await fetch(
+      `/api/products/${id}`,
+      {
+        method:"DELETE"
+      }
+    );
 
 
   if(res.ok){
 
     await loadProducts();
+
     loadAdmin();
 
   }else{
 
-    alert("Delete failed.");
+    alert(
+      "Delete failed."
+    );
 
   }
 
 }
 
 
-/* LOAD ORDERS */
+/* ======================================================
+   ORDERS
+====================================================== */
+
 async function loadOrders(){
 
-  const box =
-    document.getElementById("orders");
+  const box=
+    document.getElementById(
+      "orders"
+    );
 
 
   try{
 
-    const res =
-      await fetch("/api/orders");
+    const res=
+      await fetch(
+        "/api/orders"
+      );
 
 
     if(!res.ok){
 
-      box.innerHTML =
+      box.innerHTML=
         "<div class='empty'>Login required.</div>";
 
       return;
@@ -2112,13 +3068,13 @@ async function loadOrders(){
     }
 
 
-    const orders =
+    const orders=
       await res.json();
 
 
     if(!orders.length){
 
-      box.innerHTML =
+      box.innerHTML=
         "<div class='empty'>No orders yet.</div>";
 
       return;
@@ -2126,7 +3082,7 @@ async function loadOrders(){
     }
 
 
-    box.innerHTML =
+    box.innerHTML=
       orders.map(o=>`
 
         <div
@@ -2134,15 +3090,27 @@ async function loadOrders(){
           style="display:block"
         >
 
-          <div style="display:flex;justify-content:space-between;gap:10px">
+          <div
+            style="
+              display:flex;
+              justify-content:space-between;
+              gap:10px
+            "
+          >
 
             <strong>
-              Order #${o.id}
+              Timvella Order #${o.id}
             </strong>
+
 
             <select
               class="status"
-              onchange="updateOrderStatus(${o.id},this.value)"
+              onchange="
+                updateOrderStatus(
+                  ${o.id},
+                  this.value
+                )
+              "
             >
 
               ${[
@@ -2152,11 +3120,19 @@ async function loadOrders(){
                 "Delivered",
                 "Cancelled"
               ].map(s=>`
+
                 <option
-                  ${o.status===s ? "selected" : ""}
+                  ${
+                    o.status===s
+                    ?
+                    "selected"
+                    :
+                    ""
+                  }
                 >
                   ${s}
                 </option>
+
               `).join("")}
 
             </select>
@@ -2164,15 +3140,39 @@ async function loadOrders(){
           </div>
 
 
-          <div style="margin-top:8px;color:#657188;font-size:13px">
+          <div
+            style="
+              margin-top:8px;
+              color:#657188;
+              font-size:13px
+            "
+          >
 
-            👤 ${escapeHtml(o.customer_name)}<br>
+            👤
+            ${escapeHtml(
+              o.customer_name
+            )}
 
-            📞 ${escapeHtml(o.phone)}<br>
+            <br>
 
-            📍 ${escapeHtml(o.address)}<br>
+            📞
+            ${escapeHtml(
+              o.phone
+            )}
 
-            💰 Total: ৳${Number(o.total).toLocaleString()}
+            <br>
+
+            📍
+            ${escapeHtml(
+              o.address
+            )}
+
+            <br>
+
+            💰 Total:
+            ৳${Number(
+              o.total
+            ).toLocaleString()}
 
           </div>
 
@@ -2183,7 +3183,7 @@ async function loadOrders(){
 
   }catch(err){
 
-    box.innerHTML =
+    box.innerHTML=
       "<div class='empty'>Unable to load orders.</div>";
 
   }
@@ -2191,60 +3191,103 @@ async function loadOrders(){
 }
 
 
-/* UPDATE ORDER STATUS */
-async function updateOrderStatus(id,status){
+async function updateOrderStatus(
+  id,
+  status
+){
 
-  const res =
-    await fetch(`/api/orders/${id}`,{
+  const res=
+    await fetch(
+      `/api/orders/${id}`,
+      {
 
-      method:"PATCH",
+        method:"PATCH",
 
-      headers:{
-        "Content-Type":"application/json"
-      },
+        headers:{
+          "Content-Type":
+            "application/json"
+        },
 
-      body:JSON.stringify({status})
+        body:
+          JSON.stringify({
+            status
+          })
 
-    });
+      }
+    );
 
 
   if(!res.ok){
 
-    alert("Could not update order.");
+    alert(
+      "Could not update order."
+    );
 
   }
 
 }
 
 
-/* SEARCH */
+/* ======================================================
+   SEARCH
+====================================================== */
+
 function focusSearch(){
 
-  location.hash = "shop";
+  location.hash="shop";
 
-  setTimeout(()=>{
 
-    document.getElementById("search")?.focus();
-
-  },300);
+  setTimeout(
+    ()=>{
+      document
+        .getElementById(
+          "search"
+        )
+        ?.focus();
+    },
+    300
+  );
 
 }
 
 
-/* ESCAPE HTML */
+/* ======================================================
+   ESCAPE HTML
+====================================================== */
+
 function escapeHtml(value){
 
-  return String(value ?? "")
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
+  return String(
+    value??""
+  )
+  .replaceAll(
+    "&",
+    "&amp;"
+  )
+  .replaceAll(
+    "<",
+    "&lt;"
+  )
+  .replaceAll(
+    ">",
+    "&gt;"
+  )
+  .replaceAll(
+    '"',
+    "&quot;"
+  )
+  .replaceAll(
+    "'",
+    "&#039;"
+  );
 
 }
 
 
-/* START */
+/* ======================================================
+   START
+====================================================== */
+
 loadProducts();
 
 updateCart();
