@@ -1,39 +1,428 @@
-<!doctype html><html lang="en"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Timvella — Premium Watches</title><style>
-*{box-sizing:border-box}body{margin:0;background:#050505;color:#eee;font:15px Arial,sans-serif}
-header{position:sticky;top:0;z-index:5;background:#080808ee;border-bottom:1px solid #222;padding:17px 6%;display:flex;justify-content:space-between;align-items:center}.logo{font-size:25px;letter-spacing:3px;color:#d9b76c;font-weight:800}
-nav a{color:#ddd;text-decoration:none;margin-left:20px}.hero{padding:85px 7%;min-height:65vh;display:flex;align-items:center;background:radial-gradient(circle at 78% 35%,#2c2619,#050505 45%)}h1{font-size:clamp(45px,8vw,86px);margin:10px 0}.gold{color:#d9b76c}.muted{color:#999;line-height:1.7;max-width:600px}
-.btn,button{border:0;border-radius:7px;padding:12px 17px;background:#d9b76c;color:#080808;font-weight:700;cursor:pointer}.btn{text-decoration:none;display:inline-block;margin-top:14px}
-section{padding:55px 6%}.title{text-align:center;margin-bottom:28px}.title h2{font-size:34px}.toolbar{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:25px}
-input,select,textarea{width:100%;padding:12px;background:#111;color:#eee;border:1px solid #333;border-radius:7px}.toolbar input{max-width:340px}.toolbar select{max-width:180px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}.card{background:#101010;border:1px solid #242424;border-radius:12px;overflow:hidden}.photo{height:240px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#222,#090909);font-size:60px}.info{padding:17px}.price{color:#d9b76c;font-size:20px;font-weight:700}.old{text-decoration:line-through;color:#666;font-size:13px;margin-left:7px}.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:10px 0}.panel{max-width:1000px;margin:auto;background:#0d0d0d;border:1px solid #222;padding:25px;border-radius:14px}.cart{position:fixed;right:18px;bottom:18px;z-index:10}.hidden{display:none}.order-item{border-bottom:1px solid #292929;padding:10px 0}footer{text-align:center;padding:35px;border-top:1px solid #222;color:#777}
-</style></head><body>
-<header><div class="logo">TIMVELLA</div><nav><a href="#shop">Collection</a><a href="#order">Order</a><a href="#admin">Admin</a></nav></header>
-<div class="hero"><div><small>TIME • STYLE • ELEGANCE</small><h1>Wear Your<br><span class="gold">Moment.</span></h1><p class="muted">A premium watch store experience for Timvella. Add your real products from the secure admin panel.</p><a class="btn" href="#shop">Shop Now</a></div></div>
-<section id="shop"><div class="title"><h2>Featured Collection</h2><p class="muted" style="margin:auto">Premium designs and special offers.</p></div>
-<div class="toolbar"><input id="search" placeholder="Search watches..." oninput="render()"><select id="cat" onchange="render()"><option>All</option><option>Men</option><option>Women</option><option>Premium</option></select></div><div id="products" class="grid"></div></section>
-<section id="order"><div class="title"><h2>Checkout</h2><p class="muted" style="margin:auto">Cash on Delivery is ready. Online payment needs your merchant account credentials.</p></div>
-<div class="panel"><div id="cartList"></div><div class="row"><input id="customer" placeholder="Full name"><input id="phone" placeholder="Phone number"></div><textarea id="address" placeholder="Delivery address" rows="3"></textarea><div class="row"><select id="payment"><option>Cash on Delivery</option><option disabled>Online Payment — connect gateway</option></select><button onclick="placeOrder()">Place Order</button></div><div id="msg"></div></div></section>
-<section id="admin"><div class="title"><h2>Admin Panel</h2><p class="muted" style="margin:auto">Login to manage products and orders.</p></div><div class="panel">
-<div id="loginBox"><div class="row"><input id="au" placeholder="Username"><input id="ap" type="password" placeholder="Password"><button onclick="login()">Login</button></div></div>
-<div id="dash" class="hidden"><button onclick="logout()">Logout</button><h3>Products</h3><div class="row"><input id="pn" placeholder="Name"><input id="pp" type="number" placeholder="Price"><input id="po" type="number" placeholder="Old price"><input id="ps" type="number" placeholder="Stock"><select id="pc"><option>Men</option><option>Women</option><option>Premium</option></select></div><button onclick="addProduct()">Add Product</button><div id="adminProducts"></div><h3>Orders</h3><div id="orders"></div></div></div></section>
-<button class="btn cart" onclick="location.hash='order'">🛒 Cart <span id="count">0</span></button><footer>© 2026 Timvella — Premium Watches</footer>
-<script>
-let products=[],cart=[];
-async function load(){products=await fetch('/api/products').then(r=>r.json());render();drawCart()}
-function render(){let q=document.getElementById('search').value.toLowerCase(),c=document.getElementById('cat').value;let a=products.filter(p=>p.name.toLowerCase().includes(q)&&(c==='All'||p.category===c));document.getElementById('products').innerHTML=a.map(p=>`<div class="card"><div class="photo">${p.image?`<img src="${esc(p.image)}" style="width:100%;height:100%;object-fit:cover">`:'⌚'}</div><div class="info"><small>${esc(p.category)} • Stock ${p.stock}</small><h3>${esc(p.name)}</h3><div class="price">৳${p.price.toLocaleString()} <span class="old">৳${(p.old_price||p.price).toLocaleString()}</span></div><button ${p.stock<1?'disabled':''} onclick="add(${p.id})">${p.stock<1?'Out of stock':'Add to Cart'}</button></div></div>`).join('')}
-function esc(s){return String(s||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
-function add(id){let x=cart.find(i=>i.id===id);if(x)x.qty++;else cart.push({id,qty:1});drawCart()}
-function drawCart(){document.getElementById('count').textContent=cart.reduce((a,b)=>a+b.qty,0);let total=0;document.getElementById('cartList').innerHTML=cart.length?cart.map(i=>{let p=products.find(x=>x.id===i.id);total+=p.price*i.qty;return `<div class="order-item">${esc(p.name)} × ${i.qty} — ৳${(p.price*i.qty).toLocaleString()} <button onclick="removeItem(${i.id})">×</button></div>`}).join('')+`<h3>Total: ৳${total.toLocaleString()}</h3>`:'<p class="muted">Your cart is empty.</p>'}
-function removeItem(id){cart=cart.filter(x=>x.id!==id);drawCart()}
-async function placeOrder(){if(!cart.length)return msg('Add products first');let b={customer_name:customer.value,phone:phone.value,address:address.value,items:cart,payment_method:payment.value};let r=await fetch('/api/orders',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(b)});let d=await r.json();if(!r.ok)return msg(d.error);msg(`Order #${d.order_id} placed. Total ৳${d.total.toLocaleString()}`);cart=[];await load()}
-function msg(x){document.getElementById('msg').textContent=x}
-async function login(){let r=await fetch('/api/admin/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username:au.value,password:ap.value})});if(r.ok){loginBox.classList.add('hidden');dash.classList.remove('hidden');adminLoad()}else alert('Login failed')}
-async function logout(){await fetch('/api/admin/logout',{method:'POST'});dash.classList.add('hidden');loginBox.classList.remove('hidden')}
-async function adminLoad(){let r=await fetch('/api/products');products=await r.json();adminProducts.innerHTML=products.map(p=>`<div class="order-item"><b>${esc(p.name)}</b> — ৳${p.price} — stock ${p.stock} <button onclick="del(${p.id})">Delete</button></div>`).join('');let o=await fetch('/api/orders').then(x=>x.json());orders.innerHTML=o.map(x=>`<div class="order-item">#${x.id} — ${esc(x.customer_name)} — ৳${x.total} — ${esc(x.status)}<select onchange="status(${x.id},this.value)"><option>Pending</option><option>Confirmed</option><option>Shipped</option><option>Delivered</option><option>Cancelled</option></select></div>`).join('')}
-async function addProduct(){let b={name:pn.value,price:+pp.value,old_price:+po.value,stock:+ps.value,category:pc.value};let r=await fetch('/api/products',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(b)});if(!r.ok)return alert('Invalid product');await adminLoad();load()}
-async function del(id){await fetch('/api/products/'+id,{method:'DELETE'});adminLoad();load()}
-async function status(id,s){await fetch('/api/orders/'+id,{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({status:s})});adminLoad()}
-load();
-</script></body></html>
+<style>
+*{box-sizing:border-box}
+:root{
+  --bg:#070707;
+  --card:#111113;
+  --card2:#171719;
+  --gold:#d7b56d;
+  --gold2:#f0d69b;
+  --text:#f5f3ed;
+  --muted:#96969d;
+  --border:rgba(255,255,255,.09);
+}
+
+html{scroll-behavior:smooth}
+
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 80% 0%,rgba(215,181,109,.12),transparent 30%),
+    var(--bg);
+  color:var(--text);
+  font:15px/1.6 Inter,Arial,sans-serif;
+}
+
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  opacity:.18;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:70px 70px;
+  z-index:-1;
+}
+
+/* NAVBAR */
+header{
+  position:sticky;
+  top:0;
+  z-index:50;
+  padding:14px 6%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:rgba(7,7,7,.78);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border);
+}
+
+.logo{
+  font-size:21px;
+  letter-spacing:4px;
+  color:var(--gold2);
+  font-weight:800;
+}
+
+nav{
+  display:flex;
+  align-items:center;
+  gap:28px;
+}
+
+nav a{
+  color:#c9c9cd;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:600;
+  transition:.25s;
+}
+
+nav a:hover{
+  color:var(--gold2);
+}
+
+/* HERO */
+.hero{
+  min-height:76vh;
+  padding:80px 7%;
+  display:flex;
+  align-items:center;
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 78% 45%,rgba(215,181,109,.18),transparent 25%),
+    radial-gradient(circle at 20% 50%,rgba(255,255,255,.035),transparent 35%);
+}
+
+.hero:after{
+  content:"⌚";
+  position:absolute;
+  right:9%;
+  top:50%;
+  transform:translateY(-50%) rotate(-10deg);
+  font-size:230px;
+  opacity:.08;
+  filter:drop-shadow(0 30px 40px #000);
+}
+
+.hero small{
+  color:var(--gold2);
+  letter-spacing:4px;
+  font-weight:700;
+}
+
+h1{
+  font-family:Georgia,"Times New Roman",serif;
+  font-weight:500;
+  font-size:clamp(55px,8vw,100px);
+  line-height:.94;
+  letter-spacing:-4px;
+  margin:20px 0;
+}
+
+.gold{
+  color:var(--gold2);
+}
+
+.muted{
+  color:var(--muted);
+  line-height:1.8;
+  max-width:600px;
+}
+
+/* BUTTONS */
+.btn,
+button{
+  border:0;
+  border-radius:999px;
+  padding:13px 21px;
+  background:linear-gradient(135deg,var(--gold2),var(--gold));
+  color:#15110a;
+  font-weight:800;
+  cursor:pointer;
+  transition:.25s;
+}
+
+.btn{
+  text-decoration:none;
+  display:inline-block;
+  margin-top:18px;
+}
+
+.btn:hover,
+button:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 30px rgba(215,181,109,.2);
+}
+
+/* SECTIONS */
+section{
+  padding:90px 6%;
+  max-width:1400px;
+  margin:auto;
+}
+
+.title{
+  text-align:center;
+  margin-bottom:35px;
+}
+
+.title h2{
+  font-family:Georgia,"Times New Roman",serif;
+  font-weight:500;
+  font-size:clamp(34px,5vw,55px);
+  margin:8px 0;
+}
+
+/* SEARCH */
+.toolbar{
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  flex-wrap:wrap;
+  padding:12px;
+  margin-bottom:28px;
+  background:rgba(255,255,255,.025);
+  border:1px solid var(--border);
+  border-radius:18px;
+}
+
+input,
+select,
+textarea{
+  width:100%;
+  padding:13px 15px;
+  background:#0d0d0f;
+  color:#eee;
+  border:1px solid var(--border);
+  border-radius:12px;
+  outline:none;
+  transition:.2s;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+  border-color:rgba(215,181,109,.6);
+  box-shadow:0 0 0 3px rgba(215,181,109,.07);
+}
+
+.toolbar input{
+  max-width:360px;
+}
+
+.toolbar select{
+  max-width:190px;
+}
+
+/* PRODUCT GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(245px,1fr));
+  gap:20px;
+}
+
+.card{
+  background:linear-gradient(180deg,#141416,#0d0d0f);
+  border:1px solid var(--border);
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:0 15px 45px rgba(0,0,0,.25);
+  transition:.3s;
+}
+
+.card:hover{
+  transform:translateY(-7px);
+  border-color:rgba(215,181,109,.35);
+  box-shadow:0 25px 65px rgba(0,0,0,.45);
+}
+
+.photo{
+  height:290px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:
+    radial-gradient(circle at 50% 35%,rgba(215,181,109,.14),transparent 50%),
+    linear-gradient(145deg,#202024,#08080a);
+  font-size:75px;
+  overflow:hidden;
+}
+
+.photo img{
+  transition:.4s;
+}
+
+.card:hover .photo img{
+  transform:scale(1.05);
+}
+
+.info{
+  padding:20px;
+}
+
+.info small{
+  color:#888;
+  text-transform:uppercase;
+  letter-spacing:1.5px;
+  font-size:10px;
+}
+
+.info h3{
+  font-family:Georgia,"Times New Roman",serif;
+  font-weight:500;
+  font-size:22px;
+  margin:8px 0 12px;
+}
+
+.price{
+  color:var(--gold2);
+  font-size:21px;
+  font-weight:800;
+}
+
+.old{
+  text-decoration:line-through;
+  color:#626269;
+  font-size:12px;
+  margin-left:7px;
+}
+
+.info button{
+  width:100%;
+  margin-top:17px;
+}
+
+/* FORM / CHECKOUT */
+.row{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:12px;
+  margin:12px 0;
+}
+
+.panel{
+  max-width:1050px;
+  margin:auto;
+  padding:30px;
+  background:linear-gradient(145deg,#141416,#0c0c0e);
+  border:1px solid var(--border);
+  border-radius:24px;
+  box-shadow:0 25px 70px rgba(0,0,0,.3);
+}
+
+.order-item{
+  border-bottom:1px solid var(--border);
+  padding:14px 0;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+
+/* FLOATING CART */
+.cart{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  z-index:40;
+  box-shadow:0 15px 40px rgba(0,0,0,.5);
+}
+
+/* ADMIN */
+#admin .panel{
+  border-color:rgba(215,181,109,.14);
+}
+
+#admin h3{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:23px;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:45px 20px;
+  border-top:1px solid var(--border);
+  color:#777;
+  letter-spacing:.5px;
+}
+
+/* MOBILE */
+@media(max-width:700px){
+
+  header{
+    padding:13px 5%;
+  }
+
+  .logo{
+    font-size:17px;
+    letter-spacing:3px;
+  }
+
+  nav{
+    gap:12px;
+  }
+
+  nav a{
+    font-size:11px;
+  }
+
+  .hero{
+    min-height:68vh;
+    padding:55px 6%;
+  }
+
+  .hero:after{
+    font-size:150px;
+    right:-15px;
+  }
+
+  h1{
+    font-size:58px;
+    letter-spacing:-2px;
+  }
+
+  section{
+    padding:65px 5%;
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .photo{
+    height:300px;
+  }
+
+  .panel{
+    padding:20px;
+    border-radius:20px;
+  }
+
+  .row{
+    grid-template-columns:1fr;
+  }
+
+  .toolbar{
+    padding:10px;
+  }
+
+  .toolbar input,
+  .toolbar select{
+    max-width:none;
+  }
+}
+
+@media(max-width:420px){
+
+  nav a:nth-child(2){
+    display:none;
+  }
+
+  h1{
+    font-size:50px;
+  }
+
+  .hero{
+    padding-top:45px;
+  }
+
+  .photo{
+    height:270px;
+  }
+}
+</style>
