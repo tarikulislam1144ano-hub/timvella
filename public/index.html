@@ -3,22 +3,24 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#070707">
+<meta name="theme-color" content="#1456c3">
+
 <title>Timvella — Premium Watches</title>
 
 <style>
 *{box-sizing:border-box}
 
 :root{
-  --bg:#070707;
-  --card:#111113;
-  --card2:#171719;
-  --gold:#d7b56d;
-  --gold2:#f0d69b;
-  --text:#f5f3ed;
-  --muted:#96969d;
-  --border:rgba(255,255,255,.09);
-  --shadow:0 25px 70px rgba(0,0,0,.35);
+  --blue:#1558c7;
+  --blue2:#0d3f99;
+  --light:#f5f9ff;
+  --text:#101b35;
+  --muted:#68738a;
+  --border:#e4eaf4;
+  --white:#fff;
+  --green:#14965a;
+  --red:#d52b2b;
+  --shadow:0 12px 35px rgba(21,55,110,.10);
 }
 
 html{
@@ -27,472 +29,1088 @@ html{
 
 body{
   margin:0;
-  background:
-    radial-gradient(circle at 80% 0%,rgba(215,181,109,.12),transparent 30%),
-    var(--bg);
+  background:#fff;
   color:var(--text);
-  font:15px/1.6 Inter,Arial,sans-serif;
-}
-
-body:before{
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  opacity:.16;
-  background-image:
-    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
-  background-size:70px 70px;
-  z-index:-1;
+  font-family:Arial,Helvetica,sans-serif;
+  line-height:1.6;
 }
 
 a{
   color:inherit;
+  text-decoration:none;
 }
 
-header{
-  position:sticky;
-  top:0;
-  z-index:50;
-  padding:14px 6%;
+button,input,select,textarea{
+  font:inherit;
+}
+
+/* TOP BAR */
+.topbar{
+  height:34px;
+  background:linear-gradient(90deg,#12449f,#1d5dcc);
+  color:#fff;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  background:rgba(7,7,7,.78);
-  backdrop-filter:blur(18px);
-  -webkit-backdrop-filter:blur(18px);
-  border-bottom:1px solid var(--border);
+  padding:0 5%;
+  font-size:12px;
 }
 
-.logo{
-  font-size:21px;
-  letter-spacing:4px;
-  color:var(--gold2);
-  font-weight:800;
+.top-left{
+  display:flex;
+  gap:28px;
+}
+
+.top-item{
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+
+/* HEADER */
+header{
+  height:88px;
+  background:#fff;
+  border-bottom:1px solid #edf0f5;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 5%;
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  min-width:220px;
+}
+
+.brand-watch{
+  width:48px;
+  height:48px;
+  border:4px solid var(--blue);
+  border-radius:50%;
+  position:relative;
+  background:#fff;
+}
+
+.brand-watch:before,
+.brand-watch:after{
+  content:"";
+  position:absolute;
+  background:var(--blue);
+  left:50%;
+  top:50%;
+  transform-origin:left center;
+  border-radius:5px;
+}
+
+.brand-watch:before{
+  width:14px;
+  height:3px;
+  transform:rotate(220deg);
+}
+
+.brand-watch:after{
+  width:11px;
+  height:3px;
+  transform:rotate(315deg);
+}
+
+.brand-watch i{
+  position:absolute;
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:var(--blue);
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+}
+
+.brand-text strong{
+  display:block;
+  color:#123d91;
+  font-size:24px;
+  letter-spacing:-1px;
+}
+
+.brand-text span{
+  display:block;
+  font-size:8px;
+  letter-spacing:2px;
+  color:#68738a;
+  font-weight:700;
 }
 
 nav{
   display:flex;
   align-items:center;
-  gap:28px;
+  gap:32px;
 }
 
 nav a{
-  color:#c9c9cd;
-  text-decoration:none;
-  font-size:13px;
-  font-weight:600;
-  transition:.25s;
+  font-size:14px;
+  font-weight:700;
+  color:#182238;
+  position:relative;
 }
 
+nav a.active,
 nav a:hover{
-  color:var(--gold2);
+  color:var(--blue);
 }
 
-.hero{
-  min-height:76vh;
-  padding:80px 7%;
+nav a.active:after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:-31px;
+  height:3px;
+  background:var(--blue);
+  border-radius:5px;
+}
+
+.header-icons{
   display:flex;
   align-items:center;
+  gap:20px;
+  min-width:190px;
+  justify-content:flex-end;
+}
+
+.icon-btn{
+  border:0;
+  background:none;
+  color:#17243c;
+  font-size:23px;
+  cursor:pointer;
+  position:relative;
+}
+
+.cart-count{
+  position:absolute;
+  right:-8px;
+  top:-9px;
+  min-width:18px;
+  height:18px;
+  padding:0 5px;
+  border-radius:20px;
+  background:var(--blue);
+  color:#fff;
+  font-size:10px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-weight:bold;
+}
+
+/* HERO */
+.hero{
+  min-height:500px;
+  background:
+    radial-gradient(circle at 78% 45%,rgba(60,126,230,.15),transparent 28%),
+    linear-gradient(120deg,#f5f9ff,#e9f2ff);
   position:relative;
   overflow:hidden;
-  background:
-    radial-gradient(circle at 78% 45%,rgba(215,181,109,.18),transparent 25%),
-    radial-gradient(circle at 20% 50%,rgba(255,255,255,.035),transparent 35%);
 }
 
-.hero:after{
-  content:"⌚";
-  position:absolute;
-  right:9%;
-  top:50%;
-  transform:translateY(-50%) rotate(-10deg);
-  font-size:230px;
-  opacity:.08;
-  filter:drop-shadow(0 30px 40px #000);
-  pointer-events:none;
+.hero-inner{
+  max-width:1400px;
+  margin:auto;
+  min-height:500px;
+  padding:60px 7%;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
 }
 
-.hero small{
-  color:var(--gold2);
-  letter-spacing:4px;
-  font-weight:700;
+.hero-copy{
+  position:relative;
+  z-index:3;
 }
 
-h1{
+.hero-label{
+  color:var(--blue);
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:1px;
+}
+
+.hero h1{
+  margin:12px 0 0;
   font-family:Georgia,"Times New Roman",serif;
-  font-weight:500;
-  font-size:clamp(55px,8vw,100px);
-  line-height:.94;
-  letter-spacing:-4px;
-  margin:20px 0;
+  font-size:clamp(46px,5.5vw,78px);
+  line-height:1.03;
+  letter-spacing:-3px;
+  color:#142143;
 }
 
-.gold{
-  color:var(--gold2);
+.hero-script{
+  color:var(--blue);
+  font-family:cursive;
+  font-size:clamp(32px,4vw,55px);
+  margin:3px 0 18px;
 }
 
-.muted{
-  color:var(--muted);
-  line-height:1.8;
-  max-width:600px;
+.hero p{
+  max-width:500px;
+  color:#657086;
+  font-size:15px;
 }
 
-.btn,
-button{
-  border:0;
-  border-radius:999px;
-  padding:13px 21px;
-  background:linear-gradient(135deg,var(--gold2),var(--gold));
-  color:#15110a;
+.hero-buttons{
+  display:flex;
+  gap:14px;
+  margin-top:28px;
+  flex-wrap:wrap;
+}
+
+.primary-btn,
+.secondary-btn{
+  padding:14px 25px;
+  border-radius:9px;
   font-weight:800;
   cursor:pointer;
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
   transition:.25s;
 }
 
-.btn{
-  text-decoration:none;
-  display:inline-block;
-  margin-top:18px;
+.primary-btn{
+  color:#fff;
+  background:linear-gradient(135deg,#1558c7,#0d43a0);
+  border:1px solid var(--blue);
+  box-shadow:0 10px 25px rgba(21,88,199,.2);
 }
 
-.btn:hover,
-button:hover{
+.secondary-btn{
+  background:#fff;
+  color:var(--blue);
+  border:1px solid var(--blue);
+}
+
+.primary-btn:hover,
+.secondary-btn:hover{
   transform:translateY(-2px);
-  box-shadow:0 12px 30px rgba(215,181,109,.2);
 }
 
-button:disabled{
-  opacity:.45;
-  cursor:not-allowed;
-  transform:none;
-  box-shadow:none;
+.hero-watch{
+  height:410px;
+  position:relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 
+.hero-watch img{
+  width:min(590px,100%);
+  max-height:410px;
+  object-fit:contain;
+  filter:drop-shadow(0 30px 25px rgba(20,45,90,.18));
+  transform:rotate(-5deg);
+}
+
+.hero-dots{
+  position:absolute;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:9px;
+}
+
+.hero-dots span{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:#ccd7e9;
+}
+
+.hero-dots span:first-child{
+  background:var(--blue);
+}
+
+/* BENEFITS */
+.benefits-wrap{
+  max-width:1300px;
+  margin:-30px auto 0;
+  position:relative;
+  z-index:5;
+  padding:0 25px;
+}
+
+.benefits{
+  background:#fff;
+  border-radius:18px;
+  box-shadow:0 12px 35px rgba(20,50,100,.12);
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  padding:22px;
+}
+
+.benefit{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:8px 25px;
+  border-right:1px solid #e8edf5;
+}
+
+.benefit:last-child{
+  border-right:0;
+}
+
+.b-icon{
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  background:#edf4ff;
+  color:var(--blue);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:21px;
+  flex:none;
+}
+
+.benefit strong{
+  display:block;
+  font-size:13px;
+}
+
+.benefit span{
+  display:block;
+  color:#7a8497;
+  font-size:11px;
+  margin-top:2px;
+}
+
+/* SECTIONS */
 section{
-  padding:90px 6%;
-  max-width:1400px;
+  max-width:1350px;
   margin:auto;
+  padding:80px 5%;
 }
 
-.title{
-  text-align:center;
-  margin-bottom:35px;
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  margin-bottom:28px;
 }
 
-.title h2{
+.section-label{
+  color:var(--blue);
+  font-weight:800;
+  font-size:12px;
+  letter-spacing:1px;
+}
+
+.section-head h2{
+  margin:5px 0 0;
   font-family:Georgia,"Times New Roman",serif;
-  font-weight:500;
-  font-size:clamp(34px,5vw,55px);
-  margin:8px 0;
+  font-size:36px;
+  color:#142143;
 }
 
+.view-all{
+  color:var(--blue);
+  border:1px solid #8ba9d8;
+  border-radius:8px;
+  padding:10px 17px;
+  font-size:12px;
+  font-weight:800;
+}
+
+/* TOOLBAR */
 .toolbar{
   display:flex;
   gap:12px;
   justify-content:center;
+  margin-bottom:30px;
   flex-wrap:wrap;
-  padding:12px;
-  margin-bottom:28px;
-  background:rgba(255,255,255,.025);
-  border:1px solid var(--border);
-  border-radius:18px;
 }
 
-input,
-select,
-textarea{
-  width:100%;
-  padding:13px 15px;
-  background:#0d0d0f;
-  color:#eee;
-  border:1px solid var(--border);
-  border-radius:12px;
+.toolbar input,
+.toolbar select{
+  border:1px solid #dce4f0;
+  background:#fff;
+  padding:12px 15px;
+  border-radius:9px;
   outline:none;
-  transition:.2s;
-}
-
-input:focus,
-select:focus,
-textarea:focus{
-  border-color:rgba(215,181,109,.6);
-  box-shadow:0 0 0 3px rgba(215,181,109,.07);
+  color:#26334b;
 }
 
 .toolbar input{
-  max-width:360px;
+  width:320px;
 }
 
-.toolbar select{
-  max-width:190px;
+.toolbar input:focus,
+.toolbar select:focus{
+  border-color:var(--blue);
 }
 
+/* PRODUCTS */
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(245px,1fr));
+  grid-template-columns:repeat(4,1fr);
   gap:20px;
 }
 
 .card{
-  background:linear-gradient(180deg,#141416,#0d0d0f);
-  border:1px solid var(--border);
-  border-radius:22px;
+  background:#fff;
+  border:1px solid #e7ebf2;
+  border-radius:14px;
   overflow:hidden;
-  box-shadow:0 15px 45px rgba(0,0,0,.25);
+  box-shadow:0 5px 18px rgba(20,50,100,.06);
   transition:.3s;
+  position:relative;
 }
 
 .card:hover{
-  transform:translateY(-7px);
-  border-color:rgba(215,181,109,.35);
-  box-shadow:var(--shadow);
+  transform:translateY(-6px);
+  box-shadow:0 16px 35px rgba(20,50,100,.13);
 }
 
 .photo{
-  height:290px;
+  height:280px;
+  background:#fafcff;
   display:flex;
   align-items:center;
   justify-content:center;
-  background:
-    radial-gradient(circle at 50% 35%,rgba(215,181,109,.14),transparent 50%),
-    linear-gradient(145deg,#202024,#08080a);
-  font-size:75px;
+  position:relative;
   overflow:hidden;
 }
 
 .photo img{
+  width:90%;
+  height:90%;
+  object-fit:contain;
   transition:.4s;
 }
 
 .card:hover .photo img{
-  transform:scale(1.05);
+  transform:scale(1.06);
 }
 
+.badge{
+  position:absolute;
+  left:14px;
+  top:14px;
+  padding:5px 10px;
+  border-radius:20px;
+  color:#fff;
+  font-size:10px;
+  font-weight:800;
+  z-index:2;
+}
+
+.badge.new{background:#14965a}
+.badge.sale{background:#d52b2b}
+.badge.best{background:#1558c7}
+
 .info{
-  padding:20px;
+  padding:16px;
 }
 
 .info small{
-  color:#888;
+  color:#8a94a6;
   text-transform:uppercase;
-  letter-spacing:1.5px;
-  font-size:10px;
+  font-size:9px;
+  letter-spacing:1px;
 }
 
 .info h3{
-  font-family:Georgia,"Times New Roman",serif;
-  font-weight:500;
-  font-size:22px;
-  margin:8px 0 12px;
+  font-size:15px;
+  margin:5px 0 10px;
+  color:#172239;
 }
 
 .price{
-  color:var(--gold2);
-  font-size:21px;
-  font-weight:800;
+  font-size:16px;
+  font-weight:900;
+  color:#111b31;
 }
 
 .old{
+  margin-left:6px;
+  color:#8d94a1;
+  font-size:11px;
   text-decoration:line-through;
-  color:#626269;
-  font-size:12px;
-  margin-left:7px;
 }
 
-.info button{
+.rating{
+  color:#f4b51d;
+  font-size:12px;
+  margin-top:6px;
+}
+
+.rating span{
+  color:#858e9f;
+  margin-left:5px;
+}
+
+.add-btn{
   width:100%;
-  margin-top:17px;
+  margin-top:12px;
+  padding:11px;
+  border-radius:8px;
+  border:1px solid #9db6dd;
+  color:var(--blue);
+  background:#fff;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.add-btn:hover{
+  background:var(--blue);
+  color:#fff;
+}
+
+/* STATS */
+.stats{
+  background:#f3f7fd;
+  border-radius:18px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  padding:25px;
+}
+
+.stat{
+  text-align:center;
+  border-right:1px solid #dce5f2;
+}
+
+.stat:last-child{
+  border:0;
+}
+
+.stat strong{
+  display:block;
+  color:var(--blue);
+  font-size:20px;
+}
+
+.stat span{
+  color:#68758b;
+  font-size:12px;
+}
+
+/* ORDER */
+.panel{
+  background:#fff;
+  border:1px solid #e2e8f1;
+  border-radius:18px;
+  padding:28px;
+  box-shadow:var(--shadow);
 }
 
 .row{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-  gap:12px;
-  margin:12px 0;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+  margin-bottom:14px;
 }
 
-.panel{
-  max-width:1050px;
-  margin:auto;
-  padding:30px;
-  background:linear-gradient(145deg,#141416,#0c0c0e);
-  border:1px solid var(--border);
-  border-radius:24px;
-  box-shadow:var(--shadow);
+.panel input,
+.panel select,
+.panel textarea{
+  width:100%;
+  padding:13px 14px;
+  border:1px solid #dce4ef;
+  border-radius:9px;
+  outline:none;
+  background:#fff;
+  color:#26334b;
+}
+
+.panel input:focus,
+.panel select:focus,
+.panel textarea:focus{
+  border-color:var(--blue);
 }
 
 .order-item{
-  border-bottom:1px solid var(--border);
-  padding:14px 0;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  gap:10px;
+  padding:13px 0;
+  border-bottom:1px solid #edf0f5;
 }
 
 .order-item:last-child{
   border-bottom:0;
 }
 
-.cart{
-  position:fixed;
-  right:20px;
-  bottom:20px;
-  z-index:40;
-  box-shadow:0 15px 40px rgba(0,0,0,.5);
-}
-
-#admin .panel{
-  border-color:rgba(215,181,109,.14);
-}
-
-#admin h3{
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:23px;
-}
-
-#adminProducts,
-#orders{
-  margin-top:15px;
-}
-
-footer{
+.empty{
   text-align:center;
-  padding:45px 20px;
-  border-top:1px solid var(--border);
-  color:#777;
-  letter-spacing:.5px;
+  color:#7b8494;
+  padding:25px;
 }
 
-@media(max-width:700px){
+.total{
+  text-align:right;
+  font-size:19px;
+  font-weight:900;
+  margin:18px 0;
+}
 
-  header{
-    padding:13px 5%;
-  }
+/* ADMIN */
+.admin-box{
+  max-width:1000px;
+  margin:auto;
+}
 
-  .logo{
-    font-size:17px;
-    letter-spacing:3px;
-  }
+.admin-list{
+  margin-top:18px;
+}
 
+.admin-product{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px;
+  border:1px solid #e5eaf2;
+  border-radius:10px;
+  margin-bottom:10px;
+}
+
+.danger{
+  background:#fff1f1;
+  border:1px solid #e7aaaa;
+  color:#c52a2a;
+  padding:8px 13px;
+  border-radius:7px;
+  cursor:pointer;
+}
+
+.status{
+  padding:6px 9px;
+  border-radius:6px;
+  border:1px solid #dce4ee;
+}
+
+/* FOOTER */
+footer{
+  background:#10244b;
+  color:#fff;
+  text-align:center;
+  padding:35px 20px;
+  margin-top:30px;
+}
+
+footer strong{
+  color:#fff;
+}
+
+/* MOBILE */
+.mobile-menu{
+  display:none;
+}
+
+@media(max-width:1000px){
   nav{
-    gap:12px;
-  }
-
-  nav a{
-    font-size:11px;
-  }
-
-  .hero{
-    min-height:68vh;
-    padding:55px 6%;
-  }
-
-  .hero:after{
-    font-size:150px;
-    right:-15px;
-  }
-
-  h1{
-    font-size:58px;
-    letter-spacing:-2px;
-  }
-
-  section{
-    padding:65px 5%;
+    gap:18px;
   }
 
   .grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .benefits{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .benefit:nth-child(2){
+    border-right:0;
+  }
+
+  .benefit{
+    margin:5px 0;
+  }
+
+  .hero-inner{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+@media(max-width:750px){
+  .topbar{
+    justify-content:center;
+  }
+
+  .top-left{
+    gap:10px;
+  }
+
+  .top-left .top-item:nth-child(2){
+    display:none;
+  }
+
+  header{
+    height:70px;
+    padding:0 4%;
+  }
+
+  .brand{
+    min-width:auto;
+  }
+
+  .brand-watch{
+    width:40px;
+    height:40px;
+    border-width:3px;
+  }
+
+  .brand-text strong{
+    font-size:20px;
+  }
+
+  .brand-text span{
+    font-size:6px;
+  }
+
+  nav{
+    display:none;
+  }
+
+  .header-icons{
+    min-width:auto;
+    gap:12px;
+  }
+
+  .mobile-menu{
+    display:block;
+  }
+
+  .hero-inner{
     grid-template-columns:1fr;
+    padding:45px 7% 60px;
+    text-align:center;
+  }
+
+  .hero-copy{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+
+  .hero p{
+    max-width:420px;
+  }
+
+  .hero-watch{
+    height:280px;
+    margin-top:10px;
+  }
+
+  .hero-watch img{
+    max-height:270px;
+  }
+
+  .benefits-wrap{
+    margin:-20px 15px 0;
+    padding:0;
+  }
+
+  .benefits{
+    grid-template-columns:1fr;
+    padding:10px;
+  }
+
+  .benefit{
+    border-right:0;
+    border-bottom:1px solid #e8edf5;
+    padding:14px;
+  }
+
+  .benefit:last-child{
+    border-bottom:0;
+  }
+
+  section{
+    padding:60px 5%;
+  }
+
+  .section-head{
+    display:block;
+  }
+
+  .view-all{
+    display:inline-block;
+    margin-top:14px;
+  }
+
+  .grid{
+    grid-template-columns:1fr 1fr;
+    gap:12px;
   }
 
   .photo{
-    height:300px;
+    height:210px;
   }
 
-  .panel{
-    padding:20px;
-    border-radius:20px;
+  .info{
+    padding:12px;
+  }
+
+  .info h3{
+    font-size:13px;
+  }
+
+  .stats{
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+  }
+
+  .stat{
+    border-right:0;
   }
 
   .row{
     grid-template-columns:1fr;
   }
-
-  .toolbar{
-    padding:10px;
-  }
-
-  .toolbar input,
-  .toolbar select{
-    max-width:none;
-  }
 }
 
-@media(max-width:420px){
-
-  nav a:nth-child(2){
-    display:none;
+@media(max-width:480px){
+  .topbar{
+    font-size:10px;
   }
 
-  h1{
-    font-size:50px;
+  .hero h1{
+    font-size:43px;
+    letter-spacing:-2px;
   }
 
-  .hero{
-    padding-top:45px;
+  .hero-script{
+    font-size:32px;
+  }
+
+  .hero-buttons{
+    justify-content:center;
+  }
+
+  .primary-btn,
+  .secondary-btn{
+    padding:12px 17px;
+  }
+
+  .grid{
+    grid-template-columns:1fr 1fr;
   }
 
   .photo{
-    height:270px;
+    height:175px;
   }
+
+  .price{
+    font-size:14px;
+  }
+
+  .rating{
+    font-size:10px;
+  }
+
+  .add-btn{
+    padding:9px 5px;
+    font-size:11px;
+  }
+
+  .section-head h2{
+    font-size:30px;
+  }
+}
+
+.hidden{
+  display:none!important;
 }
 </style>
 </head>
 
 <body>
 
-<header>
-  <div class="logo">TIMVELLA</div>
-
-  <nav>
-    <a href="#shop">Collection</a>
-    <a href="#order">Order</a>
-    <a href="#admin">Admin</a>
-  </nav>
-</header>
-
-<div class="hero">
-  <div>
-    <small>TIME • STYLE • ELEGANCE</small>
-
-    <h1>
-      Wear Your<br>
-      <span class="gold">Moment.</span>
-    </h1>
-
-    <p class="muted">
-      Discover refined watches designed for every moment.
-      Timvella brings timeless style together with a simple,
-      elegant shopping experience.
-    </p>
-
-    <a class="btn" href="#shop">Shop Now →</a>
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="top-left">
+    <div class="top-item">🚚 Free Shipping on all orders</div>
+    <div class="top-item">🛡️ 1 Year Warranty</div>
+    <div class="top-item">🎧 24/7 Customer Support</div>
   </div>
+
+  <div class="top-item">👤 Admin Login</div>
 </div>
 
+<!-- HEADER -->
+<header>
+
+  <a href="#" class="brand">
+
+    <div class="brand-watch">
+      <i></i>
+    </div>
+
+    <div class="brand-text">
+      <strong>Timvella</strong>
+      <span>TIME THAT DEFINES YOU</span>
+    </div>
+
+  </a>
+
+  <nav>
+    <a href="#" class="active">Home</a>
+    <a href="#shop">Shop</a>
+    <a href="#shop">Categories</a>
+    <a href="#about">About Us</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="header-icons">
+
+    <button class="icon-btn" onclick="focusSearch()" title="Search">
+      ⌕
+    </button>
+
+    <button class="icon-btn" onclick="location.hash='admin'" title="Account">
+      ♙
+    </button>
+
+    <button class="icon-btn" onclick="location.hash='order'" title="Cart">
+      🛒
+      <span class="cart-count" id="count">0</span>
+    </button>
+
+  </div>
+
+</header>
+
+
+<!-- HERO -->
+<div class="hero">
+
+  <div class="hero-inner">
+
+    <div class="hero-copy">
+
+      <div class="hero-label">
+        NEW COLLECTION 2026
+      </div>
+
+      <h1>
+        Timeless Elegance
+      </h1>
+
+      <div class="hero-script">
+        Perfected for You
+      </div>
+
+      <p>
+        Discover our premium collection of watches
+        crafted for style, precision and durability.
+      </p>
+
+      <div class="hero-buttons">
+
+        <a href="#shop" class="primary-btn">
+          SHOP NOW →
+        </a>
+
+        <a href="#shop" class="secondary-btn">
+          EXPLORE COLLECTION
+        </a>
+
+      </div>
+
+    </div>
+
+    <div class="hero-watch">
+
+      <img
+        src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=900&q=85"
+        alt="Timvella Premium Watch"
+      >
+
+    </div>
+
+  </div>
+
+  <div class="hero-dots">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+</div>
+
+
+<!-- BENEFITS -->
+<div class="benefits-wrap">
+
+  <div class="benefits">
+
+    <div class="benefit">
+      <div class="b-icon">🚚</div>
+      <div>
+        <strong>Free Shipping</strong>
+        <span>On all orders over $50</span>
+      </div>
+    </div>
+
+    <div class="benefit">
+      <div class="b-icon">🛡️</div>
+      <div>
+        <strong>1 Year Warranty</strong>
+        <span>On all premium watches</span>
+      </div>
+    </div>
+
+    <div class="benefit">
+      <div class="b-icon">🔒</div>
+      <div>
+        <strong>Secure Payment</strong>
+        <span>100% secure checkout</span>
+      </div>
+    </div>
+
+    <div class="benefit">
+      <div class="b-icon">↩</div>
+      <div>
+        <strong>Easy Returns</strong>
+        <span>30 days return policy</span>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- SHOP -->
 <section id="shop">
 
-  <div class="title">
-    <small class="gold">THE COLLECTION</small>
+  <div class="section-head">
 
-    <h2>Featured Collection</h2>
+    <div>
+      <div class="section-label">
+        OUR COLLECTION
+      </div>
 
-    <p class="muted" style="margin:auto">
-      Discover our selected watches and special offers.
-    </p>
+      <h2>
+        Featured Watches
+      </h2>
+    </div>
+
+    <a href="#shop" class="view-all">
+      VIEW ALL PRODUCTS →
+    </a>
+
   </div>
+
 
   <div class="toolbar">
 
@@ -511,28 +1129,59 @@ footer{
 
   </div>
 
+
   <div id="products" class="grid"></div>
 
 </section>
 
+
+<!-- STATS -->
+<section id="about">
+
+  <div class="stats">
+
+    <div class="stat">
+      <strong>10K+</strong>
+      <span>Happy Customers</span>
+    </div>
+
+    <div class="stat">
+      <strong>Premium</strong>
+      <span>Quality Products</span>
+    </div>
+
+    <div class="stat">
+      <strong>4.8/5</strong>
+      <span>Customer Rating</span>
+    </div>
+
+    <div class="stat">
+      <strong>24/7</strong>
+      <span>Support Available</span>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ORDER -->
 <section id="order">
 
-  <div class="title">
-
-    <small class="gold">YOUR ORDER</small>
-
-    <h2>Checkout</h2>
-
-    <p class="muted" style="margin:auto">
-      Cash on Delivery is available.
-      Online payment can be connected later.
-    </p>
-
+  <div class="section-head">
+    <div>
+      <div class="section-label">YOUR ORDER</div>
+      <h2>Checkout</h2>
+    </div>
   </div>
 
   <div class="panel">
 
     <div id="cartList"></div>
+
+    <div class="total">
+      Total: ৳<span id="total">0</span>
+    </div>
 
     <div class="row">
 
@@ -550,26 +1199,26 @@ footer{
 
     <textarea
       id="address"
-      placeholder="Delivery address"
       rows="4"
+      placeholder="Delivery address"
     ></textarea>
+
+    <br><br>
 
     <div class="row">
 
       <select id="payment">
-
-        <option>
-          Cash on Delivery
-        </option>
-
+        <option>Cash on Delivery</option>
         <option disabled>
           Online Payment — connect gateway
         </option>
-
       </select>
 
-      <button onclick="placeOrder()">
-        Place Order
+      <button
+        class="primary-btn"
+        onclick="placeOrder()"
+      >
+        PLACE ORDER →
       </button>
 
     </div>
@@ -580,21 +1229,18 @@ footer{
 
 </section>
 
+
+<!-- ADMIN -->
 <section id="admin">
 
-  <div class="title">
-
-    <small class="gold">MANAGEMENT</small>
-
-    <h2>Admin Panel</h2>
-
-    <p class="muted" style="margin:auto">
-      Securely manage products and customer orders.
-    </p>
-
+  <div class="section-head">
+    <div>
+      <div class="section-label">MANAGEMENT</div>
+      <h2>Admin Panel</h2>
+    </div>
   </div>
 
-  <div class="panel">
+  <div class="panel admin-box">
 
     <div id="loginBox">
 
@@ -611,21 +1257,28 @@ footer{
           placeholder="Password"
         >
 
-        <button onclick="login()">
-          Login
-        </button>
-
       </div>
+
+      <button
+        class="primary-btn"
+        onclick="login()"
+      >
+        ADMIN LOGIN
+      </button>
 
     </div>
 
+
     <div id="dash" class="hidden">
 
-      <button onclick="logout()">
+      <button
+        class="secondary-btn"
+        onclick="logout()"
+      >
         Logout
       </button>
 
-      <h3>Products</h3>
+      <h3>Add Product</h3>
 
       <div class="row">
 
@@ -652,29 +1305,35 @@ footer{
           placeholder="Stock"
         >
 
+      </div>
+
+      <div class="row">
+
         <select id="pc">
-
-          <option>
-            Men
-          </option>
-
-          <option>
-            Women
-          </option>
-
-          <option>
-            Premium
-          </option>
-
+          <option>Men</option>
+          <option>Women</option>
+          <option>Premium</option>
         </select>
+
+        <input
+          id="pi"
+          placeholder="Product image URL"
+        >
 
       </div>
 
-      <button onclick="addProduct()">
-        Add Product
+      <button
+        class="primary-btn"
+        onclick="addProduct()"
+      >
+        + ADD PRODUCT
       </button>
 
+
+      <h3>Products</h3>
+
       <div id="adminProducts"></div>
+
 
       <h3>Orders</h3>
 
@@ -686,13 +1345,33 @@ footer{
 
 </section>
 
-<button
-  class="btn cart"
-  onclick="location.hash='order'"
->
-  🛒 Cart
-  <span id="count">0</span>
-</button>
+
+<!-- CONTACT -->
+<section id="contact">
+
+  <div class="panel" style="text-align:center">
+
+    <div class="section-label">
+      TIMVELLA SUPPORT
+    </div>
+
+    <h2>
+      Need Help?
+    </h2>
+
+    <p style="color:#68738a">
+      Our support team is available 24/7 for your questions.
+    </p>
+
+    <p>
+      📞 Customer Support &nbsp; • &nbsp;
+      📧 support@timvella.com
+    </p>
+
+  </div>
+
+</section>
+
 
 <footer>
   © 2026 <strong>TIMVELLA</strong> — Premium Watches
@@ -705,25 +1384,38 @@ let products = [];
 let cart = [];
 
 
-/* LOAD PRODUCTS */
+/* FALLBACK IMAGES */
+const fallbackImages = [
+  "https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=700&q=80",
+  "https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=700&q=80",
+  "https://images.unsplash.com/photo-1533139502658-0198f920d8e8?auto=format&fit=crop&w=700&q=80",
+  "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=80"
+];
 
-async function load(){
+
+/* LOAD PRODUCTS */
+async function loadProducts(){
 
   try{
 
-    products =
-      await fetch('/api/products')
-      .then(r => r.json());
+    const res = await fetch("/api/products");
+
+    if(!res.ok){
+      throw new Error("Product loading failed");
+    }
+
+    products = await res.json();
 
     render();
-    drawCart();
 
-  }catch(error){
+  }catch(err){
 
-    document.getElementById('products').innerHTML = `
-      <p class="muted">
-        Unable to load products right now.
-      </p>
+    console.error(err);
+
+    document.getElementById("products").innerHTML = `
+      <div class="empty">
+        Unable to load products.
+      </div>
     `;
 
   }
@@ -732,376 +1424,382 @@ async function load(){
 
 
 /* RENDER PRODUCTS */
-
 function render(){
 
-  let q =
-    document
-      .getElementById('search')
-      .value
-      .toLowerCase();
+  const box = document.getElementById("products");
 
-  let c =
-    document
-      .getElementById('cat')
-      .value;
+  if(!box) return;
 
+  const search =
+    (document.getElementById("search")?.value || "")
+    .toLowerCase();
 
-  let a =
-    products.filter(p =>
-      p.name
-        .toLowerCase()
-        .includes(q)
-      &&
-      (c === 'All' || p.category === c)
-    );
+  const cat =
+    document.getElementById("cat")?.value || "All";
 
 
-  document.getElementById('products').innerHTML =
-    a.length
+  const list = products.filter(p => {
 
-    ?
+    const matchSearch =
+      String(p.name || "")
+      .toLowerCase()
+      .includes(search);
 
-    a.map(p => `
+    const matchCat =
+      cat === "All" ||
+      p.category === cat;
 
-      <div class="card">
+    return matchSearch && matchCat;
+
+  });
+
+
+  if(!list.length){
+
+    box.innerHTML = `
+      <div class="empty">
+        No watches found.
+      </div>
+    `;
+
+    return;
+
+  }
+
+
+  box.innerHTML = list.map((p,index)=>{
+
+    const image =
+      p.image ||
+      fallbackImages[index % fallbackImages.length];
+
+    let badge = "NEW";
+    let badgeClass = "new";
+
+    if(index % 4 === 1){
+      badge = "BEST SELLER";
+      badgeClass = "best";
+    }
+
+    if(index % 4 === 2){
+      badge = "SALE";
+      badgeClass = "sale";
+    }
+
+    return `
+
+      <article class="card">
 
         <div class="photo">
 
-          ${
-            p.image
+          <div class="badge ${badgeClass}">
+            ${badge}
+          </div>
 
-            ?
-
-            `<img
-              src="${esc(p.image)}"
-              alt="${esc(p.name)}"
-              style="
-                width:100%;
-                height:100%;
-                object-fit:cover;
-              "
-            >`
-
-            :
-
-            '⌚'
-          }
+          <img
+            src="${escapeHtml(image)}"
+            alt="${escapeHtml(p.name)}"
+            onerror="this.src='${fallbackImages[index % fallbackImages.length]}'"
+          >
 
         </div>
 
         <div class="info">
 
-          <small>
-            ${esc(p.category)}
-            • Stock ${p.stock}
-          </small>
+          <small>${escapeHtml(p.category || "Premium")}</small>
 
           <h3>
-            ${esc(p.name)}
+            ${escapeHtml(p.name)}
           </h3>
 
-          <div class="price">
+          <div>
 
-            ৳${p.price.toLocaleString()}
-
-            <span class="old">
-
-              ৳${
-                (p.old_price || p.price)
-                .toLocaleString()
-              }
-
+            <span class="price">
+              ৳${Number(p.price).toLocaleString()}
             </span>
+
+            ${
+              p.old_price
+              ?
+              `<span class="old">
+                ৳${Number(p.old_price).toLocaleString()}
+              </span>`
+              :
+              ""
+            }
 
           </div>
 
+          <div class="rating">
+            ★★★★★
+            <span>(${Math.floor(60 + index * 17)})</span>
+          </div>
+
           <button
-            ${p.stock < 1 ? 'disabled' : ''}
-            onclick="add(${p.id})"
+            class="add-btn"
+            onclick="addToCart(${p.id})"
           >
-
-            ${
-              p.stock < 1
-              ? 'Out of stock'
-              : 'Add to Cart'
-            }
-
+            🛒 ADD TO CART
           </button>
 
         </div>
 
-      </div>
+      </article>
 
-    `).join('')
-
-    :
-
-    `
-      <div
-        style="
-          grid-column:1/-1;
-          text-align:center;
-          padding:40px;
-          color:#888;
-        "
-      >
-        No watches found.
-      </div>
     `;
 
-}
-
-
-/* ESCAPE HTML */
-
-function esc(s){
-
-  return String(s || '')
-    .replace(
-      /[&<>"']/g,
-      m => ({
-        '&':'&amp;',
-        '<':'&lt;',
-        '>':'&gt;',
-        '"':'&quot;',
-        "'":'&#39;'
-      }[m])
-    );
+  }).join("");
 
 }
 
 
 /* ADD TO CART */
+function addToCart(id){
 
-function add(id){
+  const p = products.find(x => x.id == id);
 
-  let x =
-    cart.find(i => i.id === id);
+  if(!p) return;
 
-  if(x){
+  const existing =
+    cart.find(x => x.id == id);
 
-    x.qty++;
+  if(existing){
+
+    existing.qty++;
 
   }else{
 
     cart.push({
-      id,
+      id:p.id,
+      name:p.name,
+      price:p.price,
       qty:1
     });
 
   }
 
-  drawCart();
+  updateCart();
+
+  location.hash = "order";
 
 }
 
 
-/* DRAW CART */
+/* UPDATE CART */
+function updateCart(){
 
-function drawCart(){
+  const count =
+    cart.reduce((sum,x)=>sum + x.qty,0);
 
-  document.getElementById('count').textContent =
-    cart.reduce(
-      (a,b) => a + b.qty,
-      0
-    );
+  document.getElementById("count").textContent = count;
+
+
+  const box =
+    document.getElementById("cartList");
+
+  if(!cart.length){
+
+    box.innerHTML = `
+      <div class="empty">
+        Your cart is empty.<br>
+        Add a watch from the collection.
+      </div>
+    `;
+
+    document.getElementById("total").textContent = "0";
+
+    return;
+
+  }
 
 
   let total = 0;
 
+  box.innerHTML =
+    cart.map(item => {
 
-  if(!cart.length){
+      const line =
+        item.price * item.qty;
 
-    document.getElementById('cartList').innerHTML = `
-      <p class="muted">
-        Your cart is empty.
-      </p>
-    `;
-
-    return;
-  }
-
-
-  document.getElementById('cartList').innerHTML =
-
-    cart.map(i => {
-
-      let p =
-        products.find(x => x.id === i.id);
-
-      if(!p) return '';
-
-      total +=
-        p.price * i.qty;
-
+      total += line;
 
       return `
 
         <div class="order-item">
 
-          <span>
+          <div>
 
-            ${esc(p.name)}
+            <strong>
+              ${escapeHtml(item.name)}
+            </strong>
 
-            × ${i.qty}
+            <div style="color:#718097;font-size:12px">
+              ৳${Number(item.price).toLocaleString()}
+              × ${item.qty}
+            </div>
 
-          </span>
+          </div>
 
-          <span>
-
-            ৳${
-              (p.price * i.qty)
-              .toLocaleString()
-            }
+          <div>
 
             <button
-              onclick="removeItem(${i.id})"
-              style="
-                margin-left:8px;
-                padding:6px 11px;
-              "
+              onclick="changeQty(${item.id},-1)"
+              style="border:0;background:#eef4ff;color:#1558c7;border-radius:6px;cursor:pointer"
             >
-              ×
+              −
             </button>
 
-          </span>
+            <span style="margin:0 8px">
+              ${item.qty}
+            </span>
+
+            <button
+              onclick="changeQty(${item.id},1)"
+              style="border:0;background:#eef4ff;color:#1558c7;border-radius:6px;cursor:pointer"
+            >
+              +
+            </button>
+
+          </div>
 
         </div>
 
       `;
 
-    }).join('')
+    }).join("");
 
-    +
 
-    `
-
-      <h3
-        style="
-          text-align:right;
-          color:var(--gold2);
-        "
-      >
-
-        Total:
-        ৳${total.toLocaleString()}
-
-      </h3>
-
-    `;
+  document.getElementById("total").textContent =
+    total.toLocaleString();
 
 }
 
 
-/* REMOVE ITEM */
+/* CHANGE QUANTITY */
+function changeQty(id,amount){
 
-function removeItem(id){
+  const item =
+    cart.find(x => x.id == id);
 
-  cart =
-    cart.filter(
-      x => x.id !== id
-    );
+  if(!item) return;
 
-  drawCart();
+  item.qty += amount;
+
+  if(item.qty <= 0){
+
+    cart =
+      cart.filter(x => x.id != id);
+
+  }
+
+  updateCart();
 
 }
 
 
 /* PLACE ORDER */
-
 async function placeOrder(){
 
   if(!cart.length){
 
-    return msg(
-      'Add products first.'
-    );
+    showMsg("Please add a watch to your cart.","error");
+
+    return;
 
   }
 
 
-  if(
-    !customer.value.trim() ||
-    !phone.value.trim() ||
-    !address.value.trim()
-  ){
+  const customer =
+    document.getElementById("customer").value.trim();
 
-    return msg(
-      'Please enter your name, phone number and delivery address.'
+  const phone =
+    document.getElementById("phone").value.trim();
+
+  const address =
+    document.getElementById("address").value.trim();
+
+  const payment =
+    document.getElementById("payment").value;
+
+
+  if(!customer || !phone || !address){
+
+    showMsg(
+      "Please complete your name, phone and address.",
+      "error"
     );
 
+    return;
+
   }
-
-
-  let b = {
-
-    customer_name:
-      customer.value,
-
-    phone:
-      phone.value,
-
-    address:
-      address.value,
-
-    items:
-      cart,
-
-    payment_method:
-      payment.value
-
-  };
 
 
   try{
 
-    let r =
-      await fetch(
-        '/api/orders',
-        {
-          method:'POST',
+    const res = await fetch("/api/orders",{
 
-          headers:{
-            'Content-Type':
-              'application/json'
-          },
+      method:"POST",
 
-          body:
-            JSON.stringify(b)
-        }
+      headers:{
+        "Content-Type":"application/json"
+      },
+
+      body:JSON.stringify({
+
+        customer_name:customer,
+
+        phone:phone,
+
+        address:address,
+
+        items:cart.map(x=>({
+          id:x.id,
+          qty:x.qty
+        })),
+
+        payment_method:payment
+
+      })
+
+    });
+
+
+    const data = await res.json();
+
+
+    if(!res.ok){
+
+      showMsg(
+        data.error || "Order failed.",
+        "error"
       );
 
-
-    let d =
-      await r.json();
-
-
-    if(!r.ok){
-
-      return msg(
-        d.error ||
-        'Unable to place order.'
-      );
+      return;
 
     }
 
 
-    msg(
-      `Order #${d.order_id} placed successfully. Total ৳${d.total.toLocaleString()}`
+    showMsg(
+      `Order placed successfully! Order #${data.order_id}`,
+      "success"
     );
 
 
     cart = [];
 
+    updateCart();
 
-    await load();
+    document.getElementById("customer").value = "";
+    document.getElementById("phone").value = "";
+    document.getElementById("address").value = "";
 
+    loadProducts();
 
-  }catch(error){
+  }catch(err){
 
-    msg(
-      'Something went wrong. Please try again.'
+    showMsg(
+      "Something went wrong. Please try again.",
+      "error"
     );
 
   }
@@ -1110,380 +1808,448 @@ async function placeOrder(){
 
 
 /* MESSAGE */
+function showMsg(text,type){
 
-function msg(x){
+  const box =
+    document.getElementById("msg");
 
-  document.getElementById('msg').innerHTML = `
+  box.textContent = text;
 
-    <div
-      style="
-        margin-top:15px;
-        padding:13px;
-        border-radius:12px;
-        background:rgba(215,181,109,.08);
-        border:1px solid rgba(215,181,109,.15);
-        color:var(--gold2);
-      "
-    >
+  box.style.marginTop = "15px";
+  box.style.padding = "12px";
+  box.style.borderRadius = "8px";
 
-      ${esc(x)}
+  if(type === "success"){
 
-    </div>
+    box.style.background = "#eaf8f0";
+    box.style.color = "#12824e";
 
-  `;
+  }else{
+
+    box.style.background = "#fff0f0";
+    box.style.color = "#c52b2b";
+
+  }
 
 }
 
 
 /* ADMIN LOGIN */
-
 async function login(){
 
-  let r =
-    await fetch(
-      '/api/admin/login',
-      {
-        method:'POST',
+  const username =
+    document.getElementById("au").value.trim();
 
-        headers:{
-          'Content-Type':
-            'application/json'
-        },
-
-        body:
-          JSON.stringify({
-
-            username:
-              au.value,
-
-            password:
-              ap.value
-
-          })
-
-      }
-    );
+  const password =
+    document.getElementById("ap").value;
 
 
-  if(r.ok){
+  if(!username || !password){
 
-    loginBox.classList.add(
-      'hidden'
-    );
+    alert("Enter username and password.");
 
-    dash.classList.remove(
-      'hidden'
-    );
-
-    adminLoad();
-
-  }else{
-
-    alert(
-      'Login failed'
-    );
+    return;
 
   }
+
+
+  const res =
+    await fetch("/api/admin/login",{
+
+      method:"POST",
+
+      headers:{
+        "Content-Type":"application/json"
+      },
+
+      body:JSON.stringify({
+        username,
+        password
+      })
+
+    });
+
+
+  if(!res.ok){
+
+    alert("Invalid admin login.");
+
+    return;
+
+  }
+
+
+  document.getElementById("loginBox")
+    .classList.add("hidden");
+
+  document.getElementById("dash")
+    .classList.remove("hidden");
+
+  loadAdmin();
 
 }
 
 
 /* ADMIN LOGOUT */
-
 async function logout(){
 
-  await fetch(
-    '/api/admin/logout',
-    {
-      method:'POST'
-    }
-  );
+  await fetch("/api/admin/logout",{
+    method:"POST"
+  });
 
-  dash.classList.add(
-    'hidden'
-  );
+  document.getElementById("loginBox")
+    .classList.remove("hidden");
 
-  loginBox.classList.remove(
-    'hidden'
-  );
+  document.getElementById("dash")
+    .classList.add("hidden");
 
 }
 
 
-/* ADMIN LOAD */
+/* CHECK ADMIN */
+async function checkAdmin(){
 
-async function adminLoad(){
+  try{
 
-  let r =
-    await fetch(
-      '/api/products'
-    );
+    const res =
+      await fetch("/api/admin/me");
 
+    const data =
+      await res.json();
 
-  products =
-    await r.json();
+    if(data.loggedIn){
 
+      document.getElementById("loginBox")
+        .classList.add("hidden");
 
-  document.getElementById(
-    'adminProducts'
-  ).innerHTML =
+      document.getElementById("dash")
+        .classList.remove("hidden");
 
-    products.map(p => `
+      loadAdmin();
 
-      <div class="order-item">
+    }
 
-        <span>
-
-          <b>
-            ${esc(p.name)}
-          </b>
-
-          <br>
-
-          <small
-            style="color:#888"
-          >
-
-            ৳${p.price}
-            —
-            stock ${p.stock}
-
-          </small>
-
-        </span>
-
-        <button
-          onclick="del(${p.id})"
-          style="
-            padding:8px 12px;
-          "
-        >
-
-          Delete
-
-        </button>
-
-      </div>
-
-    `).join('');
-
-
-  let o =
-    await fetch(
-      '/api/orders'
-    ).then(
-      x => x.json()
-    );
-
-
-  document.getElementById(
-    'orders'
-  ).innerHTML =
-
-    o.length
-
-    ?
-
-    o.map(x => `
-
-      <div class="order-item">
-
-        <span>
-
-          <b>
-            #${x.id}
-            —
-            ${esc(x.customer_name)}
-          </b>
-
-          <br>
-
-          <small
-            style="color:#888"
-          >
-
-            ৳${x.total}
-            —
-            ${esc(x.status)}
-
-          </small>
-
-        </span>
-
-
-        <select
-          onchange="
-            status(
-              ${x.id},
-              this.value
-            )
-          "
-          style="
-            width:145px;
-          "
-        >
-
-          <option
-            ${x.status === 'Pending'
-              ? 'selected'
-              : ''}
-          >
-            Pending
-          </option>
-
-          <option
-            ${x.status === 'Confirmed'
-              ? 'selected'
-              : ''}
-          >
-            Confirmed
-          </option>
-
-          <option
-            ${x.status === 'Shipped'
-              ? 'selected'
-              : ''}
-          >
-            Shipped
-          </option>
-
-          <option
-            ${x.status === 'Delivered'
-              ? 'selected'
-              : ''}
-          >
-            Delivered
-          </option>
-
-          <option
-            ${x.status === 'Cancelled'
-              ? 'selected'
-              : ''}
-          >
-            Cancelled
-          </option>
-
-        </select>
-
-      </div>
-
-    `).join('')
-
-    :
-
-    `
-      <p class="muted">
-        No orders yet.
-      </p>
-    `;
+  }catch(err){}
 
 }
 
 
 /* ADD PRODUCT */
-
 async function addProduct(){
 
-  let b = {
+  const data = {
 
     name:
-      pn.value,
+      document.getElementById("pn").value.trim(),
 
     price:
-      +pp.value,
+      Number(document.getElementById("pp").value),
 
     old_price:
-      +po.value,
+      document.getElementById("po").value
+      ?
+      Number(document.getElementById("po").value)
+      :
+      null,
 
     stock:
-      +ps.value,
+      Number(document.getElementById("ps").value || 0),
 
     category:
-      pc.value
+      document.getElementById("pc").value,
+
+    image:
+      document.getElementById("pi").value.trim()
 
   };
 
 
-  let r =
-    await fetch(
-      '/api/products',
-      {
-        method:'POST',
+  if(!data.name || !data.price){
 
-        headers:{
-          'Content-Type':
-            'application/json'
-        },
+    alert("Product name and price are required.");
 
-        body:
-          JSON.stringify(b)
-      }
-    );
-
-
-  if(!r.ok){
-
-    return alert(
-      'Invalid product'
-    );
+    return;
 
   }
 
 
-  await adminLoad();
+  const res =
+    await fetch("/api/products",{
 
-  load();
+      method:"POST",
+
+      headers:{
+        "Content-Type":"application/json"
+      },
+
+      body:JSON.stringify(data)
+
+    });
+
+
+  if(!res.ok){
+
+    alert("Could not add product.");
+
+    return;
+
+  }
+
+
+  document.getElementById("pn").value = "";
+  document.getElementById("pp").value = "";
+  document.getElementById("po").value = "";
+  document.getElementById("ps").value = "";
+  document.getElementById("pi").value = "";
+
+
+  await loadProducts();
+  loadAdmin();
+
+}
+
+
+/* LOAD ADMIN */
+async function loadAdmin(){
+
+  loadAdminProducts();
+  loadOrders();
+
+}
+
+
+/* ADMIN PRODUCTS */
+async function loadAdminProducts(){
+
+  const res =
+    await fetch("/api/products");
+
+  const list =
+    await res.json();
+
+  const box =
+    document.getElementById("adminProducts");
+
+
+  box.innerHTML =
+    list.map(p=>`
+
+      <div class="admin-product">
+
+        <div>
+
+          <strong>
+            ${escapeHtml(p.name)}
+          </strong>
+
+          <div style="font-size:12px;color:#748095">
+            ৳${Number(p.price).toLocaleString()}
+            • Stock: ${p.stock}
+          </div>
+
+        </div>
+
+        <button
+          class="danger"
+          onclick="deleteProduct(${p.id})"
+        >
+          Delete
+        </button>
+
+      </div>
+
+    `).join("");
 
 }
 
 
 /* DELETE PRODUCT */
+async function deleteProduct(id){
 
-async function del(id){
+  if(!confirm("Delete this product?")) return;
 
-  await fetch(
-    '/api/products/' + id,
-    {
-      method:'DELETE'
+
+  const res =
+    await fetch(`/api/products/${id}`,{
+      method:"DELETE"
+    });
+
+
+  if(res.ok){
+
+    await loadProducts();
+    loadAdmin();
+
+  }else{
+
+    alert("Delete failed.");
+
+  }
+
+}
+
+
+/* LOAD ORDERS */
+async function loadOrders(){
+
+  const box =
+    document.getElementById("orders");
+
+
+  try{
+
+    const res =
+      await fetch("/api/orders");
+
+
+    if(!res.ok){
+
+      box.innerHTML =
+        "<div class='empty'>Login required.</div>";
+
+      return;
+
     }
-  );
 
-  await adminLoad();
 
-  await load();
+    const orders =
+      await res.json();
+
+
+    if(!orders.length){
+
+      box.innerHTML =
+        "<div class='empty'>No orders yet.</div>";
+
+      return;
+
+    }
+
+
+    box.innerHTML =
+      orders.map(o=>`
+
+        <div
+          class="admin-product"
+          style="display:block"
+        >
+
+          <div style="display:flex;justify-content:space-between;gap:10px">
+
+            <strong>
+              Order #${o.id}
+            </strong>
+
+            <select
+              class="status"
+              onchange="updateOrderStatus(${o.id},this.value)"
+            >
+
+              ${[
+                "Pending",
+                "Confirmed",
+                "Shipped",
+                "Delivered",
+                "Cancelled"
+              ].map(s=>`
+                <option
+                  ${o.status===s ? "selected" : ""}
+                >
+                  ${s}
+                </option>
+              `).join("")}
+
+            </select>
+
+          </div>
+
+
+          <div style="margin-top:8px;color:#657188;font-size:13px">
+
+            👤 ${escapeHtml(o.customer_name)}<br>
+
+            📞 ${escapeHtml(o.phone)}<br>
+
+            📍 ${escapeHtml(o.address)}<br>
+
+            💰 Total: ৳${Number(o.total).toLocaleString()}
+
+          </div>
+
+        </div>
+
+      `).join("");
+
+
+  }catch(err){
+
+    box.innerHTML =
+      "<div class='empty'>Unable to load orders.</div>";
+
+  }
 
 }
 
 
 /* UPDATE ORDER STATUS */
+async function updateOrderStatus(id,status){
 
-async function status(id,s){
+  const res =
+    await fetch(`/api/orders/${id}`,{
 
-  await fetch(
-    '/api/orders/' + id,
-    {
-      method:'PATCH',
+      method:"PATCH",
 
       headers:{
-        'Content-Type':
-          'application/json'
+        "Content-Type":"application/json"
       },
 
-      body:
-        JSON.stringify({
-          status:s
-        })
-    }
-  );
+      body:JSON.stringify({status})
 
-  adminLoad();
+    });
+
+
+  if(!res.ok){
+
+    alert("Could not update order.");
+
+  }
 
 }
 
 
-/* START WEBSITE */
+/* SEARCH */
+function focusSearch(){
 
-load();
+  location.hash = "shop";
+
+  setTimeout(()=>{
+
+    document.getElementById("search")?.focus();
+
+  },300);
+
+}
+
+
+/* ESCAPE HTML */
+function escapeHtml(value){
+
+  return String(value ?? "")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
+}
+
+
+/* START */
+loadProducts();
+
+updateCart();
+
+checkAdmin();
 
 </script>
 
