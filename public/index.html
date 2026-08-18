@@ -1,5 +1,14 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#070707">
+<title>Timvella — Premium Watches</title>
+
 <style>
 *{box-sizing:border-box}
+
 :root{
   --bg:#070707;
   --card:#111113;
@@ -9,9 +18,12 @@
   --text:#f5f3ed;
   --muted:#96969d;
   --border:rgba(255,255,255,.09);
+  --shadow:0 25px 70px rgba(0,0,0,.35);
 }
 
-html{scroll-behavior:smooth}
+html{
+  scroll-behavior:smooth;
+}
 
 body{
   margin:0;
@@ -27,7 +39,7 @@ body:before{
   position:fixed;
   inset:0;
   pointer-events:none;
-  opacity:.18;
+  opacity:.16;
   background-image:
     linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
     linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
@@ -35,7 +47,10 @@ body:before{
   z-index:-1;
 }
 
-/* NAVBAR */
+a{
+  color:inherit;
+}
+
 header{
   position:sticky;
   top:0;
@@ -46,6 +61,7 @@ header{
   align-items:center;
   background:rgba(7,7,7,.78);
   backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
   border-bottom:1px solid var(--border);
 }
 
@@ -74,7 +90,6 @@ nav a:hover{
   color:var(--gold2);
 }
 
-/* HERO */
 .hero{
   min-height:76vh;
   padding:80px 7%;
@@ -96,6 +111,7 @@ nav a:hover{
   font-size:230px;
   opacity:.08;
   filter:drop-shadow(0 30px 40px #000);
+  pointer-events:none;
 }
 
 .hero small{
@@ -123,7 +139,6 @@ h1{
   max-width:600px;
 }
 
-/* BUTTONS */
 .btn,
 button{
   border:0;
@@ -148,7 +163,13 @@ button:hover{
   box-shadow:0 12px 30px rgba(215,181,109,.2);
 }
 
-/* SECTIONS */
+button:disabled{
+  opacity:.45;
+  cursor:not-allowed;
+  transform:none;
+  box-shadow:none;
+}
+
 section{
   padding:90px 6%;
   max-width:1400px;
@@ -167,7 +188,6 @@ section{
   margin:8px 0;
 }
 
-/* SEARCH */
 .toolbar{
   display:flex;
   gap:12px;
@@ -208,7 +228,6 @@ textarea:focus{
   max-width:190px;
 }
 
-/* PRODUCT GRID */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(245px,1fr));
@@ -227,7 +246,7 @@ textarea:focus{
 .card:hover{
   transform:translateY(-7px);
   border-color:rgba(215,181,109,.35);
-  box-shadow:0 25px 65px rgba(0,0,0,.45);
+  box-shadow:var(--shadow);
 }
 
 .photo{
@@ -286,7 +305,6 @@ textarea:focus{
   margin-top:17px;
 }
 
-/* FORM / CHECKOUT */
 .row{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
@@ -301,7 +319,7 @@ textarea:focus{
   background:linear-gradient(145deg,#141416,#0c0c0e);
   border:1px solid var(--border);
   border-radius:24px;
-  box-shadow:0 25px 70px rgba(0,0,0,.3);
+  box-shadow:var(--shadow);
 }
 
 .order-item{
@@ -313,7 +331,10 @@ textarea:focus{
   gap:10px;
 }
 
-/* FLOATING CART */
+.order-item:last-child{
+  border-bottom:0;
+}
+
 .cart{
   position:fixed;
   right:20px;
@@ -322,7 +343,6 @@ textarea:focus{
   box-shadow:0 15px 40px rgba(0,0,0,.5);
 }
 
-/* ADMIN */
 #admin .panel{
   border-color:rgba(215,181,109,.14);
 }
@@ -332,7 +352,11 @@ textarea:focus{
   font-size:23px;
 }
 
-/* FOOTER */
+#adminProducts,
+#orders{
+  margin-top:15px;
+}
+
 footer{
   text-align:center;
   padding:45px 20px;
@@ -341,7 +365,6 @@ footer{
   letter-spacing:.5px;
 }
 
-/* MOBILE */
 @media(max-width:700px){
 
   header{
@@ -426,3 +449,1043 @@ footer{
   }
 }
 </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">TIMVELLA</div>
+
+  <nav>
+    <a href="#shop">Collection</a>
+    <a href="#order">Order</a>
+    <a href="#admin">Admin</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <div>
+    <small>TIME • STYLE • ELEGANCE</small>
+
+    <h1>
+      Wear Your<br>
+      <span class="gold">Moment.</span>
+    </h1>
+
+    <p class="muted">
+      Discover refined watches designed for every moment.
+      Timvella brings timeless style together with a simple,
+      elegant shopping experience.
+    </p>
+
+    <a class="btn" href="#shop">Shop Now →</a>
+  </div>
+</div>
+
+<section id="shop">
+
+  <div class="title">
+    <small class="gold">THE COLLECTION</small>
+
+    <h2>Featured Collection</h2>
+
+    <p class="muted" style="margin:auto">
+      Discover our selected watches and special offers.
+    </p>
+  </div>
+
+  <div class="toolbar">
+
+    <input
+      id="search"
+      placeholder="Search watches..."
+      oninput="render()"
+    >
+
+    <select id="cat" onchange="render()">
+      <option>All</option>
+      <option>Men</option>
+      <option>Women</option>
+      <option>Premium</option>
+    </select>
+
+  </div>
+
+  <div id="products" class="grid"></div>
+
+</section>
+
+<section id="order">
+
+  <div class="title">
+
+    <small class="gold">YOUR ORDER</small>
+
+    <h2>Checkout</h2>
+
+    <p class="muted" style="margin:auto">
+      Cash on Delivery is available.
+      Online payment can be connected later.
+    </p>
+
+  </div>
+
+  <div class="panel">
+
+    <div id="cartList"></div>
+
+    <div class="row">
+
+      <input
+        id="customer"
+        placeholder="Full name"
+      >
+
+      <input
+        id="phone"
+        placeholder="Phone number"
+      >
+
+    </div>
+
+    <textarea
+      id="address"
+      placeholder="Delivery address"
+      rows="4"
+    ></textarea>
+
+    <div class="row">
+
+      <select id="payment">
+
+        <option>
+          Cash on Delivery
+        </option>
+
+        <option disabled>
+          Online Payment — connect gateway
+        </option>
+
+      </select>
+
+      <button onclick="placeOrder()">
+        Place Order
+      </button>
+
+    </div>
+
+    <div id="msg"></div>
+
+  </div>
+
+</section>
+
+<section id="admin">
+
+  <div class="title">
+
+    <small class="gold">MANAGEMENT</small>
+
+    <h2>Admin Panel</h2>
+
+    <p class="muted" style="margin:auto">
+      Securely manage products and customer orders.
+    </p>
+
+  </div>
+
+  <div class="panel">
+
+    <div id="loginBox">
+
+      <div class="row">
+
+        <input
+          id="au"
+          placeholder="Username"
+        >
+
+        <input
+          id="ap"
+          type="password"
+          placeholder="Password"
+        >
+
+        <button onclick="login()">
+          Login
+        </button>
+
+      </div>
+
+    </div>
+
+    <div id="dash" class="hidden">
+
+      <button onclick="logout()">
+        Logout
+      </button>
+
+      <h3>Products</h3>
+
+      <div class="row">
+
+        <input
+          id="pn"
+          placeholder="Product name"
+        >
+
+        <input
+          id="pp"
+          type="number"
+          placeholder="Price"
+        >
+
+        <input
+          id="po"
+          type="number"
+          placeholder="Old price"
+        >
+
+        <input
+          id="ps"
+          type="number"
+          placeholder="Stock"
+        >
+
+        <select id="pc">
+
+          <option>
+            Men
+          </option>
+
+          <option>
+            Women
+          </option>
+
+          <option>
+            Premium
+          </option>
+
+        </select>
+
+      </div>
+
+      <button onclick="addProduct()">
+        Add Product
+      </button>
+
+      <div id="adminProducts"></div>
+
+      <h3>Orders</h3>
+
+      <div id="orders"></div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<button
+  class="btn cart"
+  onclick="location.hash='order'"
+>
+  🛒 Cart
+  <span id="count">0</span>
+</button>
+
+<footer>
+  © 2026 <strong>TIMVELLA</strong> — Premium Watches
+</footer>
+
+
+<script>
+
+let products = [];
+let cart = [];
+
+
+/* LOAD PRODUCTS */
+
+async function load(){
+
+  try{
+
+    products =
+      await fetch('/api/products')
+      .then(r => r.json());
+
+    render();
+    drawCart();
+
+  }catch(error){
+
+    document.getElementById('products').innerHTML = `
+      <p class="muted">
+        Unable to load products right now.
+      </p>
+    `;
+
+  }
+
+}
+
+
+/* RENDER PRODUCTS */
+
+function render(){
+
+  let q =
+    document
+      .getElementById('search')
+      .value
+      .toLowerCase();
+
+  let c =
+    document
+      .getElementById('cat')
+      .value;
+
+
+  let a =
+    products.filter(p =>
+      p.name
+        .toLowerCase()
+        .includes(q)
+      &&
+      (c === 'All' || p.category === c)
+    );
+
+
+  document.getElementById('products').innerHTML =
+    a.length
+
+    ?
+
+    a.map(p => `
+
+      <div class="card">
+
+        <div class="photo">
+
+          ${
+            p.image
+
+            ?
+
+            `<img
+              src="${esc(p.image)}"
+              alt="${esc(p.name)}"
+              style="
+                width:100%;
+                height:100%;
+                object-fit:cover;
+              "
+            >`
+
+            :
+
+            '⌚'
+          }
+
+        </div>
+
+        <div class="info">
+
+          <small>
+            ${esc(p.category)}
+            • Stock ${p.stock}
+          </small>
+
+          <h3>
+            ${esc(p.name)}
+          </h3>
+
+          <div class="price">
+
+            ৳${p.price.toLocaleString()}
+
+            <span class="old">
+
+              ৳${
+                (p.old_price || p.price)
+                .toLocaleString()
+              }
+
+            </span>
+
+          </div>
+
+          <button
+            ${p.stock < 1 ? 'disabled' : ''}
+            onclick="add(${p.id})"
+          >
+
+            ${
+              p.stock < 1
+              ? 'Out of stock'
+              : 'Add to Cart'
+            }
+
+          </button>
+
+        </div>
+
+      </div>
+
+    `).join('')
+
+    :
+
+    `
+      <div
+        style="
+          grid-column:1/-1;
+          text-align:center;
+          padding:40px;
+          color:#888;
+        "
+      >
+        No watches found.
+      </div>
+    `;
+
+}
+
+
+/* ESCAPE HTML */
+
+function esc(s){
+
+  return String(s || '')
+    .replace(
+      /[&<>"']/g,
+      m => ({
+        '&':'&amp;',
+        '<':'&lt;',
+        '>':'&gt;',
+        '"':'&quot;',
+        "'":'&#39;'
+      }[m])
+    );
+
+}
+
+
+/* ADD TO CART */
+
+function add(id){
+
+  let x =
+    cart.find(i => i.id === id);
+
+  if(x){
+
+    x.qty++;
+
+  }else{
+
+    cart.push({
+      id,
+      qty:1
+    });
+
+  }
+
+  drawCart();
+
+}
+
+
+/* DRAW CART */
+
+function drawCart(){
+
+  document.getElementById('count').textContent =
+    cart.reduce(
+      (a,b) => a + b.qty,
+      0
+    );
+
+
+  let total = 0;
+
+
+  if(!cart.length){
+
+    document.getElementById('cartList').innerHTML = `
+      <p class="muted">
+        Your cart is empty.
+      </p>
+    `;
+
+    return;
+  }
+
+
+  document.getElementById('cartList').innerHTML =
+
+    cart.map(i => {
+
+      let p =
+        products.find(x => x.id === i.id);
+
+      if(!p) return '';
+
+      total +=
+        p.price * i.qty;
+
+
+      return `
+
+        <div class="order-item">
+
+          <span>
+
+            ${esc(p.name)}
+
+            × ${i.qty}
+
+          </span>
+
+          <span>
+
+            ৳${
+              (p.price * i.qty)
+              .toLocaleString()
+            }
+
+            <button
+              onclick="removeItem(${i.id})"
+              style="
+                margin-left:8px;
+                padding:6px 11px;
+              "
+            >
+              ×
+            </button>
+
+          </span>
+
+        </div>
+
+      `;
+
+    }).join('')
+
+    +
+
+    `
+
+      <h3
+        style="
+          text-align:right;
+          color:var(--gold2);
+        "
+      >
+
+        Total:
+        ৳${total.toLocaleString()}
+
+      </h3>
+
+    `;
+
+}
+
+
+/* REMOVE ITEM */
+
+function removeItem(id){
+
+  cart =
+    cart.filter(
+      x => x.id !== id
+    );
+
+  drawCart();
+
+}
+
+
+/* PLACE ORDER */
+
+async function placeOrder(){
+
+  if(!cart.length){
+
+    return msg(
+      'Add products first.'
+    );
+
+  }
+
+
+  if(
+    !customer.value.trim() ||
+    !phone.value.trim() ||
+    !address.value.trim()
+  ){
+
+    return msg(
+      'Please enter your name, phone number and delivery address.'
+    );
+
+  }
+
+
+  let b = {
+
+    customer_name:
+      customer.value,
+
+    phone:
+      phone.value,
+
+    address:
+      address.value,
+
+    items:
+      cart,
+
+    payment_method:
+      payment.value
+
+  };
+
+
+  try{
+
+    let r =
+      await fetch(
+        '/api/orders',
+        {
+          method:'POST',
+
+          headers:{
+            'Content-Type':
+              'application/json'
+          },
+
+          body:
+            JSON.stringify(b)
+        }
+      );
+
+
+    let d =
+      await r.json();
+
+
+    if(!r.ok){
+
+      return msg(
+        d.error ||
+        'Unable to place order.'
+      );
+
+    }
+
+
+    msg(
+      `Order #${d.order_id} placed successfully. Total ৳${d.total.toLocaleString()}`
+    );
+
+
+    cart = [];
+
+
+    await load();
+
+
+  }catch(error){
+
+    msg(
+      'Something went wrong. Please try again.'
+    );
+
+  }
+
+}
+
+
+/* MESSAGE */
+
+function msg(x){
+
+  document.getElementById('msg').innerHTML = `
+
+    <div
+      style="
+        margin-top:15px;
+        padding:13px;
+        border-radius:12px;
+        background:rgba(215,181,109,.08);
+        border:1px solid rgba(215,181,109,.15);
+        color:var(--gold2);
+      "
+    >
+
+      ${esc(x)}
+
+    </div>
+
+  `;
+
+}
+
+
+/* ADMIN LOGIN */
+
+async function login(){
+
+  let r =
+    await fetch(
+      '/api/admin/login',
+      {
+        method:'POST',
+
+        headers:{
+          'Content-Type':
+            'application/json'
+        },
+
+        body:
+          JSON.stringify({
+
+            username:
+              au.value,
+
+            password:
+              ap.value
+
+          })
+
+      }
+    );
+
+
+  if(r.ok){
+
+    loginBox.classList.add(
+      'hidden'
+    );
+
+    dash.classList.remove(
+      'hidden'
+    );
+
+    adminLoad();
+
+  }else{
+
+    alert(
+      'Login failed'
+    );
+
+  }
+
+}
+
+
+/* ADMIN LOGOUT */
+
+async function logout(){
+
+  await fetch(
+    '/api/admin/logout',
+    {
+      method:'POST'
+    }
+  );
+
+  dash.classList.add(
+    'hidden'
+  );
+
+  loginBox.classList.remove(
+    'hidden'
+  );
+
+}
+
+
+/* ADMIN LOAD */
+
+async function adminLoad(){
+
+  let r =
+    await fetch(
+      '/api/products'
+    );
+
+
+  products =
+    await r.json();
+
+
+  document.getElementById(
+    'adminProducts'
+  ).innerHTML =
+
+    products.map(p => `
+
+      <div class="order-item">
+
+        <span>
+
+          <b>
+            ${esc(p.name)}
+          </b>
+
+          <br>
+
+          <small
+            style="color:#888"
+          >
+
+            ৳${p.price}
+            —
+            stock ${p.stock}
+
+          </small>
+
+        </span>
+
+        <button
+          onclick="del(${p.id})"
+          style="
+            padding:8px 12px;
+          "
+        >
+
+          Delete
+
+        </button>
+
+      </div>
+
+    `).join('');
+
+
+  let o =
+    await fetch(
+      '/api/orders'
+    ).then(
+      x => x.json()
+    );
+
+
+  document.getElementById(
+    'orders'
+  ).innerHTML =
+
+    o.length
+
+    ?
+
+    o.map(x => `
+
+      <div class="order-item">
+
+        <span>
+
+          <b>
+            #${x.id}
+            —
+            ${esc(x.customer_name)}
+          </b>
+
+          <br>
+
+          <small
+            style="color:#888"
+          >
+
+            ৳${x.total}
+            —
+            ${esc(x.status)}
+
+          </small>
+
+        </span>
+
+
+        <select
+          onchange="
+            status(
+              ${x.id},
+              this.value
+            )
+          "
+          style="
+            width:145px;
+          "
+        >
+
+          <option
+            ${x.status === 'Pending'
+              ? 'selected'
+              : ''}
+          >
+            Pending
+          </option>
+
+          <option
+            ${x.status === 'Confirmed'
+              ? 'selected'
+              : ''}
+          >
+            Confirmed
+          </option>
+
+          <option
+            ${x.status === 'Shipped'
+              ? 'selected'
+              : ''}
+          >
+            Shipped
+          </option>
+
+          <option
+            ${x.status === 'Delivered'
+              ? 'selected'
+              : ''}
+          >
+            Delivered
+          </option>
+
+          <option
+            ${x.status === 'Cancelled'
+              ? 'selected'
+              : ''}
+          >
+            Cancelled
+          </option>
+
+        </select>
+
+      </div>
+
+    `).join('')
+
+    :
+
+    `
+      <p class="muted">
+        No orders yet.
+      </p>
+    `;
+
+}
+
+
+/* ADD PRODUCT */
+
+async function addProduct(){
+
+  let b = {
+
+    name:
+      pn.value,
+
+    price:
+      +pp.value,
+
+    old_price:
+      +po.value,
+
+    stock:
+      +ps.value,
+
+    category:
+      pc.value
+
+  };
+
+
+  let r =
+    await fetch(
+      '/api/products',
+      {
+        method:'POST',
+
+        headers:{
+          'Content-Type':
+            'application/json'
+        },
+
+        body:
+          JSON.stringify(b)
+      }
+    );
+
+
+  if(!r.ok){
+
+    return alert(
+      'Invalid product'
+    );
+
+  }
+
+
+  await adminLoad();
+
+  load();
+
+}
+
+
+/* DELETE PRODUCT */
+
+async function del(id){
+
+  await fetch(
+    '/api/products/' + id,
+    {
+      method:'DELETE'
+    }
+  );
+
+  await adminLoad();
+
+  await load();
+
+}
+
+
+/* UPDATE ORDER STATUS */
+
+async function status(id,s){
+
+  await fetch(
+    '/api/orders/' + id,
+    {
+      method:'PATCH',
+
+      headers:{
+        'Content-Type':
+          'application/json'
+      },
+
+      body:
+        JSON.stringify({
+          status:s
+        })
+    }
+  );
+
+  adminLoad();
+
+}
+
+
+/* START WEBSITE */
+
+load();
+
+</script>
+
+</body>
+</html>
