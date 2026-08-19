@@ -488,9 +488,7 @@ nav a.active:after{
   transform-origin:left center;
 }
 
-.hand1{
-  transform:rotate(315deg);
-}
+.hand1{transform:rotate(315deg)}
 
 .hand2{
   width:52px;
@@ -703,17 +701,9 @@ section{
   font-weight:800;
 }
 
-.badge.new{
-  background:var(--green);
-}
-
-.badge.best{
-  background:var(--blue);
-}
-
-.badge.sale{
-  background:var(--red);
-}
+.badge.new{background:var(--green)}
+.badge.best{background:var(--blue)}
+.badge.sale{background:var(--red)}
 
 .info{
   padding:16px;
@@ -863,38 +853,6 @@ section{
   font-weight:900;
 }
 
-/* ================= ADMIN ================= */
-
-.admin-box{
-  max-width:1000px;
-  margin:auto;
-}
-
-.admin-product{
-  margin-bottom:10px;
-  padding:14px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  border:1px solid #e5eaf2;
-  border-radius:10px;
-}
-
-.danger{
-  padding:8px 13px;
-  border:1px solid #e7aaaa;
-  border-radius:7px;
-  background:#fff1f1;
-  color:#c52a2a;
-  cursor:pointer;
-}
-
-.status{
-  padding:6px 9px;
-  border:1px solid #dce4ee;
-  border-radius:6px;
-}
-
 /* ================= ORDER TABS ================= */
 
 .order-tabs{
@@ -941,6 +899,113 @@ section{
   color:var(--blue);
 }
 
+/* ================= ADMIN MODAL ================= */
+
+.admin-modal{
+  position:fixed;
+  inset:0;
+  z-index:1000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:rgba(8,25,55,.58);
+  backdrop-filter:blur(6px);
+}
+
+.admin-modal.open{
+  display:flex;
+}
+
+.admin-window{
+  width:min(1050px,100%);
+  max-height:92vh;
+  overflow-y:auto;
+  border-radius:20px;
+  background:#fff;
+  box-shadow:0 30px 80px rgba(0,0,0,.25);
+  animation:adminOpen .22s ease;
+}
+
+@keyframes adminOpen{
+  from{
+    opacity:0;
+    transform:translateY(20px) scale(.98);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+}
+
+.admin-head{
+  position:sticky;
+  top:0;
+  z-index:5;
+  padding:18px 22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  background:#fff;
+  border-bottom:1px solid #edf0f5;
+}
+
+.admin-head h2{
+  margin:0;
+  color:#142143;
+  font-family:Georgia,"Times New Roman",serif;
+}
+
+.admin-close{
+  width:40px;
+  height:40px;
+  border:0;
+  border-radius:10px;
+  background:#f1f5fb;
+  color:#26334b;
+  font-size:24px;
+  cursor:pointer;
+}
+
+.admin-close:hover{
+  background:#e6eefc;
+  color:var(--blue);
+}
+
+.admin-content{
+  padding:22px;
+}
+
+.admin-box{
+  max-width:none;
+  margin:auto;
+}
+
+.admin-product{
+  margin-bottom:10px;
+  padding:14px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border:1px solid #e5eaf2;
+  border-radius:10px;
+}
+
+.danger{
+  padding:8px 13px;
+  border:1px solid #e7aaaa;
+  border-radius:7px;
+  background:#fff1f1;
+  color:#c52a2a;
+  cursor:pointer;
+}
+
+.status{
+  padding:6px 9px;
+  border:1px solid #dce4ee;
+  border-radius:6px;
+}
+
 /* ================= FOOTER ================= */
 
 footer{
@@ -953,442 +1018,41 @@ footer{
 
 .hidden{
   display:none!important;
-}
-
-/* ================= TABLET ================= */
-
-@media(max-width:1000px){
-
-  nav{
-    gap:18px;
-  }
-
-  .grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .benefits{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .benefit:nth-child(2){
-    border-right:0;
-  }
-
-  .hero-inner{
-    grid-template-columns:1fr 1fr;
-  }
-}
-
-/* ================= MOBILE ================= */
-
-@media(max-width:750px){
-
-  .topbar{
-    height:34px;
-    padding:0 12px;
-    font-size:10px;
-    justify-content:center;
-    white-space:nowrap;
-    overflow:hidden;
-  }
-
-  .top-left{
-    gap:9px;
-  }
-
-  .top-left .top-item:nth-child(2){
-    display:none;
-  }
-
-  header{
-    height:76px;
-    padding:0 17px;
-  }
-
-  .brand{
-    min-width:auto;
-    gap:9px;
-  }
-
-  .brand-watch{
-    width:42px;
-    height:42px;
-    border-width:3px;
-  }
-
-  .brand-text strong{
-    font-size:21px;
-  }
-
-  .brand-text span{
-    font-size:6px;
-    letter-spacing:1.8px;
-  }
-
-  nav{
-    display:none;
-  }
-
-  .header-icons{
-    min-width:auto;
-    gap:13px;
-  }
-
-  .icon-btn{
-    font-size:20px;
-  }
-
-  .hero-inner{
-    min-height:auto;
-    padding:45px 18px 25px;
-    display:flex;
-    flex-direction:column;
-    text-align:center;
-  }
-
-  .hero-copy{
-    width:100%;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-  }
-
-  .hero-label{
-    font-size:11px;
-  }
-
-  .hero h1{
-    margin:11px 0 0;
-    font-size:43px;
-    line-height:.98;
-    letter-spacing:-2px;
-  }
-
-  .hero-script{
-    margin:9px 0 15px;
-    font-size:30px;
-  }
-
-  .hero p{
-    max-width:360px;
-    font-size:13px;
-    line-height:1.6;
-  }
-
-  .hero-buttons{
-    width:100%;
-    margin-top:22px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:11px;
-  }
-
-  .primary-btn,
-  .secondary-btn{
-    width:245px;
-    min-height:48px;
-    padding:12px 17px;
-  }
-
-  .hero-watch{
-    width:100%;
-    height:245px;
-    margin-top:12px;
-  }
-
-  .watch-stage{
-    width:100%;
-    height:225px;
-    transform:scale(.82);
-  }
-
-  .watch-case{
-    width:235px;
-    height:235px;
-  }
-
-  .watch-strap{
-    width:90px;
-    height:275px;
-  }
-
-  .watch-shadow{
-    width:300px;
-    bottom:22px;
-  }
-
-  .watch-face:before{
-    top:58px;
-    font-size:12px;
-  }
-
-  .watch-face:after{
-    top:77px;
-    font-size:5px;
-  }
-
-  .benefits-wrap{
-    margin:-4px 14px 0;
-    padding:0;
-  }
-
-  .benefits{
-    grid-template-columns:1fr;
-    padding:8px;
-    border-radius:15px;
-  }
-
-  .benefit{
-    padding:13px 12px;
-    border-right:0;
-    border-bottom:1px solid #e8edf5;
-  }
-
-  .benefit:last-child{
-    border-bottom:0;
-  }
-
-  section{
-    padding:55px 18px;
-  }
-
-  .section-head{
-    display:block;
-  }
-
-  .section-head h2{
-    font-size:30px;
-  }
-
-  .view-all{
-    display:inline-block;
-    margin-top:12px;
-  }
-
-  .toolbar{
-    justify-content:stretch;
-  }
-
-  .toolbar input,
-  .toolbar select{
-    width:100%;
-  }
-
-  .grid{
-    grid-template-columns:1fr 1fr;
-    gap:12px;
-  }
-
-  .photo{
-    height:190px;
-  }
-
-  .info{
-    padding:11px;
-  }
-
-  .info h3{
-    font-size:12px;
-    line-height:1.35;
-  }
-
-  .price{
-    font-size:14px;
-  }
-
-  .rating{
-    font-size:10px;
-  }
-
-  .add-btn{
-    padding:9px 4px;
-    font-size:10px;
-  }
-
-  .stats{
-    grid-template-columns:1fr 1fr;
-    gap:15px;
-    padding:20px 10px;
-  }
-
-  .stat{
-    border-right:0;
-  }
-
-  .row{
-    grid-template-columns:1fr;
-  }
-
-  .panel{
-    padding:20px;
-  }
-
-  .order-tabs{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-  }
-
-  .order-tab{
-    width:100%;
-    min-height:44px;
-  }
-}
-
-/* ================= SMALL PHONE ================= */
-
-@media(max-width:480px){
-
-  .topbar{
-    font-size:9px;
-  }
-
-  .hero-inner{
-    padding-top:40px;
-  }
-
-  .hero h1{
-    font-size:39px;
-  }
-
-  .hero-script{
-    font-size:27px;
-  }
-
-  .hero-watch{
-    height:225px;
-  }
-
-  .watch-stage{
-    transform:scale(.72);
-  }
-
-  .photo{
-    height:175px;
-  }
-
-  .section-head h2{
-    font-size:29px;
-  }
-
-  .price{
-    font-size:13px;
-  }
-}
-
-/* ================= EXTRA SMALL ================= */
-
-@media(max-width:380px){
-
-  .brand-text strong{
-    font-size:19px;
-  }
-
-  .header-icons{
-    gap:8px;
-  }
-
-  .hero h1{
-    font-size:36px;
-  }
-
-  .hero-script{
-    font-size:25px;
-  }
-
-  .hero-watch{
-    height:205px;
-  }
-
-  .watch-stage{
-    transform:scale(.64);
-  }
-
-  .photo{
-    height:155px;
-  }
-}
-
-</style>
+}</style>
 </head>
 
 <body>
 
-<!-- ================= TOP BAR ================= -->
-
 <div class="topbar">
-
   <div class="top-left">
-
-    <div class="top-item">
-      🚚 Free Shipping on all orders
-    </div>
-
-    <div class="top-item">
-      🛡️ 1 Year Warranty
-    </div>
-
-    <div class="top-item">
-      🎧 24/7 Customer Support
-    </div>
-
+    <div class="top-item">🚚 Free Shipping on all orders</div>
+    <div class="top-item">🛡️ 1 Year Warranty</div>
+    <div class="top-item">🎧 24/7 Customer Support</div>
   </div>
 
-  <div class="top-item">
-    👤 Admin Login
-  </div>
-
+  <div class="top-item">👤 Admin</div>
 </div>
-
-
-<!-- ================= HEADER ================= -->
 
 <header>
 
   <a href="#" class="brand">
-
     <div class="brand-watch">
       <i></i>
     </div>
 
     <div class="brand-text">
-
       <strong>Timvella</strong>
-
-      <span>
-        TIME THAT DEFINES YOU
-      </span>
-
+      <span>TIME THAT DEFINES YOU</span>
     </div>
-
   </a>
 
-
   <nav>
-
-    <a href="#" class="active">
-      Home
-    </a>
-
-    <a href="#shop">
-      Shop
-    </a>
-
-    <a href="#shop">
-      Categories
-    </a>
-
-    <a href="#about">
-      About Us
-    </a>
-
-    <a href="#contact">
-      Contact
-    </a>
-
+    <a href="#" class="active">Home</a>
+    <a href="#shop">Shop</a>
+    <a href="#shop">Categories</a>
+    <a href="#about">About Us</a>
+    <a href="#contact">Contact</a>
   </nav>
-
 
   <div class="header-icons">
 
@@ -1400,9 +1064,10 @@ footer{
       ⌕
     </button>
 
+    <!-- ADMIN BUTTON -->
     <button
       class="icon-btn"
-      onclick="location.hash='admin'"
+      onclick="openAdmin()"
       title="Admin"
     >
       ♙
@@ -1413,16 +1078,8 @@ footer{
       onclick="location.hash='order'"
       title="Cart"
     >
-
       🛒
-
-      <span
-        class="cart-count"
-        id="count"
-      >
-        0
-      </span>
-
+      <span class="cart-count" id="count">0</span>
     </button>
 
   </div>
@@ -1475,8 +1132,6 @@ footer{
 
     </div>
 
-
-    <!-- PURE CSS TIMVELLA WATCH -->
 
     <div class="hero-watch">
 
@@ -1531,58 +1186,35 @@ footer{
   <div class="benefits">
 
     <div class="benefit">
-
-      <div class="b-icon">
-        🚚
-      </div>
-
+      <div class="b-icon">🚚</div>
       <div>
         <strong>Free Shipping</strong>
         <span>On all orders over $50</span>
       </div>
-
     </div>
 
-
     <div class="benefit">
-
-      <div class="b-icon">
-        🛡️
-      </div>
-
+      <div class="b-icon">🛡️</div>
       <div>
         <strong>1 Year Warranty</strong>
         <span>On all Timvella watches</span>
       </div>
-
     </div>
 
-
     <div class="benefit">
-
-      <div class="b-icon">
-        🔒
-      </div>
-
+      <div class="b-icon">🔒</div>
       <div>
         <strong>Secure Payment</strong>
         <span>100% secure checkout</span>
       </div>
-
     </div>
 
-
     <div class="benefit">
-
-      <div class="b-icon">
-        ↩
-      </div>
-
+      <div class="b-icon">↩</div>
       <div>
         <strong>Easy Returns</strong>
         <span>30 days return policy</span>
       </div>
-
     </div>
 
   </div>
@@ -1630,12 +1262,10 @@ footer{
       id="cat"
       onchange="render()"
     >
-
       <option>All</option>
       <option>Men</option>
       <option>Women</option>
       <option>Premium</option>
-
     </select>
 
   </div>
@@ -1678,6 +1308,8 @@ footer{
   </div>
 
 </section>
+
+
 <!-- ================= CHECKOUT ================= -->
 
 <section id="order">
@@ -1730,7 +1362,6 @@ footer{
       placeholder="Delivery address"
     ></textarea>
 
-
     <br><br>
 
 
@@ -1766,201 +1397,220 @@ footer{
 </section>
 
 
-<!-- ================= ADMIN ================= -->
+<!-- =====================================================
+     ADMIN MODAL
+     ADMIN আর নিচে section হিসেবে নেই
+===================================================== -->
 
-<section id="admin">
+<div
+  id="adminModal"
+  class="admin-modal"
+  onclick="closeAdminOutside(event)"
+>
 
-  <div class="section-head">
+  <div class="admin-window">
 
-    <div>
-
-      <div class="section-label">
-        MANAGEMENT
-      </div>
+    <div class="admin-head">
 
       <h2>
         Timvella Admin
       </h2>
 
+      <button
+        class="admin-close"
+        onclick="closeAdmin()"
+        title="Close"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <div class="admin-content">
+
+      <div
+        id="loginBox"
+        class="panel admin-box"
+      >
+
+        <div class="section-label">
+          MANAGEMENT LOGIN
+        </div>
+
+        <h3>
+          Admin Login
+        </h3>
+
+        <div class="row">
+
+          <input
+            id="au"
+            placeholder="Username"
+          >
+
+          <input
+            id="ap"
+            type="password"
+            placeholder="Password"
+          >
+
+        </div>
+
+
+        <button
+          class="primary-btn"
+          onclick="login()"
+        >
+          ADMIN LOGIN
+        </button>
+
+      </div>
+
+
+      <div
+        id="dash"
+        class="panel admin-box hidden"
+      >
+
+        <button
+          class="secondary-btn"
+          onclick="logout()"
+        >
+          Logout
+        </button>
+
+
+        <h3>
+          Add Timvella Watch
+        </h3>
+
+
+        <div class="row">
+
+          <input
+            id="pn"
+            placeholder="Timvella watch name"
+          >
+
+          <input
+            id="pp"
+            type="number"
+            placeholder="Price"
+          >
+
+          <input
+            id="po"
+            type="number"
+            placeholder="Old price"
+          >
+
+          <input
+            id="ps"
+            type="number"
+            placeholder="Stock"
+          >
+
+        </div>
+
+
+        <div class="row">
+
+          <select id="pc">
+
+            <option>Men</option>
+            <option>Women</option>
+            <option>Premium</option>
+
+          </select>
+
+
+          <input
+            id="pi"
+            placeholder="Timvella product image URL"
+          >
+
+        </div>
+
+
+        <button
+          class="primary-btn"
+          onclick="addProduct()"
+        >
+          + ADD TIMVELLA WATCH
+        </button>
+
+
+        <h3>
+          Timvella Products
+        </h3>
+
+        <div id="adminProducts"></div>
+
+
+        <h3>
+          Orders
+        </h3>
+
+
+        <div class="order-tabs">
+
+          <button
+            class="order-tab active"
+            onclick="filterOrders('all',this)"
+          >
+            📦 All Orders
+            <span id="countAll">0</span>
+          </button>
+
+
+          <button
+            class="order-tab"
+            onclick="filterOrders('new',this)"
+          >
+            🆕 New Orders
+            <span id="countNew">0</span>
+          </button>
+
+
+          <button
+            class="order-tab"
+            onclick="filterOrders('processing',this)"
+          >
+            ⚙️ Processing
+            <span id="countProcessing">0</span>
+          </button>
+
+
+          <button
+            class="order-tab"
+            onclick="filterOrders('delivered',this)"
+          >
+            ✅ Delivered
+            <span id="countDelivered">0</span>
+          </button>
+
+
+          <button
+            class="order-tab"
+            onclick="filterOrders('cancelled',this)"
+          >
+            ❌ Cancelled
+            <span id="countCancelled">0</span>
+          </button>
+
+        </div>
+
+
+        <div id="orders"></div>
+
+      </div>
+
     </div>
 
   </div>
 
-
-  <div class="panel admin-box">
-
-
-    <div id="loginBox">
-
-      <div class="row">
-
-        <input
-          id="au"
-          placeholder="Username"
-        >
-
-        <input
-          id="ap"
-          type="password"
-          placeholder="Password"
-        >
-
-      </div>
-
-
-      <button
-        class="primary-btn"
-        onclick="login()"
-      >
-        ADMIN LOGIN
-      </button>
-
-    </div>
-
-
-    <div
-      id="dash"
-      class="hidden"
-    >
-
-      <button
-        class="secondary-btn"
-        onclick="logout()"
-      >
-        Logout
-      </button>
-
-
-      <h3>
-        Add Timvella Watch
-      </h3>
-
-
-      <div class="row">
-
-        <input
-          id="pn"
-          placeholder="Timvella watch name"
-        >
-
-        <input
-          id="pp"
-          type="number"
-          placeholder="Price"
-        >
-
-        <input
-          id="po"
-          type="number"
-          placeholder="Old price"
-        >
-
-        <input
-          id="ps"
-          type="number"
-          placeholder="Stock"
-        >
-
-      </div>
-
-
-      <div class="row">
-
-        <select id="pc">
-
-          <option>Men</option>
-          <option>Women</option>
-          <option>Premium</option>
-
-        </select>
-
-
-        <input
-          id="pi"
-          placeholder="Timvella product image URL"
-        >
-
-      </div>
-
-
-      <button
-        class="primary-btn"
-        onclick="addProduct()"
-      >
-        + ADD TIMVELLA WATCH
-      </button>
-
-
-      <h3>
-        Timvella Products
-      </h3>
-
-      <div id="adminProducts"></div>
-
-
-      <h3>
-        Orders
-      </h3>
-
-
-      <!-- ================= ORDER FILTER TABS ================= -->
-
-      <div class="order-tabs">
-
-        <button
-          class="order-tab active"
-          onclick="filterOrders('all',this)"
-        >
-          📦 All Orders
-          <span id="countAll">0</span>
-        </button>
-
-
-        <button
-          class="order-tab"
-          onclick="filterOrders('new',this)"
-        >
-          🆕 New Orders
-          <span id="countNew">0</span>
-        </button>
-
-
-        <button
-          class="order-tab"
-          onclick="filterOrders('processing',this)"
-        >
-          ⚙️ Processing
-          <span id="countProcessing">0</span>
-        </button>
-
-
-        <button
-          class="order-tab"
-          onclick="filterOrders('delivered',this)"
-        >
-          ✅ Delivered
-          <span id="countDelivered">0</span>
-        </button>
-
-
-        <button
-          class="order-tab"
-          onclick="filterOrders('cancelled',this)"
-        >
-          ❌ Cancelled
-          <span id="countCancelled">0</span>
-        </button>
-
-      </div>
-
-
-      <div id="orders"></div>
-
-    </div>
-
-  </div>
-
-</section>
+</div>
 
 
 <!-- ================= CONTACT ================= -->
@@ -1996,22 +1646,13 @@ footer{
 </section>
 
 
-<!-- ================= FOOTER ================= -->
-
 <footer>
 
   © 2026
   <strong>TIMVELLA</strong>
   — Premium Watches
 
-</footer>
-
-
-<script>
-
-/* ======================================================
-   DATA
-====================================================== */
+</footer><script>
 
 let products=[];
 let cart=[];
@@ -2020,12 +1661,10 @@ let allOrders=[];
 let currentOrderFilter="all";
 
 
-/* ======================================================
-   FALLBACK TIMVELLA WATCH IMAGE
-====================================================== */
+/* ================= FALLBACK WATCH ================= */
 
 const fallbackImages=[
-  "data:image/svg+xml;charset=UTF-8," +
+  "data:image/svg+xml;charset=UTF-8,"+
   encodeURIComponent(`
   <svg xmlns="http://www.w3.org/2000/svg" width="600" height="600">
     <rect width="600" height="600" fill="#f7faff"/>
@@ -2034,9 +1673,7 @@ const fallbackImages=[
       fill="#0b2341"
       stroke="#dbe5f2"
       stroke-width="12"/>
-    <text
-      x="300"
-      y="280"
+    <text x="300" y="280"
       text-anchor="middle"
       fill="white"
       font-size="28"
@@ -2044,34 +1681,24 @@ const fallbackImages=[
       font-weight="bold">
       TIMVELLA
     </text>
-    <text
-      x="300"
-      y="310"
+    <text x="300" y="310"
       text-anchor="middle"
       fill="#bcd5f4"
       font-size="11"
       font-family="Arial">
       TIME THAT DEFINES YOU
     </text>
-    <line
-      x1="300"
-      y1="300"
-      x2="245"
-      y2="250"
+    <line x1="300" y1="300"
+      x2="245" y2="250"
       stroke="white"
       stroke-width="8"
       stroke-linecap="round"/>
-    <line
-      x1="300"
-      y1="300"
-      x2="350"
-      y2="335"
+    <line x1="300" y1="300"
+      x2="350" y2="335"
       stroke="#75a9f3"
       stroke-width="7"
       stroke-linecap="round"/>
-    <circle
-      cx="300"
-      cy="300"
+    <circle cx="300" cy="300"
       r="9"
       fill="white"/>
   </svg>
@@ -2079,9 +1706,7 @@ const fallbackImages=[
 ];
 
 
-/* ======================================================
-   TIMVELLA NAME
-====================================================== */
+/* ================= TIMVELLA NAME ================= */
 
 function timvellaName(name){
 
@@ -2097,14 +1722,57 @@ function timvellaName(name){
     return name;
   }
 
-  return "Timvella " + name;
+  return "Timvella "+name;
+}
+
+
+/* ================= ADMIN MODAL ================= */
+
+function openAdmin(){
+
+  const modal=
+    document.getElementById("adminModal");
+
+  if(!modal)return;
+
+  modal.classList.add("open");
+
+  document.body.style.overflow="hidden";
+
+  checkAdmin();
 
 }
 
 
-/* ======================================================
-   LOAD PRODUCTS
-====================================================== */
+function closeAdmin(){
+
+  const modal=
+    document.getElementById("adminModal");
+
+  if(!modal)return;
+
+  modal.classList.remove("open");
+
+  document.body.style.overflow="";
+
+}
+
+
+function closeAdminOutside(event){
+
+  if(
+    event.target===
+    document.getElementById("adminModal")
+  ){
+
+    closeAdmin();
+
+  }
+
+}
+
+
+/* ================= LOAD PRODUCTS ================= */
 
 async function loadProducts(){
 
@@ -2114,7 +1782,9 @@ async function loadProducts(){
       await fetch("/api/products");
 
     if(!res.ok){
-      throw new Error("Product loading failed");
+      throw new Error(
+        "Product loading failed"
+      );
     }
 
     products=
@@ -2126,24 +1796,29 @@ async function loadProducts(){
 
     console.error(err);
 
-    document.getElementById(
-      "products"
-    ).innerHTML=`
+    const box=
+      document.getElementById(
+        "products"
+      );
 
-      <div class="empty">
-        Unable to load Timvella watches.
-      </div>
+    if(box){
 
-    `;
+      box.innerHTML=`
+
+        <div class="empty">
+          Unable to load Timvella watches.
+        </div>
+
+      `;
+
+    }
 
   }
 
 }
 
 
-/* ======================================================
-   RENDER PRODUCTS
-====================================================== */
+/* ================= RENDER PRODUCTS ================= */
 
 function render(){
 
@@ -2175,17 +1850,14 @@ function render(){
       const displayName=
         timvellaName(p.name);
 
-
       const matchSearch=
         displayName
         .toLowerCase()
         .includes(search);
 
-
       const matchCat=
         cat==="All"||
         p.category===cat;
-
 
       return matchSearch&&matchCat;
 
@@ -2213,7 +1885,6 @@ function render(){
       const displayName=
         timvellaName(p.name);
 
-
       const image=
         p.image||
         fallbackImages[0];
@@ -2224,14 +1895,18 @@ function render(){
 
 
       if(index%4===1){
+
         badge="BEST SELLER";
         badgeClass="best";
+
       }
 
 
       if(index%4===2){
+
         badge="SALE";
         badgeClass="sale";
+
       }
 
 
@@ -2247,19 +1922,12 @@ function render(){
               ${badge}
             </div>
 
-
             <img
-
               src="${escapeHtml(image)}"
-
-              alt="${escapeHtml(
-                displayName
-              )}"
-
+              alt="${escapeHtml(displayName)}"
               onerror="
                 this.src=fallbackImages[0]
               "
-
             >
 
           </div>
@@ -2289,7 +1957,6 @@ function render(){
                   p.price
                 ).toLocaleString()}
               </span>
-
 
               ${
                 p.old_price
@@ -2337,9 +2004,7 @@ function render(){
 }
 
 
-/* ======================================================
-   CART
-====================================================== */
+/* ================= CART ================= */
 
 function addToCart(id){
 
@@ -2424,15 +2089,22 @@ function updateCart(){
     );
 
 
-  document.getElementById(
-    "count"
-  ).textContent=count;
+  const countBox=
+    document.getElementById(
+      "count"
+    );
+
+  if(countBox){
+    countBox.textContent=count;
+  }
 
 
   const box=
     document.getElementById(
       "cartList"
     );
+
+  if(!box)return;
 
 
   if(!cart.length){
@@ -2455,7 +2127,6 @@ function updateCart(){
       "total"
     ).textContent="0";
 
-
     return;
 
   }
@@ -2470,7 +2141,6 @@ function updateCart(){
       const line=
         item.price*
         item.qty;
-
 
       total+=line;
 
@@ -2564,9 +2234,7 @@ function updateCart(){
 }
 
 
-/* ======================================================
-   PLACE ORDER
-====================================================== */
+/* ================= PLACE ORDER ================= */
 
 async function placeOrder(){
 
@@ -2731,7 +2399,6 @@ function showMsg(text,type){
       "msg"
     );
 
-
   box.textContent=text;
 
   box.style.marginTop="15px";
@@ -2743,28 +2410,20 @@ function showMsg(text,type){
 
   if(type==="success"){
 
-    box.style.background=
-      "#eaf8f0";
-
-    box.style.color=
-      "#12824e";
+    box.style.background="#eaf8f0";
+    box.style.color="#12824e";
 
   }else{
 
-    box.style.background=
-      "#fff0f0";
-
-    box.style.color=
-      "#c52b2b";
+    box.style.background="#fff0f0";
+    box.style.color="#c52b2b";
 
   }
 
 }
 
 
-/* ======================================================
-   ADMIN LOGIN
-====================================================== */
+/* ================= ADMIN LOGIN ================= */
 
 async function login(){
 
@@ -2794,69 +2453,84 @@ async function login(){
   }
 
 
-  const res=
-    await fetch(
-      "/api/admin/login",
-      {
+  try{
 
-        method:"POST",
+    const res=
+      await fetch(
+        "/api/admin/login",
+        {
 
-        headers:{
-          "Content-Type":
-            "application/json"
-        },
+          method:"POST",
 
-        body:
-          JSON.stringify({
+          headers:{
+            "Content-Type":
+              "application/json"
+          },
 
-            username,
+          body:
+            JSON.stringify({
 
-            password
+              username,
 
-          })
+              password
 
-      }
+            })
+
+        }
+      );
+
+
+    if(!res.ok){
+
+      alert(
+        "Invalid admin login."
+      );
+
+      return;
+
+    }
+
+
+    document.getElementById(
+      "loginBox"
+    ).classList.add(
+      "hidden"
     );
 
 
-  if(!res.ok){
+    document.getElementById(
+      "dash"
+    ).classList.remove(
+      "hidden"
+    );
+
+
+    loadAdmin();
+
+
+  }catch(err){
 
     alert(
-      "Invalid admin login."
+      "Unable to connect to server."
     );
 
-    return;
-
   }
-
-
-  document.getElementById(
-    "loginBox"
-  ).classList.add(
-    "hidden"
-  );
-
-
-  document.getElementById(
-    "dash"
-  ).classList.remove(
-    "hidden"
-  );
-
-
-  loadAdmin();
 
 }
 
 
 async function logout(){
 
-  await fetch(
-    "/api/admin/logout",
-    {
-      method:"POST"
-    }
-  );
+  try{
+
+    await fetch(
+      "/api/admin/logout",
+      {
+        method:"POST"
+      }
+    );
+
+  }catch(err){}
 
 
   document.getElementById(
@@ -2883,6 +2557,9 @@ async function checkAdmin(){
       await fetch(
         "/api/admin/me"
       );
+
+
+    if(!res.ok)return;
 
 
     const data=
@@ -2912,11 +2589,9 @@ async function checkAdmin(){
   }catch(err){}
 
 }
-<script>
 
-/* ======================================================
-   ADD PRODUCT
-====================================================== */
+
+/* ================= ADD PRODUCT ================= */
 
 async function addProduct(){
 
@@ -2996,146 +2671,177 @@ async function addProduct(){
   }
 
 
-  const res=
-    await fetch(
-      "/api/products",
-      {
+  try{
 
-        method:"POST",
+    const res=
+      await fetch(
+        "/api/products",
+        {
 
-        headers:{
-          "Content-Type":
-            "application/json"
-        },
+          method:"POST",
 
-        body:
-          JSON.stringify(data)
+          headers:{
+            "Content-Type":
+              "application/json"
+          },
 
-      }
-    );
+          body:
+            JSON.stringify(data)
+
+        }
+      );
 
 
-  if(!res.ok){
+    if(!res.ok){
+
+      alert(
+        "Could not add Timvella product."
+      );
+
+      return;
+
+    }
+
+
+    document.getElementById(
+      "pn"
+    ).value="";
+
+
+    document.getElementById(
+      "pp"
+    ).value="";
+
+
+    document.getElementById(
+      "po"
+    ).value="";
+
+
+    document.getElementById(
+      "ps"
+    ).value="";
+
+
+    document.getElementById(
+      "pi"
+    ).value="";
+
+
+    await loadProducts();
+
+    loadAdmin();
+
+
+  }catch(err){
 
     alert(
-      "Could not add Timvella product."
+      "Unable to add product."
     );
 
-    return;
-
   }
-
-
-  document.getElementById(
-    "pn"
-  ).value="";
-
-
-  document.getElementById(
-    "pp"
-  ).value="";
-
-
-  document.getElementById(
-    "po"
-  ).value="";
-
-
-  document.getElementById(
-    "ps"
-  ).value="";
-
-
-  document.getElementById(
-    "pi"
-  ).value="";
-
-
-  await loadProducts();
-
-  loadAdmin();
 
 }
 
 
-/* ======================================================
-   ADMIN DATA
-====================================================== */
+/* ================= ADMIN DATA ================= */
 
 async function loadAdmin(){
 
-  loadAdminProducts();
+  await loadAdminProducts();
 
-  loadOrders();
+  await loadOrders();
 
 }
 
 
 async function loadAdminProducts(){
 
-  const res=
-    await fetch(
-      "/api/products"
-    );
-
-
-  const list=
-    await res.json();
-
-
   const box=
     document.getElementById(
       "adminProducts"
     );
 
+  if(!box)return;
 
-  box.innerHTML=
-    list.map(p=>`
 
-      <div class="admin-product">
+  try{
 
-        <div>
+    const res=
+      await fetch(
+        "/api/products"
+      );
 
-          <strong>
-            ${escapeHtml(
-              timvellaName(p.name)
-            )}
-          </strong>
 
-          <div
-            style="
-              font-size:12px;
-              color:#748095
-            "
-          >
+    if(!res.ok){
 
-            ৳${Number(
-              p.price
-            ).toLocaleString()}
+      box.innerHTML=
+        "<div class='empty'>Unable to load products.</div>";
 
-            • Stock:
-            ${p.stock}
+      return;
+
+    }
+
+
+    const list=
+      await res.json();
+
+
+    box.innerHTML=
+      list.map(p=>`
+
+        <div class="admin-product">
+
+          <div>
+
+            <strong>
+              ${escapeHtml(
+                timvellaName(p.name)
+              )}
+            </strong>
+
+            <div
+              style="
+                font-size:12px;
+                color:#748095
+              "
+            >
+
+              ৳${Number(
+                p.price
+              ).toLocaleString()}
+
+              • Stock:
+              ${p.stock}
+
+            </div>
 
           </div>
 
+
+          <button
+            class="danger"
+            onclick="deleteProduct(${p.id})"
+          >
+            Delete
+          </button>
+
         </div>
 
+      `).join("");
 
-        <button
-          class="danger"
-          onclick="deleteProduct(
-            ${p.id}
-          )"
-        >
-          Delete
-        </button>
 
-      </div>
+  }catch(err){
 
-    `).join("");
+    box.innerHTML=
+      "<div class='empty'>Unable to load products.</div>";
+
+  }
 
 }
 
+
+/* ================= DELETE PRODUCT ================= */
 
 async function deleteProduct(id){
 
@@ -3150,25 +2856,35 @@ async function deleteProduct(id){
   }
 
 
-  const res=
-    await fetch(
-      `/api/products/${id}`,
-      {
-        method:"DELETE"
-      }
-    );
+  try{
+
+    const res=
+      await fetch(
+        `/api/products/${id}`,
+        {
+          method:"DELETE"
+        }
+      );
 
 
-  if(res.ok){
+    if(res.ok){
 
-    await loadProducts();
+      await loadProducts();
 
-    loadAdmin();
+      await loadAdminProducts();
 
-  }else{
+    }else{
+
+      alert(
+        "Delete failed."
+      );
+
+    }
+
+  }catch(err){
 
     alert(
-      "Delete failed."
+      "Unable to delete product."
     );
 
   }
@@ -3176,9 +2892,7 @@ async function deleteProduct(id){
 }
 
 
-/* ======================================================
-   ORDERS
-====================================================== */
+/* ================= ORDERS ================= */
 
 async function loadOrders(){
 
@@ -3186,6 +2900,8 @@ async function loadOrders(){
     document.getElementById(
       "orders"
     );
+
+  if(!box)return;
 
 
   try{
@@ -3225,9 +2941,7 @@ async function loadOrders(){
 }
 
 
-/* ======================================================
-   ORDER COUNTS
-====================================================== */
+/* ================= ORDER COUNTS ================= */
 
 function updateOrderCounts(){
 
@@ -3244,7 +2958,7 @@ function updateOrderCounts(){
   const processing=
     allOrders.filter(
       o=>
-        o.status==="Confirmed" ||
+        o.status==="Confirmed"||
         o.status==="Shipped"
     ).length;
 
@@ -3261,36 +2975,41 @@ function updateOrderCounts(){
     ).length;
 
 
-  document.getElementById(
-    "countAll"
-  ).textContent=all;
+  const allBox=
+    document.getElementById("countAll");
+
+  const newBox=
+    document.getElementById("countNew");
+
+  const processingBox=
+    document.getElementById("countProcessing");
+
+  const deliveredBox=
+    document.getElementById("countDelivered");
+
+  const cancelledBox=
+    document.getElementById("countCancelled");
 
 
-  document.getElementById(
-    "countNew"
-  ).textContent=newOrders;
+  if(allBox)
+    allBox.textContent=all;
 
+  if(newBox)
+    newBox.textContent=newOrders;
 
-  document.getElementById(
-    "countProcessing"
-  ).textContent=processing;
+  if(processingBox)
+    processingBox.textContent=processing;
 
+  if(deliveredBox)
+    deliveredBox.textContent=delivered;
 
-  document.getElementById(
-    "countDelivered"
-  ).textContent=delivered;
-
-
-  document.getElementById(
-    "countCancelled"
-  ).textContent=cancelled;
+  if(cancelledBox)
+    cancelledBox.textContent=cancelled;
 
 }
 
 
-/* ======================================================
-   ORDER FILTER
-====================================================== */
+/* ================= ORDER FILTER ================= */
 
 function filterOrders(
   filter,
@@ -3313,9 +3032,13 @@ function filterOrders(
     );
 
 
-  button.classList.add(
-    "active"
-  );
+  if(button){
+
+    button.classList.add(
+      "active"
+    );
+
+  }
 
 
   renderOrders();
@@ -3323,9 +3046,7 @@ function filterOrders(
 }
 
 
-/* ======================================================
-   RENDER FILTERED ORDERS
-====================================================== */
+/* ================= RENDER ORDERS ================= */
 
 function renderOrders(){
 
@@ -3333,6 +3054,8 @@ function renderOrders(){
     document.getElementById(
       "orders"
     );
+
+  if(!box)return;
 
 
   let orders=
@@ -3359,7 +3082,7 @@ function renderOrders(){
     orders=
       orders.filter(
         o=>
-          o.status==="Confirmed" ||
+          o.status==="Confirmed"||
           o.status==="Shipped"
       );
 
@@ -3450,10 +3173,8 @@ function renderOrders(){
                 value="${s}"
                 ${
                   o.status===s
-                  ?
-                  "selected"
-                  :
-                  ""
+                  ?"selected"
+                  :""
                 }
               >
                 ${s}
@@ -3530,66 +3251,61 @@ function renderOrders(){
 }
 
 
-/* ======================================================
-   UPDATE ORDER STATUS
-====================================================== */
+/* ================= UPDATE ORDER STATUS ================= */
 
 async function updateOrderStatus(
   id,
   status
 ){
 
-  const res=
-    await fetch(
-      `/api/orders/${id}`,
-      {
+  try{
 
-        method:"PATCH",
+    const res=
+      await fetch(
+        `/api/orders/${id}`,
+        {
 
-        headers:{
-          "Content-Type":
-            "application/json"
-        },
+          method:"PATCH",
 
-        body:
-          JSON.stringify({
-            status
-          })
+          headers:{
+            "Content-Type":
+              "application/json"
+          },
 
-      }
-    );
+          body:
+            JSON.stringify({
+              status
+            })
+
+        }
+      );
 
 
-  if(!res.ok){
+    if(!res.ok){
+
+      alert(
+        "Could not update order."
+      );
+
+      return;
+
+    }
+
+
+    await loadOrders();
+
+  }catch(err){
 
     alert(
-      "Could not update order."
+      "Unable to update order."
     );
 
-    return;
-
   }
-
-
-  /*
-    Reload orders after status change.
-
-    Example:
-    Pending → Delivered
-
-    Order will automatically
-    move from New Orders
-    to Delivered.
-  */
-
-  await loadOrders();
 
 }
 
 
-/* ======================================================
-   SEARCH
-====================================================== */
+/* ================= SEARCH ================= */
 
 function focusSearch(){
 
@@ -3598,11 +3314,13 @@ function focusSearch(){
 
   setTimeout(
     ()=>{
+
       document
         .getElementById(
           "search"
         )
         ?.focus();
+
     },
     300
   );
@@ -3610,9 +3328,7 @@ function focusSearch(){
 }
 
 
-/* ======================================================
-   ESCAPE HTML
-====================================================== */
+/* ================= ESCAPE HTML ================= */
 
 function escapeHtml(value){
 
@@ -3643,15 +3359,29 @@ function escapeHtml(value){
 }
 
 
-/* ======================================================
-   START
-====================================================== */
+/* ================= ESC KEY ================= */
+
+document.addEventListener(
+  "keydown",
+  function(event){
+
+    if(
+      event.key==="Escape"
+    ){
+
+      closeAdmin();
+
+    }
+
+  }
+);
+
+
+/* ================= START ================= */
 
 loadProducts();
 
 updateCart();
-
-checkAdmin();
 
 </script>
 
