@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 <meta name="theme-color" content="#1558c7">
 <title>Timvella — Premium Watches</title>
 
@@ -15,7 +15,6 @@
   --text:#101b35;
   --muted:#68738a;
   --border:#e3e9f2;
-  --white:#fff;
   --green:#15965b;
   --red:#d52d2d;
   --shadow:0 12px 35px rgba(20,55,110,.10)
@@ -57,8 +56,8 @@ button{
 /* ================= TOP BAR ================= */
 
 .topbar{
-  height:34px;
   width:100%;
+  height:34px;
   padding:0 5%;
   background:linear-gradient(90deg,#10449f,#1d5dcc);
   color:#fff;
@@ -110,7 +109,7 @@ header{
   border-radius:50%;
   position:relative;
   background:#fff;
-  flex-shrink:0
+  flex:none
 }
 
 .brand-watch:before,
@@ -205,13 +204,13 @@ nav a.active:after{
   color:#17243c;
   font-size:23px;
   cursor:pointer;
-  padding:5px
+  padding:4px
 }
 
 .cart-count{
   position:absolute;
-  right:-7px;
-  top:-7px;
+  right:-8px;
+  top:-8px;
   min-width:19px;
   height:19px;
   padding:0 5px;
@@ -230,14 +229,9 @@ nav a.active:after{
 
 .hero{
   width:100%;
-  position:relative;
   overflow:hidden;
   background:
-    radial-gradient(
-      circle at 78% 50%,
-      rgba(62,128,232,.18),
-      transparent 31%
-    ),
+    radial-gradient(circle at 78% 50%,rgba(62,128,232,.18),transparent 31%),
     linear-gradient(120deg,#f7faff,#eaf3ff)
 }
 
@@ -248,14 +242,13 @@ nav a.active:after{
   margin:auto;
   padding:55px 7%;
   display:grid;
-  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  grid-template-columns:1fr 1fr;
   align-items:center
 }
 
 .hero-copy{
   position:relative;
-  z-index:2;
-  min-width:0
+  z-index:2
 }
 
 .hero-label,
@@ -334,12 +327,10 @@ nav a.active:after{
 /* ================= HERO WATCH ================= */
 
 .hero-watch{
-  width:100%;
   height:400px;
   display:flex;
   justify-content:center;
-  align-items:center;
-  overflow:visible
+  align-items:center
 }
 
 .watch-stage{
@@ -413,13 +404,7 @@ nav a.active:after{
   padding:12px;
   position:relative;
   z-index:2;
-  background:linear-gradient(
-    145deg,
-    #fff,
-    #a9b5c5,
-    #f7f9fc,
-    #8d9bad
-  );
+  background:linear-gradient(145deg,#fff,#a9b5c5,#f7f9fc,#8d9bad);
   box-shadow:
     0 24px 35px rgba(20,45,90,.25),
     inset 0 0 8px rgba(255,255,255,.9)
@@ -430,13 +415,7 @@ nav a.active:after{
   height:100%;
   border-radius:50%;
   position:relative;
-  background:
-    radial-gradient(
-      circle at 40% 35%,
-      #174d83,
-      #0b284b 55%,
-      #06182f
-    );
+  background:radial-gradient(circle at 40% 35%,#174d83,#0b284b 55%,#06182f);
   border:5px solid #dce4ee;
   box-shadow:inset 0 0 20px rgba(0,0,0,.55)
 }
@@ -539,19 +518,13 @@ nav a.active:after{
   height:42px;
   transform:translateY(-50%);
   border-radius:5px;
-  background:linear-gradient(
-    90deg,
-    #8d99a9,
-    #f8fbff,
-    #8c98a8
-  )
+  background:linear-gradient(90deg,#8d99a9,#f8fbff,#8c98a8)
 }
 
 
 /* ================= BENEFITS ================= */
 
 .benefits-wrap{
-  width:100%;
   max-width:1300px;
   margin:-30px auto 0;
   padding:0 25px;
@@ -565,7 +538,7 @@ nav a.active:after{
   background:#fff;
   box-shadow:0 12px 35px rgba(20,50,100,.12);
   display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr))
+  grid-template-columns:repeat(4,1fr)
 }
 
 .benefit{
@@ -606,10 +579,9 @@ nav a.active:after{
 }
 
 
-/* ================= GENERAL SECTIONS ================= */
+/* ================= SECTIONS ================= */
 
 section{
-  width:100%;
   max-width:1350px;
   margin:auto;
   padding:80px 5%
@@ -640,10 +612,9 @@ section{
 }
 
 
-/* ================= SEARCH ================= */
+/* ================= TOOLBAR ================= */
 
 .toolbar{
-  width:100%;
   display:flex;
   justify-content:center;
   flex-wrap:wrap;
@@ -665,8 +636,7 @@ section{
 }
 
 .toolbar input{
-  width:320px;
-  max-width:100%
+  width:320px
 }
 
 .toolbar input:focus,
@@ -681,16 +651,14 @@ section{
 /* ================= PRODUCTS ================= */
 
 .grid{
-  width:100%;
   display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
+  grid-template-columns:repeat(4,1fr);
   gap:20px
 }
 
 .card{
   position:relative;
   overflow:hidden;
-  min-width:0;
   border:1px solid #e7ebf2;
   border-radius:14px;
   background:#fff;
@@ -731,17 +699,9 @@ section{
   font-weight:800
 }
 
-.badge.new{
-  background:var(--green)
-}
-
-.badge.best{
-  background:var(--blue)
-}
-
-.badge.sale{
-  background:var(--red)
-}
+.badge.new{background:var(--green)}
+.badge.best{background:var(--blue)}
+.badge.sale{background:var(--red)}
 
 .info{
   padding:16px
@@ -792,8 +752,7 @@ section{
   border-radius:8px;
   background:#fff;
   color:var(--blue);
-  font-weight:800;
-  cursor:pointer
+  font-weight:800
 }
 
 .add-btn:hover{
@@ -809,7 +768,7 @@ section{
   border-radius:18px;
   background:#f3f7fd;
   display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr))
+  grid-template-columns:repeat(4,1fr)
 }
 
 .stat{
@@ -833,7 +792,7 @@ section{
 }
 
 
-/* ================= CHECKOUT ================= */
+/* ================= PANEL ================= */
 
 .panel{
   padding:28px;
@@ -845,7 +804,7 @@ section{
 
 .row{
   display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
+  grid-template-columns:repeat(2,1fr);
   gap:14px;
   margin-bottom:14px
 }
@@ -853,8 +812,7 @@ section{
 .panel input,
 .panel select,
 .panel textarea{
-  width:100%;
-  max-width:100%
+  width:100%
 }
 
 .order-item{
@@ -895,7 +853,6 @@ section{
   border-radius:9px;
   background:#fff;
   color:#26334b;
-  cursor:pointer;
   font-weight:800;
   font-size:12px
 }
@@ -952,8 +909,7 @@ section{
   border-radius:50%;
   background:#eef4ff;
   color:var(--blue);
-  font-size:25px;
-  cursor:pointer
+  font-size:25px
 }
 
 .admin-close:hover{
@@ -989,8 +945,7 @@ section{
   border:1px solid #e7aaaa;
   border-radius:7px;
   background:#fff1f1;
-  color:#c52a2a;
-  cursor:pointer
+  color:#c52a2a
 }
 
 .status{
@@ -999,11 +954,7 @@ section{
   border-radius:6px
 }
 
-
-/* ================= FOOTER ================= */
-
 footer{
-  width:100%;
   margin-top:30px;
   padding:35px 20px;
   background:#10244b;
@@ -1021,21 +972,17 @@ footer{
   }
 
   .grid{
-    grid-template-columns:repeat(2,minmax(0,1fr))
+    grid-template-columns:repeat(2,1fr)
   }
 
   .benefits{
-    grid-template-columns:repeat(2,minmax(0,1fr))
+    grid-template-columns:repeat(2,1fr)
   }
 
   .benefit:nth-child(2){
     border-right:0
   }
 
-  .benefit:nth-child(3),
-  .benefit:nth-child(4){
-    border-top:1px solid #e8edf5
-  }
 }
 
 
@@ -1051,41 +998,36 @@ footer{
   }
 
   .topbar{
-    width:100%;
-    height:34px;
-    padding:0 12px;
-    font-size:10px;
+    height:32px;
+    padding:0 10px;
     justify-content:center;
-    white-space:nowrap;
-    overflow:hidden
+    font-size:10px;
+    overflow:hidden;
+    white-space:nowrap
   }
 
   .top-left{
-    gap:9px
+    gap:12px
   }
 
-  .top-left .top-item:nth-child(2),
-  .top-left .top-item:nth-child(3){
+  .top-left .top-item:nth-child(2){
     display:none
   }
 
   .topbar>.top-item{
-    display:none
+    display:flex
   }
 
 
-  /* MOBILE HEADER */
+  /* HEADER */
 
   header{
-    width:100%;
-    height:70px;
-    padding:0 13px;
-    gap:8px
+    height:68px;
+    padding:0 14px
   }
 
   .brand{
     min-width:0;
-    flex:1;
     gap:8px
   }
 
@@ -1093,6 +1035,11 @@ footer{
     width:40px;
     height:40px;
     border-width:3px
+  }
+
+  .brand-watch:before,
+  .brand-watch:after{
+    height:2.5px
   }
 
   .brand-text strong{
@@ -1109,37 +1056,24 @@ footer{
   }
 
   .header-icons{
-    min-width:0;
-    gap:7px;
-    flex-shrink:0
+    min-width:auto;
+    gap:8px
   }
 
   .icon-btn{
-    font-size:19px;
-    padding:4px
-  }
-
-  .cart-count{
-    right:-5px;
-    top:-5px;
-    min-width:17px;
-    height:17px;
-    font-size:9px
+    font-size:19px
   }
 
 
-  /* MOBILE HERO */
+  /* HERO */
 
   .hero{
-    width:100%;
     overflow:hidden
   }
 
   .hero-inner{
-    width:100%;
-    max-width:100%;
     min-height:0;
-    padding:42px 16px 25px;
+    padding:32px 18px 8px;
     display:flex;
     flex-direction:column;
     align-items:center;
@@ -1148,7 +1082,6 @@ footer{
 
   .hero-copy{
     width:100%;
-    max-width:500px;
     display:flex;
     flex-direction:column;
     align-items:center
@@ -1159,61 +1092,62 @@ footer{
   }
 
   .hero h1{
-    margin-top:10px;
-    font-size:40px;
-    line-height:1.04;
+    margin:9px 0 0;
+    font-size:38px;
+    line-height:1.05;
     letter-spacing:-1.5px
   }
 
   .hero-script{
-    margin:6px 0 16px;
-    font-size:28px
+    margin:5px 0 12px;
+    font-size:27px;
+    line-height:1.05
   }
 
   .hero p{
-    width:100%;
     max-width:350px;
     font-size:13px;
-    line-height:1.6
+    line-height:1.55
   }
 
   .hero-buttons{
     width:100%;
-    margin-top:22px;
+    margin-top:19px;
+    display:flex;
     flex-direction:column;
     align-items:center;
-    gap:10px
+    gap:9px
   }
 
   .primary-btn,
   .secondary-btn{
-    width:min(250px,100%);
-    min-height:46px;
-    padding:12px 18px;
+    width:240px;
+    min-height:44px;
+    padding:10px 15px;
     font-size:12px
   }
 
 
-  /* MOBILE WATCH */
+  /* WATCH */
 
   .hero-watch{
     width:100%;
-    height:245px;
-    margin-top:8px;
+    height:265px;
+    margin-top:0;
     overflow:hidden
   }
 
   .watch-stage{
-    width:100%;
-    max-width:350px;
-    height:225px;
+    width:340px;
+    height:250px;
+    flex:none;
     transform:scale(.72) rotate(-5deg);
-    transform-origin:center
+    transform-origin:center center
   }
 
   .watch-case{
-    width:250px;
-    height:250px
+    width:255px;
+    height:255px
   }
 
   .watch-strap{
@@ -1223,7 +1157,7 @@ footer{
 
   .watch-shadow{
     width:300px;
-    bottom:28px
+    bottom:25px
   }
 
 
@@ -1231,24 +1165,20 @@ footer{
 
   .benefits-wrap{
     width:auto;
-    max-width:none;
-    margin:0 12px;
+    margin:-5px 12px 0;
     padding:0
   }
 
   .benefits{
-    width:100%;
     grid-template-columns:1fr;
-    padding:7px;
+    padding:6px;
     border-radius:15px
   }
 
   .benefit{
-    width:100%;
-    padding:13px 10px;
+    padding:13px 11px;
     border-right:0;
-    border-bottom:1px solid #e8edf5;
-    border-top:0!important
+    border-bottom:1px solid #e8edf5
   }
 
   .benefit:last-child{
@@ -1260,8 +1190,7 @@ footer{
 
   section{
     width:100%;
-    max-width:100%;
-    padding:52px 15px
+    padding:55px 16px
   }
 
   .section-head{
@@ -1270,7 +1199,7 @@ footer{
   }
 
   .section-head h2{
-    font-size:28px;
+    font-size:29px;
     line-height:1.15
   }
 
@@ -1284,33 +1213,24 @@ footer{
 
   .toolbar{
     width:100%;
-    display:flex;
     flex-direction:column;
-    gap:10px
+    gap:9px
   }
 
   .toolbar input,
   .toolbar select{
-    width:100%;
-    min-width:0
+    width:100%
   }
 
 
-  /* PRODUCT GRID */
+  /* PRODUCTS */
 
   .grid{
-    width:100%;
     grid-template-columns:repeat(2,minmax(0,1fr));
     gap:12px
   }
 
-  .card{
-    width:100%;
-    min-width:0
-  }
-
   .photo{
-    width:100%;
     height:175px
   }
 
@@ -1335,7 +1255,6 @@ footer{
   }
 
   .info h3{
-    margin:5px 0 8px;
     font-size:12px;
     line-height:1.3
   }
@@ -1353,7 +1272,6 @@ footer{
   }
 
   .add-btn{
-    margin-top:9px;
     padding:9px 3px;
     font-size:9px
   }
@@ -1362,14 +1280,12 @@ footer{
   /* STATS */
 
   .stats{
-    width:100%;
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:0;
-    padding:18px 8px
+    grid-template-columns:repeat(2,1fr);
+    padding:15px 5px
   }
 
   .stat{
-    padding:12px 5px;
+    padding:12px 4px;
     border-right:0
   }
 
@@ -1385,9 +1301,7 @@ footer{
   /* CHECKOUT */
 
   .panel{
-    width:100%;
-    padding:18px 14px;
-    overflow:hidden
+    padding:18px 14px
   }
 
   .row{
@@ -1395,35 +1309,19 @@ footer{
     gap:10px
   }
 
-  .panel input,
-  .panel select,
-  .panel textarea{
-    width:100%;
-    max-width:100%
-  }
-
   .order-item{
-    gap:10px;
     flex-wrap:wrap
   }
 
-  .total{
-    font-size:17px
-  }
-
-
-  /* ORDER TABS */
-
   .order-tabs{
     display:grid;
-    grid-template-columns:repeat(2,minmax(0,1fr));
+    grid-template-columns:1fr 1fr;
     gap:8px
   }
 
   .order-tab{
-    width:100%;
-    min-height:44px;
-    padding:9px 5px;
+    min-height:43px;
+    padding:8px 5px;
     font-size:10px
   }
 
@@ -1437,7 +1335,6 @@ footer{
 
   .admin-modal-box{
     width:100%;
-    max-width:100%;
     max-height:94vh;
     padding:20px 14px;
     border-radius:20px 20px 0 0
@@ -1448,56 +1345,53 @@ footer{
   }
 
   .admin-product{
-    gap:10px;
     flex-wrap:wrap
   }
 
-
-  /* FOOTER */
-
-  footer{
-    width:100%;
-    padding:30px 15px;
-    font-size:12px
-  }
 }
 
 
-/* ================= SMALL PHONES ================= */
+/* ================= SMALL MOBILE ================= */
 
 @media(max-width:480px){
 
+  .hero-inner{
+    padding-top:29px
+  }
+
   .hero h1{
-    font-size:36px
+    font-size:35px
   }
 
   .hero-script{
     font-size:25px
   }
 
+  .hero p{
+    font-size:12.5px;
+    max-width:330px
+  }
+
   .hero-watch{
-    height:225px
+    height:250px
   }
 
   .watch-stage{
-    transform:scale(.65) rotate(-5deg)
-  }
-
-  .grid{
-    gap:10px
+    transform:scale(.66) rotate(-5deg)
   }
 
   .photo{
-    height:160px
+    height:165px
   }
 
   .section-head h2{
-    font-size:26px
+    font-size:27px
   }
+
 }
 
 
-/* ================= VERY SMALL PHONES ================= */
+/* ================= VERY SMALL ================= */
 
 @media(max-width:380px){
 
@@ -1513,49 +1407,39 @@ footer{
     gap:5px
   }
 
-  .icon-btn{
-    font-size:18px
-  }
-
   .hero h1{
-    font-size:33px
+    font-size:32px
   }
 
   .hero-script{
     font-size:23px
   }
 
-  .watch-stage{
-    transform:scale(.58) rotate(-5deg)
+  .primary-btn,
+  .secondary-btn{
+    width:225px
   }
 
-  .grid{
-    gap:8px
+  .hero-watch{
+    height:235px
+  }
+
+  .watch-stage{
+    transform:scale(.60) rotate(-5deg)
   }
 
   .photo{
-    height:145px
+    height:150px
   }
 
-  .info{
-    padding:8px
-  }
-
-  .info h3{
-    font-size:11px
-  }
-
-  .add-btn{
-    font-size:8px
-  }
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- ================= TOP BAR ================= -->
-
+<!-- TOP BAR -->
 <div class="topbar">
 
   <div class="top-left">
@@ -1581,8 +1465,7 @@ footer{
 </div>
 
 
-<!-- ================= HEADER ================= -->
-
+<!-- HEADER -->
 <header>
 
   <a href="#" class="brand">
@@ -1601,25 +1484,11 @@ footer{
 
   <nav>
 
-    <a href="#" class="active">
-      Home
-    </a>
-
-    <a href="#shop">
-      Shop
-    </a>
-
-    <a href="#shop">
-      Categories
-    </a>
-
-    <a href="#about">
-      About Us
-    </a>
-
-    <a href="#contact">
-      Contact
-    </a>
+    <a href="#" class="active">Home</a>
+    <a href="#shop">Shop</a>
+    <a href="#shop">Categories</a>
+    <a href="#about">About Us</a>
+    <a href="#contact">Contact</a>
 
   </nav>
 
@@ -1660,8 +1529,7 @@ footer{
 </header>
 
 
-<!-- ================= HERO ================= -->
-
+<!-- HERO -->
 <div class="hero">
 
   <div class="hero-inner">
@@ -1681,8 +1549,8 @@ footer{
       </div>
 
       <p>
-        Discover our premium collection of Timvella watches crafted for
-        style, precision and durability.
+        Discover our premium collection of Timvella watches crafted
+        for style, precision and durability.
       </p>
 
       <div class="hero-buttons">
@@ -1703,8 +1571,6 @@ footer{
 
     </div>
 
-
-    <!-- WATCH -->
 
     <div class="hero-watch">
 
@@ -1752,26 +1618,18 @@ footer{
 </div>
 
 
-<!-- ================= BENEFITS ================= -->
-
+<!-- BENEFITS -->
 <div class="benefits-wrap">
 
   <div class="benefits">
 
     <div class="benefit">
 
-      <div class="b-icon">
-        🚚
-      </div>
+      <div class="b-icon">🚚</div>
 
       <div>
-        <strong>
-          Free Shipping
-        </strong>
-
-        <span>
-          On all orders over $50
-        </span>
+        <strong>Free Shipping</strong>
+        <span>On all orders over $50</span>
       </div>
 
     </div>
@@ -1779,18 +1637,11 @@ footer{
 
     <div class="benefit">
 
-      <div class="b-icon">
-        🛡️
-      </div>
+      <div class="b-icon">🛡️</div>
 
       <div>
-        <strong>
-          1 Year Warranty
-        </strong>
-
-        <span>
-          On all Timvella watches
-        </span>
+        <strong>1 Year Warranty</strong>
+        <span>On all Timvella watches</span>
       </div>
 
     </div>
@@ -1798,18 +1649,11 @@ footer{
 
     <div class="benefit">
 
-      <div class="b-icon">
-        🔒
-      </div>
+      <div class="b-icon">🔒</div>
 
       <div>
-        <strong>
-          Secure Payment
-        </strong>
-
-        <span>
-          100% secure checkout
-        </span>
+        <strong>Secure Payment</strong>
+        <span>100% secure checkout</span>
       </div>
 
     </div>
@@ -1817,18 +1661,11 @@ footer{
 
     <div class="benefit">
 
-      <div class="b-icon">
-        ↩
-      </div>
+      <div class="b-icon">↩</div>
 
       <div>
-        <strong>
-          Easy Returns
-        </strong>
-
-        <span>
-          30 days return policy
-        </span>
+        <strong>Easy Returns</strong>
+        <span>30 days return policy</span>
       </div>
 
     </div>
@@ -1838,8 +1675,7 @@ footer{
 </div>
 
 
-<!-- ================= SHOP ================= -->
-
+<!-- SHOP -->
 <section id="shop">
 
   <div class="section-head">
@@ -1876,21 +1712,10 @@ footer{
       id="cat"
       onchange="render()">
 
-      <option>
-        All
-      </option>
-
-      <option>
-        Men
-      </option>
-
-      <option>
-        Women
-      </option>
-
-      <option>
-        Premium
-      </option>
+      <option>All</option>
+      <option>Men</option>
+      <option>Women</option>
+      <option>Premium</option>
 
     </select>
 
@@ -1905,8 +1730,7 @@ footer{
 </section>
 
 
-<!-- ================= ABOUT / STATS ================= -->
-
+<!-- ABOUT -->
 <section id="about">
 
   <div class="stats">
@@ -1936,8 +1760,7 @@ footer{
 </section>
 
 
-<!-- ================= CHECKOUT ================= -->
-
+<!-- ORDER -->
 <section id="order">
 
   <div class="section-head">
@@ -1965,6 +1788,7 @@ footer{
       Total: ৳<span id="total">0</span>
     </div>
 
+
     <div class="row">
 
       <input
@@ -1977,12 +1801,14 @@ footer{
 
     </div>
 
+
     <textarea
       id="address"
       rows="4"
       placeholder="Delivery address"></textarea>
 
     <br><br>
+
 
     <div class="row">
 
@@ -1998,6 +1824,7 @@ footer{
 
       </select>
 
+
       <button
         class="primary-btn"
         onclick="placeOrder()">
@@ -2008,6 +1835,7 @@ footer{
 
     </div>
 
+
     <div id="msg"></div>
 
   </div>
@@ -2015,8 +1843,7 @@ footer{
 </section>
 
 
-<!-- ================= ADMIN ================= -->
-
+<!-- ADMIN MODAL -->
 <div
   id="adminModal"
   class="admin-modal"
@@ -2030,9 +1857,7 @@ footer{
       class="admin-close"
       onclick="closeAdmin()"
       aria-label="Close">
-
       ×
-
     </button>
 
 
@@ -2064,6 +1889,7 @@ footer{
 
       </div>
 
+
       <button
         class="primary-btn"
         onclick="login()">
@@ -2075,16 +1901,12 @@ footer{
     </div>
 
 
-    <div
-      id="dash"
-      class="hidden">
+    <div id="dash" class="hidden">
 
       <button
         class="secondary-btn"
         onclick="logout()">
-
         Logout
-
       </button>
 
 
@@ -2126,19 +1948,12 @@ footer{
 
         <select id="pc">
 
-          <option>
-            Men
-          </option>
-
-          <option>
-            Women
-          </option>
-
-          <option>
-            Premium
-          </option>
+          <option>Men</option>
+          <option>Women</option>
+          <option>Premium</option>
 
         </select>
+
 
         <input
           id="pi"
@@ -2179,6 +1994,7 @@ footer{
 
         </button>
 
+
         <button
           class="order-tab"
           onclick="filterOrders('new',this)">
@@ -2187,6 +2003,7 @@ footer{
           <span id="countNew">0</span>
 
         </button>
+
 
         <button
           class="order-tab"
@@ -2197,6 +2014,7 @@ footer{
 
         </button>
 
+
         <button
           class="order-tab"
           onclick="filterOrders('delivered',this)">
@@ -2205,6 +2023,7 @@ footer{
           <span id="countDelivered">0</span>
 
         </button>
+
 
         <button
           class="order-tab"
@@ -2227,8 +2046,7 @@ footer{
 </div>
 
 
-<!-- ================= CONTACT ================= -->
-
+<!-- CONTACT -->
 <section id="contact">
 
   <div
@@ -2262,28 +2080,24 @@ footer{
 <footer>
   © 2026 <strong>TIMVELLA</strong> — Premium Watches
 </footer>
+
+
 <script>
-/* ===============================
-   TIMVELLA APPLICATION
-   =============================== */
 
-let products = [];
-let cart = [];
-let allOrders = [];
-let currentOrderFilter = "all";
+let products=[];
+let cart=[];
+let allOrders=[];
+let currentOrderFilter="all";
 
 
-/* ===============================
-   FALLBACK WATCH IMAGE
-   =============================== */
+/* ================= FALLBACK IMAGE ================= */
 
-const fallbackImages = [
-  "data:image/svg+xml;charset=UTF-8," +
+const fallbackImages=[
+  "data:image/svg+xml;charset=UTF-8,"+
   encodeURIComponent(`
     <svg xmlns="http://www.w3.org/2000/svg"
          width="600"
-         height="600"
-         viewBox="0 0 600 600">
+         height="600">
 
       <rect width="600" height="600" fill="#f7faff"/>
 
@@ -2351,15 +2165,13 @@ const fallbackImages = [
 ];
 
 
-/* ===============================
-   PRODUCT NAME
-   =============================== */
+/* ================= NAME ================= */
 
-function timvellaName(name) {
+function timvellaName(name){
 
-  name = String(name || "").trim();
+  name=String(name||"").trim();
 
-  if (!name) {
+  if(!name){
     return "Timvella Premium Watch";
   }
 
@@ -2367,54 +2179,49 @@ function timvellaName(name) {
     .toLowerCase()
     .startsWith("timvella")
     ? name
-    : "Timvella " + name;
+    : "Timvella "+name;
 }
 
 
-/* ===============================
-   SAFE HTML
-   =============================== */
+/* ================= ESCAPE ================= */
 
-function escapeHtml(value) {
+function escapeHtml(value){
 
-  return String(value ?? "")
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
+  return String(value??"")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
 }
 
 
-/* ===============================
-   LOAD PRODUCTS
-   =============================== */
+/* ================= LOAD PRODUCTS ================= */
 
-async function loadProducts() {
+async function loadProducts(){
 
-  try {
+  try{
 
-    const response = await fetch("/api/products");
+    const response=
+      await fetch("/api/products");
 
-    if (!response.ok) {
-      throw new Error("Unable to load products");
+    if(!response.ok){
+      throw new Error();
     }
 
-    products = await response.json();
+    products=await response.json();
 
     render();
 
-  } catch (error) {
+  }catch(error){
 
-    const box = document.getElementById("products");
+    const box=
+      document.getElementById("products");
 
-    if (box) {
+    if(box){
 
-      box.innerHTML = `
-        <div class="empty">
-          Unable to load Timvella watches.
-        </div>
-      `;
+      box.innerHTML=
+        "<div class='empty'>Unable to load Timvella watches.</div>";
 
     }
 
@@ -2423,197 +2230,186 @@ async function loadProducts() {
 }
 
 
-/* ===============================
-   RENDER PRODUCTS
-   =============================== */
+/* ================= RENDER ================= */
 
-function render() {
+function render(){
 
-  const box = document.getElementById("products");
+  const box=
+    document.getElementById("products");
 
-  if (!box) return;
+  if(!box)return;
 
-  const search =
+
+  const search=
     (
-      document.getElementById("search")?.value || ""
-    ).toLowerCase().trim();
-
-  const category =
-    document.getElementById("cat")?.value || "All";
-
-
-  const list = products.filter(product => {
-
-    const name =
-      timvellaName(product.name).toLowerCase();
-
-    const matchesSearch =
-      name.includes(search);
-
-    const matchesCategory =
-      category === "All" ||
-      product.category === category;
-
-    return matchesSearch && matchesCategory;
-
-  });
+      document.getElementById("search")?.value||""
+    )
+    .toLowerCase()
+    .trim();
 
 
-  if (!list.length) {
+  const cat=
+    document.getElementById("cat")?.value||"All";
 
-    box.innerHTML = `
-      <div class="empty">
-        No Timvella watches found.
-      </div>
-    `;
+
+  const list=
+    products.filter(product=>{
+
+      const name=
+        timvellaName(product.name)
+        .toLowerCase();
+
+      return(
+        name.includes(search)&&
+        (cat==="All"||product.category===cat)
+      );
+
+    });
+
+
+  if(!list.length){
+
+    box.innerHTML=
+      "<div class='empty'>No Timvella watches found.</div>";
 
     return;
+
   }
 
 
-  box.innerHTML = list.map((product, index) => {
+  box.innerHTML=
+    list.map((product,index)=>{
 
-    const name =
-      timvellaName(product.name);
+      const name=
+        timvellaName(product.name);
 
-    const image =
-      product.image || fallbackImages[0];
-
-
-    let badge = "NEW";
-    let badgeClass = "new";
-
-    if (index % 4 === 1) {
-
-      badge = "BEST SELLER";
-      badgeClass = "best";
-
-    } else if (index % 4 === 2) {
-
-      badge = "SALE";
-      badgeClass = "sale";
-
-    }
+      const image=
+        product.image||fallbackImages[0];
 
 
-    const price =
-      Number(product.price || 0).toLocaleString();
-
-    const oldPrice =
-      product.old_price
-        ? Number(product.old_price).toLocaleString()
-        : "";
+      let badge="NEW";
+      let badgeClass="new";
 
 
-    return `
-      <article class="card">
+      if(index%4===1){
 
-        <div class="photo">
+        badge="BEST SELLER";
+        badgeClass="best";
 
-          <div class="badge ${badgeClass}">
-            ${badge}
+      }else if(index%4===2){
+
+        badge="SALE";
+        badgeClass="sale";
+
+      }
+
+
+      return`
+
+        <article class="card">
+
+          <div class="photo">
+
+            <div class="badge ${badgeClass}">
+              ${badge}
+            </div>
+
+            <img
+              src="${escapeHtml(image)}"
+              alt="${escapeHtml(name)}"
+              loading="lazy"
+              onerror="this.onerror=null;this.src=fallbackImages[0]"
+            >
+
           </div>
 
-          <img
-            src="${escapeHtml(image)}"
-            alt="${escapeHtml(name)}"
-            loading="lazy"
-            onerror="this.onerror=null;this.src=fallbackImages[0]"
-          >
 
-        </div>
+          <div class="info">
 
+            <small>
+              ${escapeHtml(product.category||"Premium")}
+            </small>
 
-        <div class="info">
-
-          <small>
-            ${escapeHtml(product.category || "Premium")}
-          </small>
-
-          <h3>
-            ${escapeHtml(name)}
-          </h3>
+            <h3>
+              ${escapeHtml(name)}
+            </h3>
 
 
-          <div>
+            <div>
 
-            <span class="price">
-              ৳${price}
-            </span>
+              <span class="price">
+                ৳${Number(product.price||0).toLocaleString()}
+              </span>
 
-            ${
-              oldPrice
-                ? `
+              ${
+                product.old_price
+                ?`
                   <span class="old">
-                    ৳${oldPrice}
+                    ৳${Number(product.old_price).toLocaleString()}
                   </span>
                 `
-                : ""
-            }
+                :""
+              }
+
+            </div>
+
+
+            <div class="rating">
+              ★★★★★
+              <span>
+                (${60+index*17})
+              </span>
+            </div>
+
+
+            <button
+              class="add-btn"
+              onclick="addToCart(${product.id})">
+
+              🛒 ADD TO CART
+
+            </button>
 
           </div>
 
+        </article>
 
-          <div class="rating">
+      `;
 
-            ★★★★★
-
-            <span>
-              (${60 + index * 17})
-            </span>
-
-          </div>
-
-
-          <button
-            class="add-btn"
-            onclick="addToCart(${product.id})">
-
-            🛒 ADD TO CART
-
-          </button>
-
-        </div>
-
-      </article>
-    `;
-
-  }).join("");
+    }).join("");
 
 }
 
 
-/* ===============================
-   ADD TO CART
-   =============================== */
+/* ================= ADD CART ================= */
 
-function addToCart(id) {
+function addToCart(id){
 
-  const product =
-    products.find(item => item.id == id);
+  const product=
+    products.find(item=>item.id==id);
 
-  if (!product) return;
+  if(!product)return;
 
 
-  const existing =
-    cart.find(item => item.id == id);
+  const existing=
+    cart.find(item=>item.id==id);
 
 
-  if (existing) {
+  if(existing){
 
     existing.qty++;
 
-  } else {
+  }else{
 
     cart.push({
 
-      id: product.id,
+      id:product.id,
 
-      name: timvellaName(product.name),
+      name:timvellaName(product.name),
 
-      price: Number(product.price || 0),
+      price:Number(product.price||0),
 
-      qty: 1
+      qty:1
 
     });
 
@@ -2622,30 +2418,28 @@ function addToCart(id) {
 
   updateCart();
 
-  location.hash = "order";
+  location.hash="order";
 
 }
 
 
-/* ===============================
-   CHANGE QUANTITY
-   =============================== */
+/* ================= QUANTITY ================= */
 
-function changeQty(id, amount) {
+function changeQty(id,amount){
 
-  const item =
-    cart.find(product => product.id == id);
+  const item=
+    cart.find(product=>product.id==id);
 
-  if (!item) return;
+  if(!item)return;
 
 
-  item.qty += amount;
+  item.qty+=amount;
 
 
-  if (item.qty <= 0) {
+  if(item.qty<=0){
 
-    cart =
-      cart.filter(product => product.id != id);
+    cart=
+      cart.filter(product=>product.id!=id);
 
   }
 
@@ -2655,161 +2449,136 @@ function changeQty(id, amount) {
 }
 
 
-/* ===============================
-   UPDATE CART
-   =============================== */
+/* ================= CART ================= */
 
-function updateCart() {
+function updateCart(){
 
-  const count =
+  const count=
     cart.reduce(
-      (sum, item) => sum + item.qty,
+      (sum,item)=>sum+item.qty,
       0
     );
 
 
-  const countBox =
+  const countBox=
     document.getElementById("count");
 
-  if (countBox) {
-
-    countBox.textContent = count;
-
+  if(countBox){
+    countBox.textContent=count;
   }
 
 
-  const box =
+  const box=
     document.getElementById("cartList");
 
-  if (!box) return;
+  if(!box)return;
 
 
-  if (!cart.length) {
+  if(!cart.length){
 
-    box.innerHTML = `
-      <div class="empty">
+    box.innerHTML=
+      `
+        <div class="empty">
+          Your Timvella cart is empty.
+          <br>
+          Add a Timvella watch from the collection.
+        </div>
+      `;
 
-        Your Timvella cart is empty.
-
-        <br>
-
-        Add a Timvella watch
-        from the collection.
-
-      </div>
-    `;
-
-
-    const totalBox =
+    const totalBox=
       document.getElementById("total");
 
-    if (totalBox) {
-      totalBox.textContent = "0";
+    if(totalBox){
+      totalBox.textContent="0";
     }
 
     return;
+
   }
 
 
-  let total = 0;
+  let total=0;
 
 
-  box.innerHTML = cart.map(item => {
+  box.innerHTML=
+    cart.map(item=>{
 
-    total +=
-      Number(item.price) * item.qty;
+      total+=
+        Number(item.price)*item.qty;
 
 
-    return `
-      <div class="order-item">
+      return`
 
-        <div>
+        <div class="order-item">
 
-          <strong>
-            ${escapeHtml(item.name)}
-          </strong>
+          <div>
 
-          <div
-            style="
-              color:#718097;
-              font-size:12px;
-              margin-top:3px;
-            ">
+            <strong>
+              ${escapeHtml(item.name)}
+            </strong>
 
-            ৳${Number(item.price).toLocaleString()}
-            × ${item.qty}
+            <div
+              style="color:#718097;font-size:12px">
+
+              ৳${Number(item.price).toLocaleString()}
+              × ${item.qty}
+
+            </div>
+
+          </div>
+
+
+          <div>
+
+            <button
+              onclick="changeQty(${item.id},-1)"
+              style="
+                border:0;
+                background:#eef4ff;
+                color:#1558c7;
+                border-radius:6px;
+                cursor:pointer;
+                width:30px;
+                height:30px;
+              ">
+              −
+            </button>
+
+
+            <span style="margin:0 8px">
+              ${item.qty}
+            </span>
+
+
+            <button
+              onclick="changeQty(${item.id},1)"
+              style="
+                border:0;
+                background:#eef4ff;
+                color:#1558c7;
+                border-radius:6px;
+                cursor:pointer;
+                width:30px;
+                height:30px;
+              ">
+              +
+            </button>
 
           </div>
 
         </div>
 
+      `;
 
-        <div
-          style="
-            display:flex;
-            align-items:center;
-            white-space:nowrap;
-          ">
-
-          <button
-            onclick="changeQty(${item.id},-1)"
-            style="
-              border:0;
-              background:#eef4ff;
-              color:#1558c7;
-              border-radius:6px;
-              cursor:pointer;
-              width:30px;
-              height:30px;
-            ">
-
-            −
-
-          </button>
+    }).join("");
 
 
-          <span
-            style="
-              margin:0 8px;
-              min-width:15px;
-              text-align:center;
-            ">
-
-            ${item.qty}
-
-          </span>
-
-
-          <button
-            onclick="changeQty(${item.id},1)"
-            style="
-              border:0;
-              background:#eef4ff;
-              color:#1558c7;
-              border-radius:6px;
-              cursor:pointer;
-              width:30px;
-              height:30px;
-            ">
-
-            +
-
-          </button>
-
-        </div>
-
-      </div>
-    `;
-
-  }).join("");
-
-
-  const totalBox =
+  const totalBox=
     document.getElementById("total");
 
-  if (totalBox) {
+  if(totalBox){
 
-    totalBox.textContent =
+    totalBox.textContent=
       total.toLocaleString();
 
   }
@@ -2817,13 +2586,11 @@ function updateCart() {
 }
 
 
-/* ===============================
-   PLACE ORDER
-   =============================== */
+/* ================= ORDER ================= */
 
-async function placeOrder() {
+async function placeOrder(){
 
-  if (!cart.length) {
+  if(!cart.length){
 
     return showMsg(
       "Please add a Timvella watch to your cart.",
@@ -2833,24 +2600,24 @@ async function placeOrder() {
   }
 
 
-  const customer =
+  const customer=
     document.getElementById("customer")
-      ?.value.trim();
+      .value.trim();
 
-  const phone =
+  const phone=
     document.getElementById("phone")
-      ?.value.trim();
+      .value.trim();
 
-  const address =
+  const address=
     document.getElementById("address")
-      ?.value.trim();
+      .value.trim();
 
-  const payment =
+  const payment=
     document.getElementById("payment")
-      ?.value;
+      .value;
 
 
-  if (!customer || !phone || !address) {
+  if(!customer||!phone||!address){
 
     return showMsg(
       "Please complete your name, phone and address.",
@@ -2860,45 +2627,44 @@ async function placeOrder() {
   }
 
 
-  try {
+  try{
 
-    const response =
-      await fetch("/api/orders", {
+    const response=
+      await fetch("/api/orders",{
 
-        method: "POST",
+        method:"POST",
 
-        headers: {
-          "Content-Type": "application/json"
+        headers:{
+          "Content-Type":"application/json"
         },
 
-        body: JSON.stringify({
+        body:JSON.stringify({
 
-          customer_name: customer,
+          customer_name:customer,
+          phone:phone,
+          address:address,
 
-          phone: phone,
+          items:
+            cart.map(item=>({
+              id:item.id,
+              qty:item.qty
+            })),
 
-          address: address,
-
-          items: cart.map(item => ({
-            id: item.id,
-            qty: item.qty
-          })),
-
-          payment_method: payment
+          payment_method:payment
 
         })
 
       });
 
 
-    const data =
+    const data=
       await response.json();
 
 
-    if (!response.ok) {
+    if(!response.ok){
 
       return showMsg(
-        data.error || "Order failed.",
+        data.error||"Order failed.",
         "error"
       );
 
@@ -2911,20 +2677,20 @@ async function placeOrder() {
     );
 
 
-    cart = [];
+    cart=[];
 
     updateCart();
 
 
-    document.getElementById("customer").value = "";
-    document.getElementById("phone").value = "";
-    document.getElementById("address").value = "";
+    document.getElementById("customer").value="";
+    document.getElementById("phone").value="";
+    document.getElementById("address").value="";
 
 
     loadProducts();
 
 
-  } catch (error) {
+  }catch(error){
 
     showMsg(
       "Something went wrong. Please try again.",
@@ -2936,117 +2702,98 @@ async function placeOrder() {
 }
 
 
-/* ===============================
-   MESSAGE
-   =============================== */
+/* ================= MESSAGE ================= */
 
-function showMsg(text, type) {
+function showMsg(text,type){
 
-  const box =
+  const box=
     document.getElementById("msg");
 
-  if (!box) return;
+  if(!box)return;
 
 
-  box.textContent = text;
+  box.textContent=text;
 
-  box.style.marginTop = "15px";
+  box.style.marginTop="15px";
+  box.style.padding="12px";
+  box.style.borderRadius="8px";
 
-  box.style.padding = "12px";
+  box.style.background=
+    type==="success"
+    ?" #eaf8f0"
+    :"#fff0f0";
 
-  box.style.borderRadius = "8px";
-
-  box.style.background =
-    type === "success"
-      ? "#eaf8f0"
-      : "#fff0f0";
-
-  box.style.color =
-    type === "success"
-      ? "#12824e"
-      : "#c52b2b";
+  box.style.color=
+    type==="success"
+    ?" #12824e"
+    :"#c52b2b";
 
 }
 
 
-/* ===============================
-   ADMIN OPEN
-   =============================== */
+/* ================= ADMIN OPEN ================= */
 
-function openAdmin() {
+function openAdmin(){
 
-  const modal =
+  const modal=
     document.getElementById("adminModal");
 
-  if (!modal) return;
+  if(!modal)return;
 
 
   modal.classList.add("show");
-
   modal.classList.remove("hidden");
 
-  document.body.style.overflow = "hidden";
+  document.body.style.overflow="hidden";
 
   checkAdmin();
 
 }
 
 
-/* ===============================
-   ADMIN CLOSE
-   =============================== */
+/* ================= ADMIN CLOSE ================= */
 
-function closeAdmin() {
+function closeAdmin(){
 
-  const modal =
+  const modal=
     document.getElementById("adminModal");
 
-  if (!modal) return;
+  if(!modal)return;
 
 
   modal.classList.remove("show");
-
   modal.classList.add("hidden");
 
-  document.body.style.overflow = "";
+  document.body.style.overflow="";
 
 }
 
 
-/* ===============================
-   CLOSE OUTSIDE
-   =============================== */
+/* ================= ADMIN OUTSIDE ================= */
 
-function closeAdminOutside(event) {
+function closeAdminOutside(event){
 
-  if (
-    event.target &&
-    event.target.id === "adminModal"
-  ) {
-
+  if(event.target.id==="adminModal"){
     closeAdmin();
-
   }
 
 }
 
 
-/* ===============================
-   ADMIN LOGIN
-   =============================== */
+/* ================= LOGIN ================= */
 
-async function login() {
+async function login(){
 
-  const username =
+  const username=
     document.getElementById("au")
-      ?.value.trim();
+      .value.trim();
 
-  const password =
+  const password=
     document.getElementById("ap")
-      ?.value;
+      .value;
 
 
-  if (!username || !password) {
+  if(!username||!password){
 
     return alert(
       "Enter username and password."
@@ -3055,18 +2802,18 @@ async function login() {
   }
 
 
-  try {
+  try{
 
-    const response =
-      await fetch("/api/admin/login", {
+    const response=
+      await fetch("/api/admin/login",{
 
-        method: "POST",
+        method:"POST",
 
-        headers: {
-          "Content-Type": "application/json"
+        headers:{
+          "Content-Type":"application/json"
         },
 
-        body: JSON.stringify({
+        body:JSON.stringify({
           username,
           password
         })
@@ -3074,7 +2821,7 @@ async function login() {
       });
 
 
-    if (!response.ok) {
+    if(!response.ok){
 
       return alert(
         "Invalid admin login."
@@ -3096,7 +2843,7 @@ async function login() {
     loadAdmin();
 
 
-  } catch (error) {
+  }catch(error){
 
     alert(
       "Unable to connect to admin login."
@@ -3107,18 +2854,16 @@ async function login() {
 }
 
 
-/* ===============================
-   ADMIN LOGOUT
-   =============================== */
+/* ================= LOGOUT ================= */
 
-async function logout() {
+async function logout(){
 
   await fetch(
     "/api/admin/logout",
     {
-      method: "POST"
+      method:"POST"
     }
-  ).catch(() => {});
+  ).catch(()=>{});
 
 
   document
@@ -3131,33 +2876,29 @@ async function logout() {
     .classList.add("hidden");
 
 
-  document.getElementById("au").value = "";
-
-  document.getElementById("ap").value = "";
+  document.getElementById("au").value="";
+  document.getElementById("ap").value="";
 
 }
 
 
-/* ===============================
-   CHECK ADMIN
-   =============================== */
+/* ================= CHECK ADMIN ================= */
 
-async function checkAdmin() {
+async function checkAdmin(){
 
-  try {
+  try{
 
-    const response =
+    const response=
       await fetch("/api/admin/me");
 
+    if(!response.ok)return;
 
-    if (!response.ok) return;
 
-
-    const data =
+    const data=
       await response.json();
 
 
-    if (data.loggedIn) {
+    if(data.loggedIn){
 
       document
         .getElementById("loginBox")
@@ -3173,23 +2914,21 @@ async function checkAdmin() {
 
     }
 
-  } catch (error) {}
+  }catch(error){}
 
 }
 
 
-/* ===============================
-   ADD PRODUCT
-   =============================== */
+/* ================= ADD PRODUCT ================= */
 
-async function addProduct() {
+async function addProduct(){
 
-  let name =
+  let name=
     document.getElementById("pn")
-      ?.value.trim();
+      .value.trim();
 
 
-  if (!name) {
+  if(!name){
 
     return alert(
       "Enter a Timvella watch name."
@@ -3198,9 +2937,9 @@ async function addProduct() {
   }
 
 
-  const data = {
+  const data={
 
-    name: timvellaName(name),
+    name:timvellaName(name),
 
     price:
       Number(
@@ -3209,14 +2948,14 @@ async function addProduct() {
 
     old_price:
       document.getElementById("po").value
-        ? Number(
-            document.getElementById("po").value
-          )
-        : null,
+      ?Number(
+        document.getElementById("po").value
+      )
+      :null,
 
     stock:
       Number(
-        document.getElementById("ps").value || 0
+        document.getElementById("ps").value||0
       ),
 
     category:
@@ -3229,7 +2968,7 @@ async function addProduct() {
   };
 
 
-  if (!data.price) {
+  if(!data.price){
 
     return alert(
       "Product price is required."
@@ -3238,23 +2977,23 @@ async function addProduct() {
   }
 
 
-  try {
+  try{
 
-    const response =
-      await fetch("/api/products", {
+    const response=
+      await fetch("/api/products",{
 
-        method: "POST",
+        method:"POST",
 
-        headers: {
-          "Content-Type": "application/json"
+        headers:{
+          "Content-Type":"application/json"
         },
 
-        body: JSON.stringify(data)
+        body:JSON.stringify(data)
 
       });
 
 
-    if (!response.ok) {
+    if(!response.ok){
 
       return alert(
         "Could not add Timvella product."
@@ -3269,9 +3008,9 @@ async function addProduct() {
       "po",
       "ps",
       "pi"
-    ].forEach(id => {
+    ].forEach(id=>{
 
-      document.getElementById(id).value = "";
+      document.getElementById(id).value="";
 
     });
 
@@ -3281,7 +3020,7 @@ async function addProduct() {
     loadAdmin();
 
 
-  } catch (error) {
+  }catch(error){
 
     alert(
       "Unable to add product."
@@ -3292,62 +3031,50 @@ async function addProduct() {
 }
 
 
-/* ===============================
-   LOAD ADMIN
-   =============================== */
+/* ================= LOAD ADMIN ================= */
 
-async function loadAdmin() {
+async function loadAdmin(){
 
-  await loadAdminProducts();
-
-  await loadOrders();
+  loadAdminProducts();
+  loadOrders();
 
 }
 
 
-/* ===============================
-   ADMIN PRODUCTS
-   =============================== */
+/* ================= ADMIN PRODUCTS ================= */
 
-async function loadAdminProducts() {
+async function loadAdminProducts(){
 
-  try {
+  try{
 
-    const response =
+    const response=
       await fetch("/api/products");
 
+    if(!response.ok)return;
 
-    if (!response.ok) return;
 
-
-    const list =
+    const list=
       await response.json();
 
 
-    const box =
-      document.getElementById(
-        "adminProducts"
-      );
+    const box=
+      document.getElementById("adminProducts");
+
+    if(!box)return;
 
 
-    if (!box) return;
+    if(!list.length){
 
-
-    if (!list.length) {
-
-      box.innerHTML = `
-        <div class="empty">
-          No products yet.
-        </div>
-      `;
+      box.innerHTML=
+        "<div class='empty'>No products yet.</div>";
 
       return;
 
     }
 
 
-    box.innerHTML =
-      list.map(product => `
+    box.innerHTML=
+      list.map(product=>`
 
         <div class="admin-product">
 
@@ -3360,18 +3087,10 @@ async function loadAdminProducts() {
             </strong>
 
             <div
-              style="
-                font-size:12px;
-                color:#748095;
-                margin-top:4px;
-              ">
+              style="font-size:12px;color:#748095">
 
-              ৳${Number(
-                product.price || 0
-              ).toLocaleString()}
-
-              • Stock:
-              ${Number(product.stock || 0)}
+              ৳${Number(product.price||0).toLocaleString()}
+              • Stock: ${Number(product.stock||0)}
 
             </div>
 
@@ -3391,48 +3110,46 @@ async function loadAdminProducts() {
       `).join("");
 
 
-  } catch (error) {}
+  }catch(error){}
 
 }
 
 
-/* ===============================
-   DELETE PRODUCT
-   =============================== */
+/* ================= DELETE PRODUCT ================= */
 
-async function deleteProduct(id) {
+async function deleteProduct(id){
 
-  if (
+  if(
     !confirm(
       "Delete this Timvella watch?"
     )
-  ) return;
+  )return;
 
 
-  try {
+  try{
 
-    const response =
+    const response=
       await fetch(
         `/api/products/${id}`,
         {
-          method: "DELETE"
+          method:"DELETE"
         }
       );
 
 
-    if (response.ok) {
+    if(response.ok){
 
       await loadProducts();
 
       loadAdmin();
 
-    } else {
+    }else{
 
       alert("Delete failed.");
 
     }
 
-  } catch (error) {
+  }catch(error){
 
     alert("Delete failed.");
 
@@ -3441,38 +3158,33 @@ async function deleteProduct(id) {
 }
 
 
-/* ===============================
-   LOAD ORDERS
-   =============================== */
+/* ================= LOAD ORDERS ================= */
 
-async function loadOrders() {
+async function loadOrders(){
 
-  const box =
+  const box=
     document.getElementById("orders");
 
-  if (!box) return;
+  if(!box)return;
 
 
-  try {
+  try{
 
-    const response =
+    const response=
       await fetch("/api/orders");
 
 
-    if (!response.ok) {
+    if(!response.ok){
 
-      box.innerHTML = `
-        <div class="empty">
-          Login required.
-        </div>
-      `;
+      box.innerHTML=
+        "<div class='empty'>Login required.</div>";
 
       return;
 
     }
 
 
-    allOrders =
+    allOrders=
       await response.json();
 
 
@@ -3481,124 +3193,68 @@ async function loadOrders() {
     renderOrders();
 
 
-  } catch (error) {
+  }catch(error){
 
-    box.innerHTML = `
-      <div class="empty">
-        Unable to load orders.
-      </div>
-    `;
+    box.innerHTML=
+      "<div class='empty'>Unable to load orders.</div>";
 
   }
 
 }
 
 
-/* ===============================
-   ORDER COUNTS
-   =============================== */
+/* ================= ORDER COUNTS ================= */
 
-function updateOrderCounts() {
+function updateOrderCounts(){
 
-  const all =
-    document.getElementById("countAll");
-
-  const fresh =
-    document.getElementById("countNew");
-
-  const processing =
-    document.getElementById(
-      "countProcessing"
-    );
-
-  const delivered =
-    document.getElementById(
-      "countDelivered"
-    );
-
-  const cancelled =
-    document.getElementById(
-      "countCancelled"
-    );
+  document.getElementById("countAll").textContent=
+    allOrders.length;
 
 
-  if (all) {
-
-    all.textContent =
-      allOrders.length;
-
-  }
+  document.getElementById("countNew").textContent=
+    allOrders.filter(
+      order=>order.status==="Pending"
+    ).length;
 
 
-  if (fresh) {
-
-    fresh.textContent =
-      allOrders.filter(
-        order =>
-          order.status === "Pending"
-      ).length;
-
-  }
+  document.getElementById("countProcessing").textContent=
+    allOrders.filter(
+      order=>
+        order.status==="Confirmed"||
+        order.status==="Shipped"
+    ).length;
 
 
-  if (processing) {
-
-    processing.textContent =
-      allOrders.filter(
-        order =>
-          order.status === "Confirmed" ||
-          order.status === "Shipped"
-      ).length;
-
-  }
+  document.getElementById("countDelivered").textContent=
+    allOrders.filter(
+      order=>order.status==="Delivered"
+    ).length;
 
 
-  if (delivered) {
-
-    delivered.textContent =
-      allOrders.filter(
-        order =>
-          order.status === "Delivered"
-      ).length;
-
-  }
-
-
-  if (cancelled) {
-
-    cancelled.textContent =
-      allOrders.filter(
-        order =>
-          order.status === "Cancelled"
-      ).length;
-
-  }
+  document.getElementById("countCancelled").textContent=
+    allOrders.filter(
+      order=>order.status==="Cancelled"
+    ).length;
 
 }
 
 
-/* ===============================
-   FILTER ORDERS
-   =============================== */
+/* ================= FILTER ORDERS ================= */
 
-function filterOrders(filter, button) {
+function filterOrders(filter,button){
 
-  currentOrderFilter = filter;
+  currentOrderFilter=filter;
 
 
   document
     .querySelectorAll(".order-tab")
-    .forEach(tab => {
-
+    .forEach(tab=>{
       tab.classList.remove("active");
-
     });
 
 
-  if (button) {
-
+  if(button){
     button.classList.add("active");
-
   }
 
 
@@ -3607,102 +3263,78 @@ function filterOrders(filter, button) {
 }
 
 
-/* ===============================
-   RENDER ORDERS
-   =============================== */
+/* ================= RENDER ORDERS ================= */
 
-function renderOrders() {
+function renderOrders(){
 
-  let orders =
+  let orders=
     [...allOrders];
 
 
-  if (currentOrderFilter === "new") {
+  if(currentOrderFilter==="new"){
 
-    orders =
+    orders=
       orders.filter(
-        order =>
-          order.status === "Pending"
+        order=>order.status==="Pending"
       );
 
   }
 
 
-  if (
-    currentOrderFilter ===
-    "processing"
-  ) {
+  if(currentOrderFilter==="processing"){
 
-    orders =
+    orders=
       orders.filter(
-        order =>
-          order.status === "Confirmed" ||
-          order.status === "Shipped"
+        order=>
+          order.status==="Confirmed"||
+          order.status==="Shipped"
       );
 
   }
 
 
-  if (
-    currentOrderFilter ===
-    "delivered"
-  ) {
+  if(currentOrderFilter==="delivered"){
 
-    orders =
+    orders=
       orders.filter(
-        order =>
-          order.status === "Delivered"
+        order=>order.status==="Delivered"
       );
 
   }
 
 
-  if (
-    currentOrderFilter ===
-    "cancelled"
-  ) {
+  if(currentOrderFilter==="cancelled"){
 
-    orders =
+    orders=
       orders.filter(
-        order =>
-          order.status === "Cancelled"
+        order=>order.status==="Cancelled"
       );
 
   }
 
 
-  const box =
-    document.getElementById(
-      "orders"
-    );
+  const box=
+    document.getElementById("orders");
+
+  if(!box)return;
 
 
-  if (!box) return;
+  if(!orders.length){
 
-
-  if (!orders.length) {
-
-    box.innerHTML = `
-      <div class="empty">
-        No orders in this section.
-      </div>
-    `;
+    box.innerHTML=
+      "<div class='empty'>No orders in this section.</div>";
 
     return;
 
   }
 
 
-  box.innerHTML =
-    orders.map(order => `
+  box.innerHTML=
+    orders.map(order=>`
 
       <div
         class="admin-product"
-        style="
-          display:block;
-          margin-bottom:12px;
-        ">
-
+        style="display:block;margin-bottom:12px">
 
         <div
           style="
@@ -3735,22 +3367,21 @@ function renderOrders() {
                 "Delivered",
                 "Cancelled"
               ]
-              .map(status => `
+              .map(status=>`
 
                 <option
                   value="${status}"
                   ${
-                    order.status === status
-                      ? "selected"
-                      : ""
+                    order.status===status
+                    ?"selected"
+                    :""
                   }>
 
                   ${status}
 
                 </option>
 
-              `)
-              .join("")
+              `).join("")
             }
 
           </select>
@@ -3763,34 +3394,20 @@ function renderOrders() {
             margin-top:10px;
             color:#657188;
             font-size:13px;
-            line-height:1.8;
+            line-height:1.7;
           ">
 
-          👤
-          ${escapeHtml(
-            order.customer_name
-          )}
-
+          👤 ${escapeHtml(order.customer_name)}
           <br>
 
-          📞
-          ${escapeHtml(
-            order.phone
-          )}
-
+          📞 ${escapeHtml(order.phone)}
           <br>
 
-          📍
-          ${escapeHtml(
-            order.address
-          )}
-
+          📍 ${escapeHtml(order.address)}
           <br>
 
           💰 Total:
-          ৳${Number(
-            order.total || 0
-          ).toLocaleString()}
+          ৳${Number(order.total||0).toLocaleString()}
 
         </div>
 
@@ -3806,9 +3423,7 @@ function renderOrders() {
 
           Status:
           <strong>
-            ${escapeHtml(
-              order.status
-            )}
+            ${escapeHtml(order.status)}
           </strong>
 
         </div>
@@ -3820,25 +3435,20 @@ function renderOrders() {
 }
 
 
-/* ===============================
-   UPDATE ORDER STATUS
-   =============================== */
+/* ================= UPDATE ORDER ================= */
 
-async function updateOrderStatus(
-  id,
-  status
-) {
+async function updateOrderStatus(id,status){
 
-  try {
+  try{
 
-    const response =
+    const response=
       await fetch(
         `/api/orders/${id}`,
         {
 
-          method: "PATCH",
+          method:"PATCH",
 
-          headers: {
+          headers:{
             "Content-Type":
               "application/json"
           },
@@ -3852,7 +3462,7 @@ async function updateOrderStatus(
       );
 
 
-    if (!response.ok) {
+    if(!response.ok){
 
       return alert(
         "Could not update order."
@@ -3864,7 +3474,7 @@ async function updateOrderStatus(
     await loadOrders();
 
 
-  } catch (error) {
+  }catch(error){
 
     alert(
       "Could not update order."
@@ -3875,54 +3485,42 @@ async function updateOrderStatus(
 }
 
 
-/* ===============================
-   SEARCH
-   =============================== */
+/* ================= SEARCH ================= */
 
-function focusSearch() {
+function focusSearch(){
 
-  location.hash = "shop";
+  location.hash="shop";
 
 
-  setTimeout(() => {
+  setTimeout(()=>{
 
-    const input =
-      document.getElementById(
-        "search"
-      );
+    const input=
+      document.getElementById("search");
 
-    if (input) {
-
+    if(input){
       input.focus();
-
     }
 
-  }, 300);
+  },300);
 
 }
 
 
-/* ===============================
-   ESCAPE ADMIN
-   =============================== */
+/* ================= ESCAPE ================= */
 
 document.addEventListener(
   "keydown",
-  event => {
+  event=>{
 
-    if (event.key === "Escape") {
-
+    if(event.key==="Escape"){
       closeAdmin();
-
     }
 
   }
 );
 
 
-/* ===============================
-   START APPLICATION
-   =============================== */
+/* ================= START ================= */
 
 loadProducts();
 
@@ -3934,8 +3532,3 @@ checkAdmin();
 
 </body>
 </html>
-
-<!-- =========================================
-     PART 1 END
-     PART 2 MUST BE PASTED DIRECTLY BELOW
-     ========================================= -->
